@@ -3,7 +3,7 @@ Matrix-Engine-GUI Editor is windows desktop application.
 
 
  - This is welcome screen.
-<img src="https://github.com/zlatnaspirala/matrix-engine-gui/blob/main/welcome.png" width="200" height="200">
+<img src="https://github.com/zlatnaspirala/matrix-engine-gui/blob/main/welcome.png" width="768" height="480">
 
 
 
@@ -16,6 +16,6 @@ This program clone matrix-engine intro:
 Exports generated from Packager Form location folder:
 `C:\Users\USER_NAME\AppData\Roaming\matrix-texture-tool\exports\`
 
-<img src="https://github.com/zlatnaspirala/matrix-engine-gui/blob/main/start-menu.png" width="200" height="200">
+<img src="https://github.com/zlatnaspirala/matrix-engine-gui/blob/main/start-menu.png" width="1080" height="480">
 
 
