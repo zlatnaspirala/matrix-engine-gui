@@ -39,12 +39,12 @@ namespace matrix_engine {
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label1.Location = new System.Drawing.Point(176, 69);
+            this.label1.Location = new System.Drawing.Point(176, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 48);
+            this.label1.Size = new System.Drawing.Size(307, 48);
             this.label1.TabIndex = 7;
-            this.label1.Text = "- Run simple web server on port 8080\r\n- Run node editor VJS3 \r\n- Run js build ";
+            this.label1.Text = "- Run simple web server on port 80/443\r\n- Run node editor VJS3 \r\n- Run js build";
             // 
             // textureProjectName
             // 
@@ -53,7 +53,7 @@ namespace matrix_engine {
             this.textureProjectName.Enabled = false;
             this.textureProjectName.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textureProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.textureProjectName.Location = new System.Drawing.Point(13, 101);
+            this.textureProjectName.Location = new System.Drawing.Point(22, 262);
             this.textureProjectName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textureProjectName.Name = "textureProjectName";
             this.textureProjectName.Size = new System.Drawing.Size(102, 16);
@@ -104,7 +104,7 @@ namespace matrix_engine {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = global::matrix_engine.Properties.Resources.res2;
-            this.ClientSize = new System.Drawing.Size(533, 205);
+            this.ClientSize = new System.Drawing.Size(533, 208);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textureProjectName);

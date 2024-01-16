@@ -32,17 +32,17 @@ namespace matrix_engine {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.hideMe = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.BUILDBTN = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.FILEPREVIEW3D = new System.Windows.Forms.WebBrowser();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BUILDBTN = new System.Windows.Forms.Button();
+            this.hideMe = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.DESC = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FILEPREVIEW
@@ -52,7 +52,7 @@ namespace matrix_engine {
             this.FILEPREVIEW.Margin = new System.Windows.Forms.Padding(0);
             this.FILEPREVIEW.MinimumSize = new System.Drawing.Size(33, 25);
             this.FILEPREVIEW.Name = "FILEPREVIEW";
-            this.FILEPREVIEW.Size = new System.Drawing.Size(1319, 272);
+            this.FILEPREVIEW.Size = new System.Drawing.Size(1039, 272);
             this.FILEPREVIEW.TabIndex = 0;
             this.FILEPREVIEW.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.FILEPREVIEW_DocumentCompleted);
             // 
@@ -75,11 +75,12 @@ namespace matrix_engine {
             this.BACK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BACK.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BACK.ForeColor = System.Drawing.Color.DarkOrange;
-            this.BACK.Location = new System.Drawing.Point(701, 6);
+            this.BACK.Location = new System.Drawing.Point(323, 6);
             this.BACK.Name = "BACK";
             this.BACK.Size = new System.Drawing.Size(68, 29);
             this.BACK.TabIndex = 13;
             this.BACK.Text = "BACK";
+            this.toolTip1.SetToolTip(this.BACK, "Navigate back");
             this.BACK.UseVisualStyleBackColor = false;
             this.BACK.Click += new System.EventHandler(this.BACK_Click);
             // 
@@ -89,11 +90,12 @@ namespace matrix_engine {
             this.ADDNEWIMAGE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ADDNEWIMAGE.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ADDNEWIMAGE.ForeColor = System.Drawing.Color.DarkOrange;
-            this.ADDNEWIMAGE.Location = new System.Drawing.Point(775, 6);
+            this.ADDNEWIMAGE.Location = new System.Drawing.Point(397, 6);
             this.ADDNEWIMAGE.Name = "ADDNEWIMAGE";
             this.ADDNEWIMAGE.Size = new System.Drawing.Size(187, 29);
             this.ADDNEWIMAGE.TabIndex = 14;
             this.ADDNEWIMAGE.Text = "Add new image/images";
+            this.toolTip1.SetToolTip(this.ADDNEWIMAGE, "Use Add btn dont add manually images resources.");
             this.ADDNEWIMAGE.UseVisualStyleBackColor = false;
             this.ADDNEWIMAGE.Click += new System.EventHandler(this.ADDNEWIMAGE_Click);
             // 
@@ -112,69 +114,16 @@ namespace matrix_engine {
             this.tabControl1.Location = new System.Drawing.Point(0, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1333, 307);
+            this.tabControl1.Size = new System.Drawing.Size(1053, 307);
             this.tabControl1.TabIndex = 16;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.Maroon;
-            this.tabPage1.Controls.Add(this.BACK);
-            this.tabPage1.Controls.Add(this.ADDNEWIMAGE);
-            this.tabPage1.Controls.Add(this.BUILDBTN);
-            this.tabPage1.Controls.Add(this.FILEPREVIEW);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1325, 278);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "2D resources [visualjs]";
-            // 
-            // hideMe
-            // 
-            this.hideMe.BackColor = System.Drawing.Color.Black;
-            this.hideMe.Dock = System.Windows.Forms.DockStyle.Right;
-            this.hideMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideMe.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideMe.ForeColor = System.Drawing.Color.DarkOrange;
-            this.hideMe.Location = new System.Drawing.Point(1102, 0);
-            this.hideMe.Name = "hideMe";
-            this.hideMe.Size = new System.Drawing.Size(231, 42);
-            this.hideMe.TabIndex = 17;
-            this.hideMe.Text = "Hide";
-            this.hideMe.UseVisualStyleBackColor = false;
-            this.hideMe.Click += new System.EventHandler(this.hideMe_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.HIDEMEEVENT);
-            // 
-            // BUILDBTN
-            // 
-            this.BUILDBTN.BackColor = System.Drawing.Color.Black;
-            this.BUILDBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BUILDBTN.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BUILDBTN.ForeColor = System.Drawing.Color.DarkOrange;
-            this.BUILDBTN.Location = new System.Drawing.Point(968, 6);
-            this.BUILDBTN.Name = "BUILDBTN";
-            this.BUILDBTN.Size = new System.Drawing.Size(68, 29);
-            this.BUILDBTN.TabIndex = 18;
-            this.BUILDBTN.Text = "BUILD";
-            this.BUILDBTN.UseVisualStyleBackColor = false;
-            this.BUILDBTN.Click += new System.EventHandler(this.BUILDBTN_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
-            this.toolTip1.ToolTipTitle = "Help and warns";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.FILEPREVIEW3D);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1325, 278);
+            this.tabPage2.Size = new System.Drawing.Size(1045, 278);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "3D Resources [matrix-engine]";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -186,8 +135,62 @@ namespace matrix_engine {
             this.FILEPREVIEW3D.Margin = new System.Windows.Forms.Padding(0);
             this.FILEPREVIEW3D.MinimumSize = new System.Drawing.Size(33, 25);
             this.FILEPREVIEW3D.Name = "FILEPREVIEW3D";
-            this.FILEPREVIEW3D.Size = new System.Drawing.Size(1325, 278);
+            this.FILEPREVIEW3D.Size = new System.Drawing.Size(1045, 278);
             this.FILEPREVIEW3D.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Maroon;
+            this.tabPage1.Controls.Add(this.BACK);
+            this.tabPage1.Controls.Add(this.ADDNEWIMAGE);
+            this.tabPage1.Controls.Add(this.BUILDBTN);
+            this.tabPage1.Controls.Add(this.FILEPREVIEW);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1045, 278);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "2D resources [visualjs]";
+            // 
+            // BUILDBTN
+            // 
+            this.BUILDBTN.BackColor = System.Drawing.Color.Black;
+            this.BUILDBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BUILDBTN.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BUILDBTN.ForeColor = System.Drawing.Color.DarkOrange;
+            this.BUILDBTN.Location = new System.Drawing.Point(590, 6);
+            this.BUILDBTN.Name = "BUILDBTN";
+            this.BUILDBTN.Size = new System.Drawing.Size(68, 29);
+            this.BUILDBTN.TabIndex = 18;
+            this.BUILDBTN.Text = "BUILD";
+            this.toolTip1.SetToolTip(this.BUILDBTN, "Build visualjs resource [node res.js]");
+            this.BUILDBTN.UseVisualStyleBackColor = false;
+            this.BUILDBTN.Click += new System.EventHandler(this.BUILDBTN_Click);
+            // 
+            // hideMe
+            // 
+            this.hideMe.BackColor = System.Drawing.Color.Black;
+            this.hideMe.Dock = System.Windows.Forms.DockStyle.Right;
+            this.hideMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideMe.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hideMe.ForeColor = System.Drawing.Color.DarkOrange;
+            this.hideMe.Location = new System.Drawing.Point(855, 0);
+            this.hideMe.Name = "hideMe";
+            this.hideMe.Size = new System.Drawing.Size(198, 42);
+            this.hideMe.TabIndex = 17;
+            this.hideMe.Text = "Hide";
+            this.hideMe.UseVisualStyleBackColor = false;
+            this.hideMe.Click += new System.EventHandler(this.hideMe_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.HIDEMEEVENT);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.toolTip1.ToolTipTitle = "Help and warns";
             // 
             // DESC
             // 
@@ -205,7 +208,7 @@ namespace matrix_engine {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = global::matrix_engine.Properties.Resources.res2;
-            this.ClientSize = new System.Drawing.Size(1333, 349);
+            this.ClientSize = new System.Drawing.Size(1053, 349);
             this.Controls.Add(this.DESC);
             this.Controls.Add(this.hideMe);
             this.Controls.Add(this.tabControl1);
@@ -221,8 +224,8 @@ namespace matrix_engine {
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ResourceVJS3_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

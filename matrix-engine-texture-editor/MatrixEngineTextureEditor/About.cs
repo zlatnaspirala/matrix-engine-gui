@@ -57,7 +57,7 @@ namespace matrix_engine {
         }
         // Specify what you want to happen when the Elapsed event is raised.
         private void OnTimedEvent(object source, ElapsedEventArgs e) {
-            Console.WriteLine("Hello World!" + FUNY.ToString());
+            // Console.WriteLine("Hello World!" + FUNY.ToString());
             FUNY = FUNY + 1;
             if (FUNY > this.Height) {
                 aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent2);
@@ -67,7 +67,7 @@ namespace matrix_engine {
             this.Update();
         }
         private void OnTimedEvent2(object source, ElapsedEventArgs e) {
-            Console.WriteLine("Hello World!" + FUNY.ToString());
+            // Console.WriteLine("Hello World!" + FUNY.ToString());
             FUNY = FUNY - 1;
             if (FUNY < 0) {
                 aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
