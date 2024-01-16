@@ -20,6 +20,9 @@ using System.Windows.Forms;
  * 
  * Important :
  * In matrixEngine GUI used route = public/gui.html
+ * from appDataq folder windows app cache folder.
+ * Matrix use own web server host. Close any web server on your computar.
+ * 
  */
 namespace matrix_engine {
     public partial class MatrixEngineGUI : Form {
@@ -48,22 +51,21 @@ namespace matrix_engine {
         private string NO_DEP_TEXT = "No dep library exist, please install deps.";
         private string TEXT_ERROR = "Matrix-engine error msg.";
         public void START(String ARG) {
+            // Install deps - clone matrix-engine from github.
             APP_DIR = ARG;
             cmdStream = new CmdWindowControlTestApp.MainForm();
             cmdStream.Load += cdmStreamWizardloaded;
             cmdStream.Show();
-            //npmadded
             cmdStream.resultNpmI.TextChanged += NPMDONE;
         }
 
         public void NATIVE_EXE_DONE(object sender, EventArgs e) {
-            // EXPORTS
+            // Exports
             MessageBox.Show("Windows desktop application builded [matrix-engine.exe] successful.", "Matrix-engine native app builded.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cmdKillerProc.BIGTEXT.Text = "Copying the new instance to the exports folder.";
 
             // test maybe baby
             cmdKillerProc.nativeExeBuild.TextChanged -= NATIVE_EXE_DONE;
-
             var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
             if (Directory.Exists(APP_DIR_TEST) == false) {
                 MessageBox.Show(NO_DEP_TEXT, "Matrix-engine error msg.", MessageBoxButtons.OK);
@@ -105,7 +107,7 @@ namespace matrix_engine {
         }
 
         protected void NPMDONE(object sender, EventArgs e) {
-            // fix
+            // indicator
             string createCacheFolder = APP_DIR + "\\matrix-engine\\2DTextureEditor\\cache";
             string createCacheFolder2 = APP_DIR + "\\matrix-engine\\2DTextureEditor\\cache\\redraw";
             System.IO.Directory.CreateDirectory(createCacheFolder);
@@ -117,6 +119,7 @@ namespace matrix_engine {
         }
 
         public void LOAD(String ARG) {
+            // Start 2d editor [visualjs]
             APP_DIR = ARG;
             setupEditorConfig();
             setupResConfig();
@@ -156,7 +159,6 @@ namespace matrix_engine {
                 cmdKillerProc = new CmdWindowControlTestApp.MainForm();
                 cmdKillerProc.Load += cmdKillerLoader;
             }
-            // cmdKillerProc.Show();
             // Hosting runs now 
             cmdVJS3EDITOR = new CmdWindowControlTestApp.MainForm();
             cmdVJS3EDITOR.Load += cmdEDITORLoader;
@@ -170,7 +172,7 @@ namespace matrix_engine {
             scriptGUIEditor.Location = new Point(this.Size.Width / 100 * 60, 25);
             scriptGUIEditor.SCRIPT_SRC.Text = APP_DIR;
             scriptGUIEditor.cmdVJS3WATCH = cmdVJS3WATCH;
-            // MAtrixEngine webGL part
+            // MatrixEngine webGL part
             scriptGUIEditor3d = new ScritpEditor3d(APP_DIR, APP_NAME, this);
             scriptGUIEditor3d.Show();
             scriptGUIEditor3d.Location = new Point(this.Size.Width / 100 * 60, 25);
@@ -238,7 +240,6 @@ namespace matrix_engine {
         }
 
         public void BUILD_VJS3_FINAL(object sender, EventArgs e) {
-            // test
             var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
             if (Directory.Exists(APP_DIR_TEST) == false) {
                 MessageBox.Show(NO_DEP_TEXT, "Matrix-engine error msg.", MessageBoxButtons.OK);
@@ -249,18 +250,15 @@ namespace matrix_engine {
             APP_DIR_TEST = APP_DIR_TEST + "2DTextureEditor";
             cmdKillerProc.txtBxStdin.Text = @"cd " + APP_DIR_TEST;
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
-            /////
-            ///
+
             var APP_DIR_TEST_EXPORTS = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\exports\";
             if (Directory.Exists(APP_DIR_TEST_EXPORTS) == false) { Directory.CreateDirectory(APP_DIR_TEST_EXPORTS); }
             var APP_DIR_TEST_EXPORTS__ = APP_DIR_TEST_EXPORTS + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-") + "2dcanvas";
-
 
             cmdKillerProc.txtBxStdin.Text = "xcopy /e /k /h /i \"" + APP_DIR_TEST + "\" \"" + APP_DIR_TEST_EXPORTS__ + "\\" + "\"";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
             packager.webAppExportPath.Text = APP_DIR_TEST_EXPORTS__;
             // MessageBox.Show("Final build for canvas2d code finished! Nice.", "Matrix-engine GUI editor", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //
         }
         public void WEB2DEXPORT_READY(object sender, EventArgs e) {
             MessageBox.Show("Final build for canvas2d code finished! Take a look intro exports folder => " + packager.webAppExportPath.Text.ToString(), "Matrix-engine GUI editor", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -276,10 +274,8 @@ namespace matrix_engine {
             cmdKillerProc.Show();
             cmdKillerProc.txtBxStdin.Text = @"c:";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
-
             cmdKillerProc.txtBxStdin.Text = @"cd " + APP_DIR + @"\2DTextureEditor";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
-
             cmdKillerProc.txtBxStdin.Text = @"node install-paths.js";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
         }
@@ -323,33 +319,24 @@ namespace matrix_engine {
         public void cmdKillerLoader(object sender, EventArgs e) { }
 
         private void cmdWATCHLoader(object sender, EventArgs e) {
-
-            // cmdVJS3WATCH.Size = new Size(this.Size.Width/2, this.Size.Height/5);
             cmdVJS3WATCH.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + this.Size.Height / 4);
-
             cmdVJS3WATCH.txtBxStdin.Text = @"c:";
             cmdVJS3WATCH.btnSendStdinToProcess.PerformClick();
-
             cmdVJS3WATCH.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdVJS3WATCH.btnSendStdinToProcess.PerformClick();
-
             // "gui-editor": "watchify ./2DTextureEditor/gui-texture-editor.js -p [esmify --noImplicitAny] -o ./2DTextureEditor/builds/gui.tex.js",
             // In some reason watch not working
             cmdVJS3WATCH.txtBxStdin.Text = @"npm run gui-editor-watch";
             cmdVJS3WATCH.btnSendStdinToProcess.PerformClick();
-
         }
 
         private void cmdEDITORLoader(object sender, EventArgs e) {
             cmdVJS3EDITOR.resultEditor.TextChanged += detectEditorRunStatus;
             cmdVJS3EDITOR.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + 2 * this.Size.Height / 4);
-
             cmdVJS3EDITOR.txtBxStdin.Text = @"c:";
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
-
             cmdVJS3EDITOR.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
-
             cmdVJS3EDITOR.txtBxStdin.Text = @"npm run te";
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
         }
@@ -365,12 +352,9 @@ namespace matrix_engine {
             if (File.Exists(TEXTURE_JS_FILE) != true) {
                 File.WriteAllText(TEXTURE_JS_FILE, PACKAGE_CONTENT);
             }
-
             cmdLoader.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + 3 * this.Size.Height / 4);
-
             cmdLoader.txtBxStdin.Text = @"c:";
             cmdLoader.btnSendStdinToProcess.PerformClick();
-
             cmdLoader.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdLoader.btnSendStdinToProcess.PerformClick();
             // npm run host-for-gui Refer on canvas2d part
@@ -440,14 +424,12 @@ namespace matrix_engine {
                     FSBrowser.chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
                 }
             } catch (Exception err) {
-                MessageBox.Show("PLease wait one sec... ", err.ToString());
+                MessageBox.Show("Please wait one sec...", err.ToString());
                 Thread.Sleep(1000);
                 using (var devToolsClient = FSBrowser.chromiumWebBrowser1.GetDevToolsClient()) {
                     var response = await devToolsClient.Network.ClearBrowserCacheAsync();
                     FSBrowser.chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
                 }
-
-
             }
         }
 
@@ -479,15 +461,10 @@ namespace matrix_engine {
                 cmdKillerProc.txtBxStdin.Text = @"taskkill /im node.exe /T /F";
                 cmdKillerProc.btnSendStdinToProcess.PerformClick();
             } else {
-                //MessageBox.Show("Nothing for dispose!");
+                // MessageBox.Show("Nothing for dispose!");
             }
         }
 
-        /// <summary>
-        /// Kill a process, and all of its children, grandchildren, etc.
-        /// Also build res and used like free terminal!
-        /// </summary>
-        /// <param name="pid">Process ID.</param>
         public static void KillProcessAndChildren(int pid) {
             // Cannot close 'system idle process'.
             if (pid == 0) {
@@ -552,8 +529,6 @@ namespace matrix_engine {
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             killSubProcess();
             Application.Exit();
-            // force error hot fix 
-            // cmdVJS3EDITOR.Show();
         }
 
         void OnProcessExit(object sender, EventArgs e) {
@@ -789,11 +764,9 @@ namespace matrix_engine {
         }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e) {
-
         }
 
         private void MatrixEngineGUI_MinimumSizeChanged(object sender, EventArgs e) {
-           // 
         }
 
         private void MatrixEngineGUI_Resize(object sender, EventArgs e) {
@@ -820,13 +793,11 @@ namespace matrix_engine {
         }
 
         private void makeFinalPackageAndExportToolStripMenuItem_Click(object sender, EventArgs e) {
-
             var APP_DIR_TEST1 = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
             if (Directory.Exists(APP_DIR_TEST1) == false) {
                 MessageBox.Show(NO_DEP_TEXT, TEXT_ERROR, MessageBoxButtons.OK);
                 return;
             }
-
             packager = new PackageForm(this);
             packager.Show();
         }
@@ -859,7 +830,6 @@ namespace matrix_engine {
             } else {
                 scriptGUIEditor3d.Show();
             }
-
         }
 
         private void runMatrixengineAppToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -888,15 +858,6 @@ namespace matrix_engine {
                 scritpEditorAndroid.Location = new Point(this.Size.Width / 100 * 60, 25);
                 scritpEditorAndroid.SCRIPT_SRC.Text = APP_DIR;
             }
-
-            /*if (scriptGUIEditor != null && scriptGUIEditor.IsDisposed == false) {
-                scriptGUIEditor.Show();
-            } else {
-                scriptGUIEditor = new ScritpEditor(APP_DIR, APP_NAME, this);
-                scriptGUIEditor.Show();
-                scriptGUIEditor.Location = new Point(this.Size.Width / 100 * 60, 25);
-                scriptGUIEditor.SCRIPT_SRC.Text = APP_DIR;
-            }*/
 
             if (scriptGUIEditor3d != null && scriptGUIEditor3d.IsDisposed == false) {
                 scriptGUIEditor3d.Show();
@@ -944,15 +905,6 @@ namespace matrix_engine {
                 scritpEditorAndroid.SCRIPT_SRC.Text = APP_DIR;
             }
 
-            /*if (scriptGUIEditor != null && scriptGUIEditor.IsDisposed == false) {
-                scriptGUIEditor.Show();
-            } else {
-                scriptGUIEditor = new ScritpEditor(APP_DIR, APP_NAME, this);
-                scriptGUIEditor.Show();
-                scriptGUIEditor.Location = new Point(this.Size.Width / 100 * 60, 25);
-                scriptGUIEditor.SCRIPT_SRC.Text = APP_DIR;
-            }*/
-
             if (scriptGUIEditor3d != null && scriptGUIEditor3d.IsDisposed == false) {
                 scriptGUIEditor3d.Show();
             } else {
@@ -965,11 +917,10 @@ namespace matrix_engine {
         }
 
         public void testAlreadyHosted(object sender, EventArgs e) {
-            MessageBox.Show("Web server already runned", "Matrix-Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Web server already runned. If you have running your own web server you need to close it and restart Matrix-Engine GUI Editor.If you start web server from Matrix-Engine GUI Editor you don't need any action just use editor.", "Matrix-Engine", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cmdWebGLHOSTING(object sender, EventArgs e) {
-
             cmdWebglHOST.ADDRESSINUSE.TextChanged += testAlreadyHosted;
             cmdWebglHOST.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + 3 * this.Size.Height / 4);
             cmdWebglHOST.txtBxStdin.Text = @"c:";
@@ -978,26 +929,13 @@ namespace matrix_engine {
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
             cmdWebglHOST.txtBxStdin.Text = @"c:";
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
-            // host root !
+            // Host root!
             cmdWebglHOST.txtBxStdin.Text = @"npm run host-public";
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
-
-            /*if (chromiumWebBrowser1 != null) {
-                URLTEXT.Text = "http://localhost/public/gui.html";
-                chromiumWebBrowser1.LoadUrl("http://localhost/public/gui.html");
-            }*/
         }
 
         private void button2_Click(object sender, EventArgs e) {
-
             if (chromiumWebBrowser1 != null && chromiumWebBrowser1.IsDisposed == false && chromiumWebBrowser1.Visible == true) {
-            
-            }
-            if (FSBrowser != null && FSBrowser.IsDisposed == false && FSBrowser.chromiumWebBrowser1.IsDisposed == false && FSBrowser.Visible == true) {
-                
-            }
-
-            if (chromiumWebBrowser1 != null) {
                 ClearCache();
                 URLTEXT.Text = "http://localhost/public/gui.html";
                 chromiumWebBrowser1.LoadUrl("http://localhost/public/gui.html");
@@ -1014,8 +952,7 @@ namespace matrix_engine {
             // EXPORTS
             MessageBox.Show("JS script builded [build.gui.js] successful.", "Matrix-engine web 3d app builded.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cmdKillerProc.BIGTEXT.Text = "Copying the new instance to the exports folder.";
-
-            // test maybe baby
+            // attach indicator
             cmdKillerProc.exportedwebgl.TextChanged -= webGLFinishBuild;
 
             var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
@@ -1030,14 +967,12 @@ namespace matrix_engine {
             }
 
             var APP_WEBGL_SRC = APP_DIR_TEST + @"\public\";
-
-
             var APP_DIR_TEST_EXPORTS = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\exports\";
             if (Directory.Exists(APP_DIR_TEST_EXPORTS) == false) {
                 MessageBox.Show("No export folder, please wait.", "Matrix-engine create export/ folder.", MessageBoxButtons.OK);
                 Directory.CreateDirectory(APP_DIR_TEST_EXPORTS);
             }
-            // MessageBox.Show("Native build exist, nice!");
+
             var APP_DIR_TEST_EXPORTS__ = APP_DIR_TEST_EXPORTS + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-") + "matrix_engine";
             if (Directory.Exists(APP_DIR_TEST_EXPORTS__) == false) {
                 Directory.CreateDirectory(APP_DIR_TEST_EXPORTS__);
@@ -1047,9 +982,7 @@ namespace matrix_engine {
             }
             cmdKillerProc.txtBxStdin.Text = "xcopy /e /k /h /i \"" + Path.GetDirectoryName(APP_WEBGL_SRC) + "\" \"" + APP_DIR_TEST_EXPORTS__ + "\\" + "\"";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
-            // LAST_NATIVE_BUILD_CONFIG_PATH = APP_DIR_TEST_EXPORTS__;
             packager.webGLBuildPath.Text = APP_DIR_TEST_EXPORTS__;
-
             cmdKillerProc.LINK.Text = "Saved in " + APP_DIR_TEST_EXPORTS__;
             packager.button1.PerformClick();
             return;
@@ -1082,7 +1015,7 @@ namespace matrix_engine {
             if (dialogResult == DialogResult.Yes) {
                 var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\";
                 Directory.Delete(APP_DIR_TEST, true);
-            } // else if (dialogResult == DialogResult.No) {}
+            }
         }
 
         private void scriptEditorandroidWrapperToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -1096,6 +1029,4 @@ namespace matrix_engine {
             }
         }
     }
-    
-    }
-
+}
