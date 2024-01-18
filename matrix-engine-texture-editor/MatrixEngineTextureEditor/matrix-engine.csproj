@@ -119,6 +119,18 @@
     <Compile Include="MatrixEngineGUI.Designer.cs">
       <DependentUpon>MatrixEngineGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MatrixValuesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MatrixValuesControl.Designer.cs">
+      <DependentUpon>MatrixValuesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MeColor.Designer.cs">
+      <DependentUpon>MeColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewTextureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MatrixEngineGUI.resx">
       <DependentUpon>MatrixEngineGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrixValuesControl.resx">
+      <DependentUpon>MatrixValuesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeColor.resx">
+      <DependentUpon>MeColor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewTextureForm.resx">
       <DependentUpon>NewTextureForm.cs</DependentUpon>

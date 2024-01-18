@@ -83,7 +83,7 @@ namespace matrix_engine {
             Pen myPen = new Pen(Color.Red);
             myPen.Width = 2;
             g.DrawLine(myPen, 0, FUNY, this.Width, FUNY);
-            g.DrawLine(myPen, FUNY, 0, FUNY, this.Height);
+            // g.DrawLine(myPen, FUNY, 0, FUNY, this.Height);
         }
        }
     }

@@ -60,6 +60,8 @@ namespace matrix_engine {
             this.linkLabel10 = new System.Windows.Forms.LinkLabel();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.linkLabel11 = new System.Windows.Forms.LinkLabel();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -426,7 +428,7 @@ namespace matrix_engine {
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Orange;
-            this.label19.Location = new System.Drawing.Point(596, 567);
+            this.label19.Location = new System.Drawing.Point(589, 567);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(209, 15);
             this.label19.TabIndex = 38;
@@ -435,11 +437,11 @@ namespace matrix_engine {
             // linkLabel9
             // 
             this.linkLabel9.AutoSize = true;
-            this.linkLabel9.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel9.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel9.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.linkLabel9.Location = new System.Drawing.Point(516, 551);
+            this.linkLabel9.Location = new System.Drawing.Point(532, 551);
             this.linkLabel9.Name = "linkLabel9";
-            this.linkLabel9.Size = new System.Drawing.Size(354, 16);
+            this.linkLabel9.Size = new System.Drawing.Size(316, 15);
             this.linkLabel9.TabIndex = 39;
             this.linkLabel9.TabStop = true;
             this.linkLabel9.Text = "https://github.com/zlatnaspirala/matrix-engine";
@@ -447,11 +449,11 @@ namespace matrix_engine {
             // linkLabel10
             // 
             this.linkLabel10.AutoSize = true;
-            this.linkLabel10.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel10.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel10.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.linkLabel10.Location = new System.Drawing.Point(543, 510);
+            this.linkLabel10.Location = new System.Drawing.Point(559, 510);
             this.linkLabel10.Name = "linkLabel10";
-            this.linkLabel10.Size = new System.Drawing.Size(309, 16);
+            this.linkLabel10.Size = new System.Drawing.Size(276, 15);
             this.linkLabel10.TabIndex = 41;
             this.linkLabel10.TabStop = true;
             this.linkLabel10.Text = "https://github.com/zlatnaspirala/visualjs";
@@ -463,9 +465,9 @@ namespace matrix_engine {
             this.label20.ForeColor = System.Drawing.Color.Orange;
             this.label20.Location = new System.Drawing.Point(596, 526);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(173, 15);
+            this.label20.Size = new System.Drawing.Size(181, 15);
             this.label20.TabIndex = 40;
-            this.label20.Text = "Source code for this app.";
+            this.label20.Text = "Source code for 2d editor.";
             // 
             // label21
             // 
@@ -480,12 +482,37 @@ namespace matrix_engine {
             this.label21.Text = "Matrix-engine also use the great https://cefsharp.github.io/\r\nComing from Visual " +
     "studio Nuget.\r\n";
             // 
+            // linkLabel11
+            // 
+            this.linkLabel11.AutoSize = true;
+            this.linkLabel11.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel11.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.linkLabel11.Location = new System.Drawing.Point(528, 594);
+            this.linkLabel11.Name = "linkLabel11";
+            this.linkLabel11.Size = new System.Drawing.Size(341, 15);
+            this.linkLabel11.TabIndex = 44;
+            this.linkLabel11.TabStop = true;
+            this.linkLabel11.Text = "https://github.com/zlatnaspirala/matrix-engine-gui";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Orange;
+            this.label22.Location = new System.Drawing.Point(578, 609);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(234, 15);
+            this.label22.TabIndex = 43;
+            this.label22.Text = "Source code for matrix-engine-gui";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
             this.ClientSize = new System.Drawing.Size(879, 712);
+            this.Controls.Add(this.linkLabel11);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.linkLabel10);
             this.Controls.Add(this.label20);
@@ -574,5 +601,7 @@ namespace matrix_engine {
         private System.Windows.Forms.LinkLabel linkLabel10;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.LinkLabel linkLabel11;
+        private System.Windows.Forms.Label label22;
     }
     }
