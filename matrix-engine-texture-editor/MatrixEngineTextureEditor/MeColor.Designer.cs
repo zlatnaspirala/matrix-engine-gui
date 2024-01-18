@@ -39,7 +39,7 @@ namespace matrix_engine {
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label8.Location = new System.Drawing.Point(307, 14);
+            this.label8.Location = new System.Drawing.Point(307, 6);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(20, 15);
             this.label8.TabIndex = 110;
@@ -50,7 +50,7 @@ namespace matrix_engine {
             this.valueB.BackColor = System.Drawing.Color.Black;
             this.valueB.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueB.ForeColor = System.Drawing.Color.DarkOrange;
-            this.valueB.Location = new System.Drawing.Point(326, 12);
+            this.valueB.Location = new System.Drawing.Point(326, 4);
             this.valueB.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.valueB.Multiline = true;
             this.valueB.Name = "valueB";
@@ -66,7 +66,7 @@ namespace matrix_engine {
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label7.Location = new System.Drawing.Point(240, 14);
+            this.label7.Location = new System.Drawing.Point(240, 6);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 15);
             this.label7.TabIndex = 108;
@@ -77,7 +77,7 @@ namespace matrix_engine {
             this.valueG.BackColor = System.Drawing.Color.Black;
             this.valueG.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueG.ForeColor = System.Drawing.Color.DarkOrange;
-            this.valueG.Location = new System.Drawing.Point(259, 12);
+            this.valueG.Location = new System.Drawing.Point(259, 4);
             this.valueG.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.valueG.Multiline = true;
             this.valueG.Name = "valueG";
@@ -93,7 +93,7 @@ namespace matrix_engine {
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label6.Location = new System.Drawing.Point(174, 14);
+            this.label6.Location = new System.Drawing.Point(174, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(20, 15);
             this.label6.TabIndex = 106;
@@ -104,7 +104,7 @@ namespace matrix_engine {
             this.valueR.BackColor = System.Drawing.Color.Black;
             this.valueR.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueR.ForeColor = System.Drawing.Color.DarkOrange;
-            this.valueR.Location = new System.Drawing.Point(193, 12);
+            this.valueR.Location = new System.Drawing.Point(193, 4);
             this.valueR.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.valueR.Multiline = true;
             this.valueR.Name = "valueR";
@@ -121,7 +121,7 @@ namespace matrix_engine {
             this.TITLE.BackColor = System.Drawing.Color.Transparent;
             this.TITLE.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TITLE.ForeColor = System.Drawing.Color.OrangeRed;
-            this.TITLE.Location = new System.Drawing.Point(6, 14);
+            this.TITLE.Location = new System.Drawing.Point(6, 6);
             this.TITLE.Name = "TITLE";
             this.TITLE.Size = new System.Drawing.Size(51, 16);
             this.TITLE.TabIndex = 111;
@@ -141,7 +141,7 @@ namespace matrix_engine {
             this.Controls.Add(this.valueR);
             this.ForeColor = System.Drawing.Color.OrangeRed;
             this.Name = "MeColor";
-            this.Size = new System.Drawing.Size(383, 48);
+            this.Size = new System.Drawing.Size(383, 29);
             this.Load += new System.EventHandler(this.MeColor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -18,17 +18,34 @@ namespace matrix_engine {
         public CmdWindowControlTestApp.Android cmdVJS3WATCH;
         Boolean PREVENT_SAVE = false;
         public string RES3DFOLDER = "";
+        public string RES3DFOLDER_IMGS = "";
 
         public ScritpEditor3d(String P, String APP_NAME, MatrixEngineGUI MAINFORM_) {
             InitializeComponent();
             PATH = P + "\\gui\\app.js";
             RES3DFOLDER = P + @"public\res";
+            RES3DFOLDER_IMGS = P + @"public\res\images";
             MessageBox.Show(RES3DFOLDER);
-            FILEPREVIEW3D.Navigate(RES3DFOLDER);
+  
             StreamReader sr = new StreamReader(PATH);
             CODE_EDITOR.Text = sr.ReadToEnd().ToString();
             sr.Close();
             MAINFORM = MAINFORM_;
+
+            string[] files = Directory.GetFiles(RES3DFOLDER_IMGS);
+            string[] subsFolders = Directory.GetDirectories(RES3DFOLDER_IMGS);
+            foreach (string item in subsFolders) {
+                DirectoryInfo dir = new DirectoryInfo(item);
+                justFolders.Items.Add(dir.Name);
+            }
+
+            foreach (string item in files) {
+                FileInfo file = new FileInfo(item);
+                imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
+                listView1.LargeImageList = imageList1;
+                var listViewItem = listView1.Items.Add(file.Name);
+                listViewItem.ImageKey = "Key" + file.Name;
+            }
         }
 
         private void ScritpEditor_Load(object sender, EventArgs e) {
@@ -219,9 +236,7 @@ namespace matrix_engine {
         }
 
         private void back_Click(object sender, EventArgs e) {
-            if (FILEPREVIEW3D.CanGoBack == true) {
-                FILEPREVIEW3D.GoBack();
-            }
+        
         }
 
         private void positionControl_Load(object sender, EventArgs e) {
@@ -249,6 +264,29 @@ namespace matrix_engine {
             } else {
                 solidColor.Enabled = false;
                 ambientColor.Enabled = true;
+            }
+        }
+
+        private void CODE_EDITOR_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e) {
+            MessageBox.Show(justFolders.SelectedItems[0].Text);
+        }
+
+        private void justFolders_SelectedIndexChanged(object sender, EventArgs e) {
+            if (justFolders.SelectedItems.Count == -1 || justFolders.SelectedItems.Count == 0) { return; }
+            string T = RES3DFOLDER_IMGS + "\\" + justFolders.SelectedItems[0].Text;
+            listView1.Items.Clear();
+            imageList1.Images.Clear();
+            string[] files = Directory.GetFiles(T);
+            foreach (string item in files) {
+                FileInfo file = new FileInfo(item);
+                imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
+                listView1.LargeImageList = imageList1;
+                var listViewItem = listView1.Items.Add(file.Name);
+                listViewItem.ImageKey = "Key" + file.Name;
             }
         }
     }

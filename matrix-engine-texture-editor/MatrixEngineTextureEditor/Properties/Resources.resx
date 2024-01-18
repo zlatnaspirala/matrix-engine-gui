@@ -124,11 +124,14 @@
   <data name="gui_texture_editor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gui-texture-editor.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="query" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\query.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="packager2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\packager2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exitRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exitRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="larger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\larger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +148,8 @@
   <data name="exitLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exitLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="query" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\query.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="return" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\return.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,7 +196,7 @@
   <data name="slogan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\webgl2glmatrix2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="packager2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\packager2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="midbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\midbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

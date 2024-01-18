@@ -254,6 +254,7 @@
     <None Include="Resources\res2.png" />
     <None Include="Resources\barsHorizontal.png" />
     <None Include="Resources\packager2.png" />
+    <None Include="Resources\midbg.png" />
     <Content Include="Resources\resolutions.txt" />
     <None Include="Resources\gui-texture-editor.js" />
     <None Include="Resources\webgl2glmatrix2.jpg" />
