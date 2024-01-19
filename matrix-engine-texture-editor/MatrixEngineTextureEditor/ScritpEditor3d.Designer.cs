@@ -35,6 +35,7 @@ namespace matrix_engine {
             this.initialScale = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.justFolders = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.codeHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +43,13 @@ namespace matrix_engine {
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.helpPanelAddNewObject = new System.Windows.Forms.Panel();
+            this.ChooseTexturesLabel = new System.Windows.Forms.Label();
+            this.ambientColor = new matrix_engine.MeColor();
+            this.solidColor = new matrix_engine.MeColor();
+            this.activeRotation = new matrix_engine.MatrixValuesControl();
+            this.initialRotation = new matrix_engine.MatrixValuesControl();
             this.resetToDefault = new System.Windows.Forms.Button();
-            this.back = new System.Windows.Forms.Button();
+            this.POSITION = new matrix_engine.MatrixValuesControl();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,12 +58,6 @@ namespace matrix_engine {
             this.helpAddNewGameObjectBTN = new System.Windows.Forms.Button();
             this.addNewObjectFieldName = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.justFolders = new System.Windows.Forms.ListView();
-            this.ambientColor = new matrix_engine.MeColor();
-            this.solidColor = new matrix_engine.MeColor();
-            this.activeRotation = new matrix_engine.MatrixValuesControl();
-            this.initialRotation = new matrix_engine.MatrixValuesControl();
-            this.POSITION = new matrix_engine.MatrixValuesControl();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -182,12 +182,13 @@ namespace matrix_engine {
             this.listView1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.listView1.HideSelection = false;
             this.listView1.LargeImageList = this.imageList1;
-            this.listView1.Location = new System.Drawing.Point(517, 266);
+            this.listView1.Location = new System.Drawing.Point(517, 226);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(293, 129);
             this.listView1.TabIndex = 109;
             this.toolTip1.SetToolTip(this.listView1, "Select textures");
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // imageList1
@@ -195,6 +196,23 @@ namespace matrix_engine {
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // justFolders
+            // 
+            this.justFolders.BackColor = System.Drawing.Color.DimGray;
+            this.justFolders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.justFolders.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.justFolders.ForeColor = System.Drawing.Color.Gainsboro;
+            this.justFolders.HideSelection = false;
+            this.justFolders.LargeImageList = this.imageList1;
+            this.justFolders.Location = new System.Drawing.Point(517, 150);
+            this.justFolders.Name = "justFolders";
+            this.justFolders.Size = new System.Drawing.Size(293, 70);
+            this.justFolders.TabIndex = 110;
+            this.toolTip1.SetToolTip(this.justFolders, "Select sub folders for textures");
+            this.justFolders.UseCompatibleStateImageBehavior = false;
+            this.justFolders.View = System.Windows.Forms.View.List;
+            this.justFolders.SelectedIndexChanged += new System.EventHandler(this.justFolders_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -262,6 +280,7 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.BackColor = System.Drawing.Color.Black;
             this.helpPanelAddNewObject.BackgroundImage = global::matrix_engine.Properties.Resources.midbg;
             this.helpPanelAddNewObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpPanelAddNewObject.Controls.Add(this.ChooseTexturesLabel);
             this.helpPanelAddNewObject.Controls.Add(this.justFolders);
             this.helpPanelAddNewObject.Controls.Add(this.listView1);
             this.helpPanelAddNewObject.Controls.Add(this.ambientColor);
@@ -270,7 +289,6 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.Controls.Add(this.initialRotation);
             this.helpPanelAddNewObject.Controls.Add(this.resetToDefault);
             this.helpPanelAddNewObject.Controls.Add(this.POSITION);
-            this.helpPanelAddNewObject.Controls.Add(this.back);
             this.helpPanelAddNewObject.Controls.Add(this.button2);
             this.helpPanelAddNewObject.Controls.Add(this.initialScale);
             this.helpPanelAddNewObject.Controls.Add(this.label10);
@@ -280,12 +298,60 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.Controls.Add(this.label2);
             this.helpPanelAddNewObject.Controls.Add(this.helpAddNewGameObjectBTN);
             this.helpPanelAddNewObject.Controls.Add(this.addNewObjectFieldName);
-            this.helpPanelAddNewObject.Location = new System.Drawing.Point(59, 32);
+            this.helpPanelAddNewObject.Location = new System.Drawing.Point(12, 18);
             this.helpPanelAddNewObject.Name = "helpPanelAddNewObject";
             this.helpPanelAddNewObject.Size = new System.Drawing.Size(834, 558);
             this.helpPanelAddNewObject.TabIndex = 1;
             this.helpPanelAddNewObject.Visible = false;
             this.helpPanelAddNewObject.Paint += new System.Windows.Forms.PaintEventHandler(this.helpPanelAddNewObject_Paint);
+            // 
+            // ChooseTexturesLabel
+            // 
+            this.ChooseTexturesLabel.AutoSize = true;
+            this.ChooseTexturesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ChooseTexturesLabel.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChooseTexturesLabel.ForeColor = System.Drawing.Color.OrangeRed;
+            this.ChooseTexturesLabel.Location = new System.Drawing.Point(514, 132);
+            this.ChooseTexturesLabel.Name = "ChooseTexturesLabel";
+            this.ChooseTexturesLabel.Size = new System.Drawing.Size(120, 15);
+            this.ChooseTexturesLabel.TabIndex = 111;
+            this.ChooseTexturesLabel.Text = "Choose textures:";
+            // 
+            // ambientColor
+            // 
+            this.ambientColor.BackColor = System.Drawing.Color.Transparent;
+            this.ambientColor.ForeColor = System.Drawing.Color.OrangeRed;
+            this.ambientColor.Location = new System.Drawing.Point(21, 365);
+            this.ambientColor.Name = "ambientColor";
+            this.ambientColor.Size = new System.Drawing.Size(383, 30);
+            this.ambientColor.TabIndex = 108;
+            // 
+            // solidColor
+            // 
+            this.solidColor.BackColor = System.Drawing.Color.Transparent;
+            this.solidColor.ForeColor = System.Drawing.Color.OrangeRed;
+            this.solidColor.Location = new System.Drawing.Point(21, 327);
+            this.solidColor.Name = "solidColor";
+            this.solidColor.Size = new System.Drawing.Size(383, 34);
+            this.solidColor.TabIndex = 107;
+            // 
+            // activeRotation
+            // 
+            this.activeRotation.BackColor = System.Drawing.Color.Transparent;
+            this.activeRotation.ForeColor = System.Drawing.Color.DarkOrange;
+            this.activeRotation.Location = new System.Drawing.Point(21, 285);
+            this.activeRotation.Name = "activeRotation";
+            this.activeRotation.Size = new System.Drawing.Size(302, 38);
+            this.activeRotation.TabIndex = 106;
+            // 
+            // initialRotation
+            // 
+            this.initialRotation.BackColor = System.Drawing.Color.Transparent;
+            this.initialRotation.ForeColor = System.Drawing.Color.DarkOrange;
+            this.initialRotation.Location = new System.Drawing.Point(21, 241);
+            this.initialRotation.Name = "initialRotation";
+            this.initialRotation.Size = new System.Drawing.Size(302, 38);
+            this.initialRotation.TabIndex = 105;
             // 
             // resetToDefault
             // 
@@ -303,20 +369,14 @@ namespace matrix_engine {
             this.resetToDefault.UseVisualStyleBackColor = false;
             this.resetToDefault.Click += new System.EventHandler(this.resetToDefault_Click);
             // 
-            // back
+            // POSITION
             // 
-            this.back.BackColor = System.Drawing.Color.OrangeRed;
-            this.back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.back.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.back.ForeColor = System.Drawing.Color.Black;
-            this.back.Location = new System.Drawing.Point(517, 119);
-            this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(62, 25);
-            this.back.TabIndex = 102;
-            this.back.Text = "Back";
-            this.back.UseVisualStyleBackColor = false;
-            this.back.Click += new System.EventHandler(this.back_Click);
+            this.POSITION.BackColor = System.Drawing.Color.Transparent;
+            this.POSITION.ForeColor = System.Drawing.Color.DarkOrange;
+            this.POSITION.Location = new System.Drawing.Point(21, 168);
+            this.POSITION.Name = "POSITION";
+            this.POSITION.Size = new System.Drawing.Size(302, 38);
+            this.POSITION.TabIndex = 103;
             // 
             // button2
             // 
@@ -409,68 +469,6 @@ namespace matrix_engine {
             this.addNewObjectFieldName.Size = new System.Drawing.Size(218, 21);
             this.addNewObjectFieldName.TabIndex = 45;
             // 
-            // justFolders
-            // 
-            this.justFolders.BackColor = System.Drawing.Color.DimGray;
-            this.justFolders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.justFolders.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.justFolders.ForeColor = System.Drawing.Color.Gainsboro;
-            this.justFolders.HideSelection = false;
-            this.justFolders.LargeImageList = this.imageList1;
-            this.justFolders.Location = new System.Drawing.Point(517, 150);
-            this.justFolders.Name = "justFolders";
-            this.justFolders.Size = new System.Drawing.Size(293, 110);
-            this.justFolders.TabIndex = 110;
-            this.toolTip1.SetToolTip(this.justFolders, "Select sub folders for textures");
-            this.justFolders.UseCompatibleStateImageBehavior = false;
-            this.justFolders.View = System.Windows.Forms.View.List;
-            this.justFolders.SelectedIndexChanged += new System.EventHandler(this.justFolders_SelectedIndexChanged);
-            // 
-            // ambientColor
-            // 
-            this.ambientColor.BackColor = System.Drawing.Color.Transparent;
-            this.ambientColor.ForeColor = System.Drawing.Color.OrangeRed;
-            this.ambientColor.Location = new System.Drawing.Point(21, 365);
-            this.ambientColor.Name = "ambientColor";
-            this.ambientColor.Size = new System.Drawing.Size(383, 30);
-            this.ambientColor.TabIndex = 108;
-            // 
-            // solidColor
-            // 
-            this.solidColor.BackColor = System.Drawing.Color.Transparent;
-            this.solidColor.ForeColor = System.Drawing.Color.OrangeRed;
-            this.solidColor.Location = new System.Drawing.Point(21, 327);
-            this.solidColor.Name = "solidColor";
-            this.solidColor.Size = new System.Drawing.Size(383, 34);
-            this.solidColor.TabIndex = 107;
-            // 
-            // activeRotation
-            // 
-            this.activeRotation.BackColor = System.Drawing.Color.Transparent;
-            this.activeRotation.ForeColor = System.Drawing.Color.DarkOrange;
-            this.activeRotation.Location = new System.Drawing.Point(21, 285);
-            this.activeRotation.Name = "activeRotation";
-            this.activeRotation.Size = new System.Drawing.Size(302, 38);
-            this.activeRotation.TabIndex = 106;
-            // 
-            // initialRotation
-            // 
-            this.initialRotation.BackColor = System.Drawing.Color.Transparent;
-            this.initialRotation.ForeColor = System.Drawing.Color.DarkOrange;
-            this.initialRotation.Location = new System.Drawing.Point(21, 241);
-            this.initialRotation.Name = "initialRotation";
-            this.initialRotation.Size = new System.Drawing.Size(302, 38);
-            this.initialRotation.TabIndex = 105;
-            // 
-            // POSITION
-            // 
-            this.POSITION.BackColor = System.Drawing.Color.Transparent;
-            this.POSITION.ForeColor = System.Drawing.Color.DarkOrange;
-            this.POSITION.Location = new System.Drawing.Point(21, 168);
-            this.POSITION.Name = "POSITION";
-            this.POSITION.Size = new System.Drawing.Size(302, 38);
-            this.POSITION.TabIndex = 103;
-            // 
             // ScritpEditor3d
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,7 +521,6 @@ namespace matrix_engine {
         public System.Windows.Forms.TextBox initialScale;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button back;
         private MatrixValuesControl POSITION;
         public System.Windows.Forms.Button resetToDefault;
         private MatrixValuesControl initialRotation;
@@ -534,5 +531,6 @@ namespace matrix_engine {
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView justFolders;
+        private System.Windows.Forms.Label ChooseTexturesLabel;
     }
 }
