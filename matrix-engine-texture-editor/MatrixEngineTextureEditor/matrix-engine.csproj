@@ -151,6 +151,12 @@
     <Compile Include="ResourceVJS3.Designer.cs">
       <DependentUpon>ResourceVJS3.cs</DependentUpon>
     </Compile>
+    <Compile Include="RESOURCE_EXPLORER_CODE_HELPER.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RESOURCE_EXPLORER_CODE_HELPER.Designer.cs">
+      <DependentUpon>RESOURCE_EXPLORER_CODE_HELPER.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScritpEditorAndroid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </Compile>
     <EmbeddedResource Include="ResourceVJS3.resx">
       <DependentUpon>ResourceVJS3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESOURCE_EXPLORER_CODE_HELPER.resx">
+      <DependentUpon>RESOURCE_EXPLORER_CODE_HELPER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScritpEditorAndroid.resx">
       <DependentUpon>ScritpEditorAndroid.cs</DependentUpon>

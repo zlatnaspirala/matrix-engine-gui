@@ -33,6 +33,12 @@ namespace matrix_engine {
             sr.Close();
             MAINFORM = MAINFORM_;
 
+
+            //
+            //  REPLACED - i will create control for this just - control will be used one for imeges one for video one for canvas2d surface!
+            // load
+            RES_IMGS.loadFolder(RES3DFOLDER_IMGS);
+            /*
             string[] files = Directory.GetFiles(RES3DFOLDER_IMGS);
             string[] subsFolders = Directory.GetDirectories(RES3DFOLDER_IMGS);
             foreach (string item in subsFolders) {
@@ -47,6 +53,8 @@ namespace matrix_engine {
                 var listViewItem = listView1.Items.Add(file.Name);
                 listViewItem.ImageKey = "Key" + file.Name;
             }
+            */
+            ////////////////////////////////////////////////////////////////////////////
         }
 
         private void ScritpEditor_Load(object sender, EventArgs e) {
@@ -123,7 +131,10 @@ namespace matrix_engine {
             }
 
             // test tex
-            string text_paths = "";
+
+            // REPLCED @@
+            string text_paths = RES_IMGS.getResourceSrc();
+            /*
             var selectedTags = listView1.CheckedItems
                                  .Cast<ListViewItem>()
                                  .Select(x => x.Text);
@@ -133,13 +144,11 @@ namespace matrix_engine {
                 if (justFolders.SelectedItems.Count > -1 && justFolders.SelectedItems.Count > 0 && justFolders.SelectedItems!= null) {
                     Int32 INDEX = 0;
                     MessageBox.Show(justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString());
-
                     if (CounterTex == 0) {
                         text_paths += "'" + justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString() + "'";
                     } else {
                         text_paths += ", '" + justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString() + "'";
                     }
-
                 } else {
                     MessageBox.Show("<root folder> " + tag.ToString());
                     if (CounterTex == 0) {
@@ -148,12 +157,9 @@ namespace matrix_engine {
                         text_paths += ", '" + @"\" + tag.ToString() + "'";
                     }
                 }
-
                 CounterTex = CounterTex + 1;
-
-
-            }
-
+            } */
+            /////////////////////////////////
 
             if (typeList.SelectedItem.ToString() == "pyramid") {
                 MessageBox.Show("Add color pyramid", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -173,15 +179,15 @@ namespace matrix_engine {
             } else if (typeList.SelectedItem.ToString() == "triangle") {
                 MessageBox.Show("Add color triangle", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // CLOR PROTOTYPE
-                CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
-                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";";
+                CODE_EDITOR.SelectedText = "  world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + "); \n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
                 if (activeRotation.isAllZero() == false) {
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
                 }
 
                 CODE_EDITOR.Paste();
@@ -189,14 +195,14 @@ namespace matrix_engine {
                 MessageBox.Show("Add color square", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // CLOR PROTOTYPE
                 CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
-                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";";
+                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
                 if (activeRotation.isAllZero() == false) {
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
                 }
 
                 CODE_EDITOR.Paste();
@@ -204,14 +210,14 @@ namespace matrix_engine {
                 MessageBox.Show("Add color cube", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // CLOR PROTOTYPE
                 CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
-                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";";
+                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
                 if (activeRotation.isAllZero() == false) {
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
                 }
 
                 CODE_EDITOR.Paste();
@@ -228,19 +234,20 @@ namespace matrix_engine {
                 CODE_EDITOR.SelectedText = "var tex" + addNewObjectFieldName.Text + " = {" +
                     " source: [" +
                     text_paths
-                    + "], " +
+                    + "],\n" +
                     " mix_operation: 'multiply'," +
                     "} \n";
                 CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
-                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";";
+                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
                 if (activeRotation.isAllZero() == false) {
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
                 }
+
 
                 CODE_EDITOR.Paste();
 
@@ -249,8 +256,16 @@ namespace matrix_engine {
             }
 
 
-            helpPanelAddNewObject.Visible = false;
+            // common
+            if (BLEND.Checked) {
+                Clipboard.Clear();
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".glBlend.blendEnabled = true;\n" +
+                                           "  App.scene." + addNewObjectFieldName.Text + ".glBlend.blendParamSrc = '" + blendSrc.SelectedItem.ToString() + "';\n" +
+                                           "  App.scene." + addNewObjectFieldName.Text + ".glBlend.blendParamDest = '" + blendDest.SelectedItem.ToString() + "';\n";
+                CODE_EDITOR.Paste();
+            }
 
+                helpPanelAddNewObject.Visible = false;
             /*  triangle
                 square
                 squareTex
@@ -307,18 +322,14 @@ namespace matrix_engine {
                 solidColor.Enabled = true;
                 ambientColor.Enabled = false;
 
-                ChooseTexturesLabel.Visible = false;
-                listView1.Visible = false;
-                justFolders.Visible = false;
+             /// hide text control
 
             } else {
                 solidColor.Enabled = false;
                 ambientColor.Enabled = true;
 
-                ChooseTexturesLabel.Visible = true;
-                listView1.Visible = true;
-                justFolders.Visible = true;
-
+                // show text control
+                //...
 
             }
         }
@@ -328,13 +339,13 @@ namespace matrix_engine {
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e) {
-            if (justFolders.SelectedItems.Count > 0 && justFolders.SelectedItems[0] != null) {
-                MessageBox.Show(justFolders.SelectedItems[0].Text);
-            }
+            // if (justFolders.SelectedItems.Count > 0 && justFolders.SelectedItems[0] != null) {
+               //  MessageBox.Show(justFolders.SelectedItems[0].Text);
+            // }
         }
 
         private void justFolders_SelectedIndexChanged(object sender, EventArgs e) {
-            if (justFolders.SelectedItems.Count == -1 || justFolders.SelectedItems.Count == 0) { return; }
+            /*if (justFolders.SelectedItems.Count == -1 || justFolders.SelectedItems.Count == 0) { return; }
             texFilesLocation = RES3DFOLDER_IMGS + "\\" + justFolders.SelectedItems[0].Text;
             listView1.Items.Clear();
             imageList1.Images.Clear();
@@ -345,11 +356,42 @@ namespace matrix_engine {
                 listView1.LargeImageList = imageList1;
                 var listViewItem = listView1.Items.Add(file.Name);
                 listViewItem.ImageKey = "Key" + file.Name;
-            }
+            }*/
         }
 
         private void listView1_ItemActivate(object sender, EventArgs e) {
             MessageBox.Show("ITEM ACTIVATE");
+        }
+
+        private void aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = "  App.camera.FirstPersonController = true;\n";
+            CODE_EDITOR.Paste();
+        }
+
+        private void addSceneCameraToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = "  App.camera.SceneController = true;\n";
+            CODE_EDITOR.Paste();
+        }
+
+        private void rayhiteventToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = " window.addEventListener('ray.hit.event', (ev) => {\n" +
+                "   console.log('You shoot the object. Nice!', ev)\n" + 
+            " });\n";
+            CODE_EDITOR.Paste();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            CheckBox T = (CheckBox)sender;
+            if (T.Checked == true) {
+                blendDest.Enabled = true;
+                blendSrc.Enabled = true;
+            } else {
+                blendDest.Enabled = false;
+                blendSrc.Enabled = false;
+            }
         }
     }
 }
