@@ -312,7 +312,7 @@ namespace matrix_engine {
                 NODE_DEP_INSTALLER = true;
                 newProjectToolStripMenuItem.Enabled = false;
             }
-            toolTip1.SetToolTip(this.button1, "Manual reload web app.");
+            // toolTip1.SetToolTip(this.button1, "Manual reload web app.");
             toolTip1.SetToolTip(this.URLTEXT, "Main URL (can be manipulated but general no need for edit).");
         }
 
