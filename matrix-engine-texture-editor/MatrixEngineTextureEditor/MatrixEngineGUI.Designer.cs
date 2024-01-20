@@ -85,6 +85,7 @@ namespace matrix_engine
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.goToMEGUIEditorSourcethisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -466,7 +467,8 @@ namespace matrix_engine
             this.mATRIXTEXEDITORToolStripMenuItem,
             this.toolStripSeparator3,
             this.goToMatrixengineSourceToolStripMenuItem,
-            this.goToVisualJS3SourceToolStripMenuItem});
+            this.goToVisualJS3SourceToolStripMenuItem,
+            this.goToMEGUIEditorSourcethisToolStripMenuItem});
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.logo_test;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -478,26 +480,26 @@ namespace matrix_engine
             this.mATRIXTEXEDITORToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.mATRIXTEXEDITORToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.android_icon;
             this.mATRIXTEXEDITORToolStripMenuItem.Name = "mATRIXTEXEDITORToolStripMenuItem";
-            this.mATRIXTEXEDITORToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.mATRIXTEXEDITORToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.mATRIXTEXEDITORToolStripMenuItem.Text = "ABOUT MATRIX EDITOR";
             this.mATRIXTEXEDITORToolStripMenuItem.Click += new System.EventHandler(this.mATRIXTEXEDITORToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(251, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(284, 6);
             // 
             // goToMatrixengineSourceToolStripMenuItem
             // 
             this.goToMatrixengineSourceToolStripMenuItem.Name = "goToMatrixengineSourceToolStripMenuItem";
-            this.goToMatrixengineSourceToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.goToMatrixengineSourceToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.goToMatrixengineSourceToolStripMenuItem.Text = "Go to matrix-engine source";
             this.goToMatrixengineSourceToolStripMenuItem.Click += new System.EventHandler(this.goToMatrixengineSourceToolStripMenuItem_Click);
             // 
             // goToVisualJS3SourceToolStripMenuItem
             // 
             this.goToVisualJS3SourceToolStripMenuItem.Name = "goToVisualJS3SourceToolStripMenuItem";
-            this.goToVisualJS3SourceToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
+            this.goToVisualJS3SourceToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.goToVisualJS3SourceToolStripMenuItem.Text = "Go to visualJS3 source";
             this.goToVisualJS3SourceToolStripMenuItem.Click += new System.EventHandler(this.goToVisualJS3SourceToolStripMenuItem_Click);
             // 
@@ -579,6 +581,13 @@ namespace matrix_engine
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 36);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // goToMEGUIEditorSourcethisToolStripMenuItem
+            // 
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Name = "goToMEGUIEditorSourcethisToolStripMenuItem";
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Text = "Go to ME GUI Editor source [this]";
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Click += new System.EventHandler(this.goToMEGUIEditorSourcethisToolStripMenuItem_Click);
             // 
             // MatrixEngineGUI
             // 
@@ -668,6 +677,7 @@ namespace matrix_engine
         private System.Windows.Forms.ToolStripMenuItem aLLDEPSLIBSToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem goToMEGUIEditorSourcethisToolStripMenuItem;
     }
 }
 

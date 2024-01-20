@@ -1028,5 +1028,10 @@ namespace matrix_engine {
                 scritpEditorAndroid.SCRIPT_SRC.Text = APP_DIR;
             }
         }
+
+        private void goToMEGUIEditorSourcethisToolStripMenuItem_Click(object sender, EventArgs e) {
+            var t = "https://github.com/zlatnaspirala/matrix-engine-gui";
+            Process.Start("chrome.exe", t);
+        }
     }
 }
