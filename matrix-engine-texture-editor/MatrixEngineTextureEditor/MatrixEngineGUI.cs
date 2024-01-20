@@ -569,13 +569,13 @@ namespace matrix_engine {
             } else {
                 //  MessageBox.Show("You need to run editor first!", "Info", MessageBoxButtons.OK);
             }
-            if (cmdKillerProc.IsDisposed == false || cmdKillerProc != null) {
+            if (cmdKillerProc != null || cmdKillerProc.IsDisposed == false) {
                 cmdKillerProc.Hide();
             }
-            if (cmdStream.IsDisposed == false || cmdStream != null) {
+            if (cmdStream != null || cmdStream.IsDisposed == false) {
                 cmdStream.Hide();
             }
-            if (cmdWebglHOST.IsDisposed == false || cmdWebglHOST != null) {
+            if (cmdWebglHOST != null || cmdWebglHOST.IsDisposed == false) {
                 cmdWebglHOST.Hide();
             }
         }
