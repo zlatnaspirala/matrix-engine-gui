@@ -23,6 +23,9 @@ namespace matrix_engine {
         }
 
         public void loadFolder(string RES3DFOLDER) {
+            justFolders.Items.Clear();
+            imageList1.Images.Clear();
+            listView1.Items.Clear();
             RES3DFOLDER_IMGS = RES3DFOLDER;
             string[] files = Directory.GetFiles(RES3DFOLDER);
             string[] subsFolders = Directory.GetDirectories(RES3DFOLDER);
@@ -32,10 +35,16 @@ namespace matrix_engine {
             }
             foreach (string item in files) {
                 FileInfo file = new FileInfo(item);
-                imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
-                listView1.LargeImageList = imageList1;
-                var listViewItem = listView1.Items.Add(file.Name);
-                listViewItem.ImageKey = "Key" + file.Name;
+                //
+                try {
+                    imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
+                    listView1.LargeImageList = imageList1;
+                    var listViewItem = listView1.Items.Add(file.Name);
+                    listViewItem.ImageKey = "Key" + file.Name;
+                } catch (Exception _) {
+                    FileInfo file2 = new FileInfo(item);
+                    listView1.Items.Add(file2.Name);
+                }
             }
         }
         public string getResourceSrc() {

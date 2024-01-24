@@ -33,9 +33,12 @@ namespace matrix_engine {
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.typeList = new System.Windows.Forms.ComboBox();
             this.initialScale = new System.Windows.Forms.TextBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.blendSrc = new System.Windows.Forms.ComboBox();
             this.blendDest = new System.Windows.Forms.ComboBox();
+            this.STREAM_TEXTURES_CHECK_VIDEO = new System.Windows.Forms.CheckBox();
+            this.STREAM_TEXTURES_CHECK_CANVAS = new System.Windows.Forms.CheckBox();
+            this.STREAM_TEXTURES_CHECK_CAMERA = new System.Windows.Forms.CheckBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.codeHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +50,7 @@ namespace matrix_engine {
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.helpPanelAddNewObject = new System.Windows.Forms.Panel();
+            this.BROWSER_VIDEOS = new System.Windows.Forms.WebBrowser();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.BLEND = new System.Windows.Forms.CheckBox();
@@ -169,7 +173,7 @@ namespace matrix_engine {
             this.initialScale.BackColor = System.Drawing.Color.Black;
             this.initialScale.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.initialScale.ForeColor = System.Drawing.Color.DarkOrange;
-            this.initialScale.Location = new System.Drawing.Point(119, 213);
+            this.initialScale.Location = new System.Drawing.Point(119, 240);
             this.initialScale.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.initialScale.Multiline = true;
             this.initialScale.Name = "initialScale";
@@ -180,12 +184,6 @@ namespace matrix_engine {
             this.initialScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.initialScale, "Set GL world position for new object.");
             this.initialScale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.initialScale_KeyPress);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // blendSrc
             // 
@@ -207,7 +205,7 @@ namespace matrix_engine {
             "ONE_MINUS_SRC_ALPHA",
             "ONE_MINUS_DST_ALPHA",
             "SRC_ALPHA_SATURATE"});
-            this.blendSrc.Location = new System.Drawing.Point(84, 425);
+            this.blendSrc.Location = new System.Drawing.Point(84, 452);
             this.blendSrc.Name = "blendSrc";
             this.blendSrc.Size = new System.Drawing.Size(171, 21);
             this.blendSrc.TabIndex = 113;
@@ -233,11 +231,65 @@ namespace matrix_engine {
             "ONE_MINUS_SRC_ALPHA",
             "ONE_MINUS_DST_ALPHA",
             "SRC_ALPHA_SATURATE"});
-            this.blendDest.Location = new System.Drawing.Point(84, 452);
+            this.blendDest.Location = new System.Drawing.Point(84, 479);
             this.blendDest.Name = "blendDest";
             this.blendDest.Size = new System.Drawing.Size(171, 21);
             this.blendDest.TabIndex = 114;
             this.toolTip1.SetToolTip(this.blendDest, "Choose your matrix-engine game object type.");
+            // 
+            // STREAM_TEXTURES_CHECK_VIDEO
+            // 
+            this.STREAM_TEXTURES_CHECK_VIDEO.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_VIDEO.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_VIDEO.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Location = new System.Drawing.Point(478, 319);
+            this.STREAM_TEXTURES_CHECK_VIDEO.Name = "STREAM_TEXTURES_CHECK_VIDEO";
+            this.STREAM_TEXTURES_CHECK_VIDEO.Size = new System.Drawing.Size(125, 19);
+            this.STREAM_TEXTURES_CHECK_VIDEO.TabIndex = 118;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Text = "Video textures";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_VIDEO, "If you wanna video textures.");
+            this.STREAM_TEXTURES_CHECK_VIDEO.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
+            this.STREAM_TEXTURES_CHECK_VIDEO.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CheckedChanged);
+            // 
+            // STREAM_TEXTURES_CHECK_CANVAS
+            // 
+            this.STREAM_TEXTURES_CHECK_CANVAS.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_CANVAS.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_CANVAS.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Location = new System.Drawing.Point(478, 344);
+            this.STREAM_TEXTURES_CHECK_CANVAS.Name = "STREAM_TEXTURES_CHECK_CANVAS";
+            this.STREAM_TEXTURES_CHECK_CANVAS.Size = new System.Drawing.Size(137, 19);
+            this.STREAM_TEXTURES_CHECK_CANVAS.TabIndex = 119;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Text = "Canvas textures";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CANVAS, "If you wanna canvas textures.");
+            this.STREAM_TEXTURES_CHECK_CANVAS.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Visible = false;
+            this.STREAM_TEXTURES_CHECK_CANVAS.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CANVAS_CheckedChanged);
+            // 
+            // STREAM_TEXTURES_CHECK_CAMERA
+            // 
+            this.STREAM_TEXTURES_CHECK_CAMERA.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_CAMERA.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_CAMERA.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Location = new System.Drawing.Point(478, 369);
+            this.STREAM_TEXTURES_CHECK_CAMERA.Name = "STREAM_TEXTURES_CHECK_CAMERA";
+            this.STREAM_TEXTURES_CHECK_CAMERA.Size = new System.Drawing.Size(138, 19);
+            this.STREAM_TEXTURES_CHECK_CAMERA.TabIndex = 120;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Text = "Camera textures";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CAMERA, "If you wanna webcam surface textures.");
+            this.STREAM_TEXTURES_CHECK_CAMERA.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Visible = false;
+            this.STREAM_TEXTURES_CHECK_CAMERA.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CAMERA_CheckedChanged);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // flowLayoutPanel1
             // 
@@ -253,13 +305,16 @@ namespace matrix_engine {
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuStrip1.Font = new System.Drawing.Font("Stormfaze", 8.25F);
+            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codeHelperToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(443, 0);
+            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.menuStrip1.Location = new System.Drawing.Point(328, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(99, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(214, 31);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -273,11 +328,14 @@ namespace matrix_engine {
             this.addEventToolStripMenuItem});
             this.codeHelperToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.codeHelperToolStripMenuItem.Name = "codeHelperToolStripMenuItem";
-            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(91, 17);
             this.codeHelperToolStripMenuItem.Text = "Code helper";
+            this.codeHelperToolStripMenuItem.Click += new System.EventHandler(this.codeHelperToolStripMenuItem_Click);
             // 
             // addNewCubeToolStripMenuItem
             // 
+            this.addNewCubeToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.addNewCubeToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.addNewCubeToolStripMenuItem.Name = "addNewCubeToolStripMenuItem";
             this.addNewCubeToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.addNewCubeToolStripMenuItem.Text = "Add new game object";
@@ -339,6 +397,10 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.BackColor = System.Drawing.Color.Black;
             this.helpPanelAddNewObject.BackgroundImage = global::matrix_engine.Properties.Resources.midbg;
             this.helpPanelAddNewObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpPanelAddNewObject.Controls.Add(this.BROWSER_VIDEOS);
+            this.helpPanelAddNewObject.Controls.Add(this.STREAM_TEXTURES_CHECK_CAMERA);
+            this.helpPanelAddNewObject.Controls.Add(this.STREAM_TEXTURES_CHECK_CANVAS);
+            this.helpPanelAddNewObject.Controls.Add(this.STREAM_TEXTURES_CHECK_VIDEO);
             this.helpPanelAddNewObject.Controls.Add(this.RES_IMGS);
             this.helpPanelAddNewObject.Controls.Add(this.label6);
             this.helpPanelAddNewObject.Controls.Add(this.label4);
@@ -360,12 +422,26 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.Controls.Add(this.label2);
             this.helpPanelAddNewObject.Controls.Add(this.helpAddNewGameObjectBTN);
             this.helpPanelAddNewObject.Controls.Add(this.addNewObjectFieldName);
-            this.helpPanelAddNewObject.Location = new System.Drawing.Point(12, 18);
+            this.helpPanelAddNewObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.helpPanelAddNewObject.Location = new System.Drawing.Point(0, 0);
             this.helpPanelAddNewObject.Name = "helpPanelAddNewObject";
-            this.helpPanelAddNewObject.Size = new System.Drawing.Size(798, 581);
+            this.helpPanelAddNewObject.Size = new System.Drawing.Size(916, 635);
             this.helpPanelAddNewObject.TabIndex = 1;
             this.helpPanelAddNewObject.Visible = false;
             this.helpPanelAddNewObject.Paint += new System.Windows.Forms.PaintEventHandler(this.helpPanelAddNewObject_Paint);
+            // 
+            // BROWSER_VIDEOS
+            // 
+            this.BROWSER_VIDEOS.Location = new System.Drawing.Point(669, 29);
+            this.BROWSER_VIDEOS.MinimumSize = new System.Drawing.Size(20, 20);
+            this.BROWSER_VIDEOS.Name = "BROWSER_VIDEOS";
+            this.BROWSER_VIDEOS.Size = new System.Drawing.Size(96, 20);
+            this.BROWSER_VIDEOS.TabIndex = 121;
+            this.BROWSER_VIDEOS.Visible = false;
+            this.BROWSER_VIDEOS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.BROWSER_VIDEOS_DocumentCompleted);
+            this.BROWSER_VIDEOS.FileDownload += new System.EventHandler(this.BROWSER_VIDEOS_FileDownload);
+            this.BROWSER_VIDEOS.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.BROWSER_VIDEOS_Navigating);
+            this.BROWSER_VIDEOS.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.BROWSER_VIDEOS_PreviewKeyDown);
             // 
             // label6
             // 
@@ -373,7 +449,7 @@ namespace matrix_engine {
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label6.Location = new System.Drawing.Point(44, 454);
+            this.label6.Location = new System.Drawing.Point(44, 481);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 15);
             this.label6.TabIndex = 116;
@@ -385,7 +461,7 @@ namespace matrix_engine {
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label4.Location = new System.Drawing.Point(45, 431);
+            this.label4.Location = new System.Drawing.Point(45, 458);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 15);
             this.label4.TabIndex = 115;
@@ -397,7 +473,7 @@ namespace matrix_engine {
             this.BLEND.BackColor = System.Drawing.Color.Transparent;
             this.BLEND.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BLEND.ForeColor = System.Drawing.Color.OrangeRed;
-            this.BLEND.Location = new System.Drawing.Point(33, 400);
+            this.BLEND.Location = new System.Drawing.Point(33, 427);
             this.BLEND.Name = "BLEND";
             this.BLEND.Size = new System.Drawing.Size(64, 19);
             this.BLEND.TabIndex = 112;
@@ -441,7 +517,7 @@ namespace matrix_engine {
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label10.Location = new System.Drawing.Point(33, 215);
+            this.label10.Location = new System.Drawing.Point(33, 242);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 15);
             this.label10.TabIndex = 98;
@@ -512,16 +588,17 @@ namespace matrix_engine {
             // RES_IMGS
             // 
             this.RES_IMGS.BackColor = System.Drawing.Color.Transparent;
-            this.RES_IMGS.Location = new System.Drawing.Point(465, 91);
+            this.RES_IMGS.Location = new System.Drawing.Point(478, 85);
             this.RES_IMGS.Name = "RES_IMGS";
-            this.RES_IMGS.Size = new System.Drawing.Size(309, 234);
+            this.RES_IMGS.Size = new System.Drawing.Size(303, 221);
             this.RES_IMGS.TabIndex = 117;
+            this.RES_IMGS.Visible = false;
             // 
             // ambientColor
             // 
             this.ambientColor.BackColor = System.Drawing.Color.Transparent;
             this.ambientColor.ForeColor = System.Drawing.Color.OrangeRed;
-            this.ambientColor.Location = new System.Drawing.Point(21, 365);
+            this.ambientColor.Location = new System.Drawing.Point(21, 392);
             this.ambientColor.Name = "ambientColor";
             this.ambientColor.Size = new System.Drawing.Size(383, 30);
             this.ambientColor.TabIndex = 108;
@@ -530,7 +607,7 @@ namespace matrix_engine {
             // 
             this.solidColor.BackColor = System.Drawing.Color.Transparent;
             this.solidColor.ForeColor = System.Drawing.Color.OrangeRed;
-            this.solidColor.Location = new System.Drawing.Point(21, 327);
+            this.solidColor.Location = new System.Drawing.Point(21, 354);
             this.solidColor.Name = "solidColor";
             this.solidColor.Size = new System.Drawing.Size(383, 34);
             this.solidColor.TabIndex = 107;
@@ -539,7 +616,7 @@ namespace matrix_engine {
             // 
             this.activeRotation.BackColor = System.Drawing.Color.Transparent;
             this.activeRotation.ForeColor = System.Drawing.Color.DarkOrange;
-            this.activeRotation.Location = new System.Drawing.Point(21, 285);
+            this.activeRotation.Location = new System.Drawing.Point(21, 312);
             this.activeRotation.Name = "activeRotation";
             this.activeRotation.Size = new System.Drawing.Size(302, 38);
             this.activeRotation.TabIndex = 106;
@@ -548,7 +625,7 @@ namespace matrix_engine {
             // 
             this.initialRotation.BackColor = System.Drawing.Color.Transparent;
             this.initialRotation.ForeColor = System.Drawing.Color.DarkOrange;
-            this.initialRotation.Location = new System.Drawing.Point(21, 241);
+            this.initialRotation.Location = new System.Drawing.Point(21, 268);
             this.initialRotation.Name = "initialRotation";
             this.initialRotation.Size = new System.Drawing.Size(302, 38);
             this.initialRotation.TabIndex = 105;
@@ -557,7 +634,7 @@ namespace matrix_engine {
             // 
             this.POSITION.BackColor = System.Drawing.Color.Transparent;
             this.POSITION.ForeColor = System.Drawing.Color.DarkOrange;
-            this.POSITION.Location = new System.Drawing.Point(21, 168);
+            this.POSITION.Location = new System.Drawing.Point(21, 195);
             this.POSITION.Name = "POSITION";
             this.POSITION.Size = new System.Drawing.Size(302, 38);
             this.POSITION.TabIndex = 103;
@@ -632,5 +709,9 @@ namespace matrix_engine {
         private System.Windows.Forms.ComboBox blendDest;
         private System.Windows.Forms.ComboBox blendSrc;
         private RESOURCE_EXPLORER_CODE_HELPER RES_IMGS;
+        private System.Windows.Forms.CheckBox STREAM_TEXTURES_CHECK_VIDEO;
+        private System.Windows.Forms.CheckBox STREAM_TEXTURES_CHECK_CAMERA;
+        private System.Windows.Forms.CheckBox STREAM_TEXTURES_CHECK_CANVAS;
+        private System.Windows.Forms.WebBrowser BROWSER_VIDEOS;
     }
 }

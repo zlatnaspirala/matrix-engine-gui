@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.Collections.Specialized;
 
 namespace matrix_engine {
     public partial class ScritpEditor3d : Form {
@@ -19,6 +21,7 @@ namespace matrix_engine {
         Boolean PREVENT_SAVE = false;
         public string RES3DFOLDER = "";
         public string RES3DFOLDER_IMGS = "";
+        public string RES3DFOLDER_VIDEOS = "";
         public string texFilesLocation = "";
 
         public ScritpEditor3d(String P, String APP_NAME, MatrixEngineGUI MAINFORM_) {
@@ -26,40 +29,16 @@ namespace matrix_engine {
             PATH = P + "\\gui\\app.js";
             RES3DFOLDER = P + @"public\res";
             RES3DFOLDER_IMGS = P + @"public\res\images";
-            MessageBox.Show(RES3DFOLDER);
-  
+            RES3DFOLDER_VIDEOS = P + @"public\res\video-texture";
             StreamReader sr = new StreamReader(PATH);
             CODE_EDITOR.Text = sr.ReadToEnd().ToString();
             sr.Close();
             MAINFORM = MAINFORM_;
-
-
-            //
-            //  REPLACED - i will create control for this just - control will be used one for imeges one for video one for canvas2d surface!
-            // load
             RES_IMGS.loadFolder(RES3DFOLDER_IMGS);
-            /*
-            string[] files = Directory.GetFiles(RES3DFOLDER_IMGS);
-            string[] subsFolders = Directory.GetDirectories(RES3DFOLDER_IMGS);
-            foreach (string item in subsFolders) {
-                DirectoryInfo dir = new DirectoryInfo(item);
-                justFolders.Items.Add(dir.Name);
-            }
-
-            foreach (string item in files) {
-                FileInfo file = new FileInfo(item);
-                imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
-                listView1.LargeImageList = imageList1;
-                var listViewItem = listView1.Items.Add(file.Name);
-                listViewItem.ImageKey = "Key" + file.Name;
-            }
-            */
-            ////////////////////////////////////////////////////////////////////////////
         }
 
         private void ScritpEditor_Load(object sender, EventArgs e) {
             toolTip1.SetToolTip(this.SCRIPT_SRC, "Click to open in file explorer.");
-
             this.SetAutoScrollMargin(100, 100);
             foreach (Control ctrl in CODE_EDITOR.Controls)
                 if (ctrl.GetType() == typeof(VScrollBar))
@@ -130,36 +109,10 @@ namespace matrix_engine {
                 return;
             }
 
-            // test tex
-
-            // REPLCED @@
             string text_paths = RES_IMGS.getResourceSrc();
-            /*
-            var selectedTags = listView1.CheckedItems
-                                 .Cast<ListViewItem>()
-                                 .Select(x => x.Text);
-            int CounterTex = 0;
-            foreach (var tag in selectedTags) {
-                // do some operation using tag
-                if (justFolders.SelectedItems.Count > -1 && justFolders.SelectedItems.Count > 0 && justFolders.SelectedItems!= null) {
-                    Int32 INDEX = 0;
-                    MessageBox.Show(justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString());
-                    if (CounterTex == 0) {
-                        text_paths += "'" + justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString() + "'";
-                    } else {
-                        text_paths += ", '" + justFolders.SelectedItems[INDEX].Text + @"\" + tag.ToString() + "'";
-                    }
-                } else {
-                    MessageBox.Show("<root folder> " + tag.ToString());
-                    if (CounterTex == 0) {
-                        text_paths += "'" + @"\" + tag.ToString() + "'";
-                    } else {
-                        text_paths += ", '" + @"\" + tag.ToString() + "'";
-                    }
-                }
-                CounterTex = CounterTex + 1;
-            } */
-            /////////////////////////////////
+            text_paths = text_paths.Replace(@"\", "/");
+            text_paths = text_paths.Replace("'", "");
+
 
             if (typeList.SelectedItem.ToString() == "pyramid") {
                 MessageBox.Show("Add color pyramid", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -230,31 +183,68 @@ namespace matrix_engine {
             } else if (typeList.SelectedItem.ToString() == "cubeLightTex") {
                 MessageBox.Show("Add color cubeLightTex", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // TEX POTOTYPE
-                CODE_EDITOR.SelectedText = "var tex" + addNewObjectFieldName.Text + " = {" +
-                    " source: [" +
-                    text_paths
-                    + "],\n" +
-                    " mix_operation: 'multiply'," +
-                    "} \n";
-                CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
-                CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
-                CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
-                if (activeRotation.isAllZero() == false) {
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
-                    CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
+                // streaming tex
+                if (STREAM_TEXTURES_CHECK_CAMERA.Checked == true) {
+                    // camera
+                    // TEX POTOTYPE default
+                    CODE_EDITOR.SelectedText = " var tex" + addNewObjectFieldName.Text + " = {" +
+                        "  source: ['res/images/default/default-pink-64.png'],\n" +
+                        "  mix_operation: 'multiply'\n" +
+                        " }\n";
+                    CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+                    CODE_EDITOR.SelectedText = " let ACCESS_CAMERA = matrixEngine.Engine.ACCESS_CAMERA;\n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".streamTextures = new ACCESS_CAMERA('webcam_beta');\n";
+                    // byId('webcam_beta').style.display = 'block';
+                    // Example who to switch between simple camera tex and cameraMixCanvas2d (videoImage)
+                    // App.scene.TV.streamTextures.video = App.scene.TV.streamTextures.videoImage;
+                } else if (STREAM_TEXTURES_CHECK_VIDEO.Checked == true) {
+                    // VIDEO
+                    // TEX POTOTYPE default
+                    CODE_EDITOR.SelectedText = " var tex" + addNewObjectFieldName.Text + " = {" +
+                        "  source: ['res/images/default/default-pink-64.png'],\n" +
+                        "  mix_operation: 'multiply'\n" +
+                        " }\n";
+                    CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".streamTextures = new matrixEngine.Engine.VT('./res/video-texture" + text_paths + "');\n";
+                } else if (STREAM_TEXTURES_CHECK_CANVAS.Checked == true) {
+                    // CANVAS 
+                    // TEX POTOTYPE default
+                    CODE_EDITOR.SelectedText = " var tex" + addNewObjectFieldName.Text + " = {" +
+                        "  source: ['res/images/default/default-pink-64.png'],\n" +
+                        "  mix_operation: 'multiply'\n" +
+                        " }\n";
+                    CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+
+                } else {
+
+                    // normala tex
+                    // TEX POTOTYPE
+                    CODE_EDITOR.SelectedText = "var tex" + addNewObjectFieldName.Text + " = {" +
+                        " source: ['res/images/" +
+                        text_paths
+                        + "'],\n" +
+                        " mix_operation: 'multiply'" +
+                        "} \n";
+                    CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+
                 }
 
+                // position etc...
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
+                if (activeRotation.isAllZero() == false) {
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
+                }
 
                 CODE_EDITOR.Paste();
 
             } else if (typeList.SelectedItem.ToString() == "obj") {
                 MessageBox.Show("Add color obj", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
 
             // common
             if (BLEND.Checked) {
@@ -265,17 +255,8 @@ namespace matrix_engine {
                 CODE_EDITOR.Paste();
             }
 
-                helpPanelAddNewObject.Visible = false;
-            /*  triangle
-                square
-                squareTex
-                cube
-                sphereLightTex
-                pyramid
-                obj
-                cubeLightTex
-                cubeMapTex
-                generatorLightTex */
+            helpPanelAddNewObject.Visible = false;
+ 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
@@ -321,46 +302,25 @@ namespace matrix_engine {
                  typeList.SelectedItem.ToString() == "square" || typeList.SelectedItem.ToString() == "pyramid") {
                 solidColor.Enabled = true;
                 ambientColor.Enabled = false;
-
-             /// hide text control
-
+                // hide tex control
+                RES_IMGS.Visible = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
+                STREAM_TEXTURES_CHECK_CAMERA.Visible = false;
+                STREAM_TEXTURES_CHECK_CANVAS.Visible = false;
             } else {
                 solidColor.Enabled = false;
                 ambientColor.Enabled = true;
-
-                // show text control
+                // show tex control
+                RES_IMGS.Visible = true;
+                STREAM_TEXTURES_CHECK_VIDEO.Visible = true;
+                STREAM_TEXTURES_CHECK_CAMERA.Visible = true;
+                STREAM_TEXTURES_CHECK_CANVAS.Visible = true;
                 //...
-
             }
         }
 
         private void CODE_EDITOR_TextChanged(object sender, EventArgs e) {
 
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e) {
-            // if (justFolders.SelectedItems.Count > 0 && justFolders.SelectedItems[0] != null) {
-               //  MessageBox.Show(justFolders.SelectedItems[0].Text);
-            // }
-        }
-
-        private void justFolders_SelectedIndexChanged(object sender, EventArgs e) {
-            /*if (justFolders.SelectedItems.Count == -1 || justFolders.SelectedItems.Count == 0) { return; }
-            texFilesLocation = RES3DFOLDER_IMGS + "\\" + justFolders.SelectedItems[0].Text;
-            listView1.Items.Clear();
-            imageList1.Images.Clear();
-            string[] files = Directory.GetFiles(texFilesLocation);
-            foreach (string item in files) {
-                FileInfo file = new FileInfo(item);
-                imageList1.Images.Add("Key" + file.Name, Image.FromFile(file.ToString()));
-                listView1.LargeImageList = imageList1;
-                var listViewItem = listView1.Items.Add(file.Name);
-                listViewItem.ImageKey = "Key" + file.Name;
-            }*/
-        }
-
-        private void listView1_ItemActivate(object sender, EventArgs e) {
-            MessageBox.Show("ITEM ACTIVATE");
         }
 
         private void aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -392,6 +352,81 @@ namespace matrix_engine {
                 blendDest.Enabled = false;
                 blendSrc.Enabled = false;
             }
+        }
+
+        private void STREAM_TEXTURES_CHECK_CheckedChanged(object sender, EventArgs e) {
+            // VIDEOS 
+            CheckBox T = (CheckBox)sender;
+            if (T.Checked == true) {
+                RES_IMGS.loadFolder(RES3DFOLDER_VIDEOS);
+                STREAM_TEXTURES_CHECK_CAMERA.Checked = false;
+                STREAM_TEXTURES_CHECK_CANVAS.Checked = false;
+
+                BROWSER_VIDEOS.Navigate(RES3DFOLDER_VIDEOS);
+            } else {
+                RES_IMGS.loadFolder(RES3DFOLDER_IMGS);
+                STREAM_TEXTURES_CHECK_CAMERA.Checked = false;
+                STREAM_TEXTURES_CHECK_CANVAS.Checked = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Checked = false;
+            }
+        }
+
+        private void STREAM_TEXTURES_CHECK_CANVAS_CheckedChanged(object sender, EventArgs e) {
+            CheckBox T = (CheckBox)sender;
+            if (T.Checked == true) {
+                RES_IMGS.loadFolder(RES3DFOLDER_VIDEOS);
+                STREAM_TEXTURES_CHECK_CAMERA.Checked = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Checked = false;
+            } else {
+                RES_IMGS.loadFolder(RES3DFOLDER_IMGS);
+                STREAM_TEXTURES_CHECK_CAMERA.Checked = false;
+                STREAM_TEXTURES_CHECK_CANVAS.Checked = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Checked = false;
+            }
+        }
+
+        private void STREAM_TEXTURES_CHECK_CAMERA_CheckedChanged(object sender, EventArgs e) {
+            CheckBox T = (CheckBox)sender;
+            if (T.Checked == true) {
+                RES_IMGS.loadFolder(RES3DFOLDER_VIDEOS);
+                STREAM_TEXTURES_CHECK_CANVAS.Checked = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Checked = false;
+            } else {
+                RES_IMGS.loadFolder(RES3DFOLDER_IMGS);
+                STREAM_TEXTURES_CHECK_CAMERA.Checked = false;
+                STREAM_TEXTURES_CHECK_CANVAS.Checked = false;
+                STREAM_TEXTURES_CHECK_VIDEO.Checked = false;
+            }
+        }
+
+        private void BROWSER_VIDEOS_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            // NOT WORKING FOR NO 
+            // VISUAL PORESENTATION OF VIDEOS AND SELETIONS
+
+            // Clipboard.Clear();
+            // SendKeys.Send("^C");
+            StringCollection sc = Clipboard.GetFileDropList();
+            foreach (string name in sc) {
+                MessageBox.Show(name, "WHAT IS SC ");
+            }            
+        }
+
+        private void BROWSER_VIDEOS_FileDownload(object sender, EventArgs e) {
+            //MessageBox.Show("DOWNLOAD ");
+        }
+
+        private bool bCancel = false;
+
+        private void BROWSER_VIDEOS_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+             
+        }
+
+        private void BROWSER_VIDEOS_Navigating(object sender, WebBrowserNavigatingEventArgs e) {
+    
+        }
+
+        private void codeHelperToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }
