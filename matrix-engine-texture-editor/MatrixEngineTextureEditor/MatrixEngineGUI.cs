@@ -195,6 +195,11 @@ namespace matrix_engine {
             this.hideAllToolStripMenuItem.PerformClick();
         }
 
+
+        public static void Initate(CefSharp.WinForms.CefSettings settings) {
+            settings.CefCommandLineArgs["autoplay-policy"] = "no-user-gesture-required";
+        }
+
         public MatrixEngineGUI(string args) {
             InitializeComponent();
             string URLStart = "https://maximumroulette.com/apps/matrix-engine/query-build.html?u=welcome_gui_editor";
@@ -569,13 +574,13 @@ namespace matrix_engine {
             } else {
                 //  MessageBox.Show("You need to run editor first!", "Info", MessageBoxButtons.OK);
             }
-            if (cmdKillerProc != null || cmdKillerProc.IsDisposed == false) {
+            if (cmdKillerProc != null && cmdKillerProc.IsDisposed == false) {
                 cmdKillerProc.Hide();
             }
-            if (cmdStream != null || cmdStream.IsDisposed == false) {
+            if (cmdStream != null && cmdStream.IsDisposed == false) {
                 cmdStream.Hide();
             }
-            if (cmdWebglHOST != null || cmdWebglHOST.IsDisposed == false) {
+            if (cmdWebglHOST != null && cmdWebglHOST.IsDisposed == false) {
                 cmdWebglHOST.Hide();
             }
         }
@@ -931,18 +936,20 @@ namespace matrix_engine {
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
             // Host root!
             cmdWebglHOST.txtBxStdin.Text = @"npm run host-public";
+            // cmdWebglHOST.txtBxStdin.Text = @"http-server ./ -S -C fabrikam.crt";
+            // 
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
         }
 
         private void button2_Click(object sender, EventArgs e) {
             if (chromiumWebBrowser1 != null && chromiumWebBrowser1.IsDisposed == false && chromiumWebBrowser1.Visible == true) {
                 ClearCache();
-                URLTEXT.Text = "http://localhost/public/gui.html";
-                chromiumWebBrowser1.LoadUrl("http://localhost/public/gui.html");
+                URLTEXT.Text = "http://192.168.0.31/public/gui.html";
+                chromiumWebBrowser1.LoadUrl("http://192.168.0.31/public/gui.html");
             } else {
                 if (FSBrowser != null && FSBrowser.IsDisposed == false && FSBrowser.chromiumWebBrowser1.IsDisposed == false && FSBrowser.Visible == true) {
                     ClearCachePopup();
-                    URLTEXT.Text = "http://localhost/public/gui.html";
+                    URLTEXT.Text = "http://192.168.0.31/public/gui.html";
                     FSBrowser.chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
                 }
             }

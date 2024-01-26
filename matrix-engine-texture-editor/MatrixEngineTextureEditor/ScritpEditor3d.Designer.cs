@@ -69,6 +69,7 @@ namespace matrix_engine {
             this.activeRotation = new matrix_engine.MatrixValuesControl();
             this.initialRotation = new matrix_engine.MatrixValuesControl();
             this.POSITION = new matrix_engine.MatrixValuesControl();
+            this.CANVAS_TEXTURE_URL = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -245,9 +246,9 @@ namespace matrix_engine {
             this.STREAM_TEXTURES_CHECK_VIDEO.ForeColor = System.Drawing.Color.OrangeRed;
             this.STREAM_TEXTURES_CHECK_VIDEO.Location = new System.Drawing.Point(478, 319);
             this.STREAM_TEXTURES_CHECK_VIDEO.Name = "STREAM_TEXTURES_CHECK_VIDEO";
-            this.STREAM_TEXTURES_CHECK_VIDEO.Size = new System.Drawing.Size(125, 19);
+            this.STREAM_TEXTURES_CHECK_VIDEO.Size = new System.Drawing.Size(272, 19);
             this.STREAM_TEXTURES_CHECK_VIDEO.TabIndex = 118;
-            this.STREAM_TEXTURES_CHECK_VIDEO.Text = "Video textures";
+            this.STREAM_TEXTURES_CHECK_VIDEO.Text = "Video textures [recommended webm]";
             this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_VIDEO, "If you wanna video textures.");
             this.STREAM_TEXTURES_CHECK_VIDEO.UseVisualStyleBackColor = false;
             this.STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
@@ -311,10 +312,10 @@ namespace matrix_engine {
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codeHelperToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip1.Location = new System.Drawing.Point(328, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(448, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(214, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(94, 31);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -397,6 +398,7 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.BackColor = System.Drawing.Color.Black;
             this.helpPanelAddNewObject.BackgroundImage = global::matrix_engine.Properties.Resources.midbg;
             this.helpPanelAddNewObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpPanelAddNewObject.Controls.Add(this.CANVAS_TEXTURE_URL);
             this.helpPanelAddNewObject.Controls.Add(this.BROWSER_VIDEOS);
             this.helpPanelAddNewObject.Controls.Add(this.STREAM_TEXTURES_CHECK_CAMERA);
             this.helpPanelAddNewObject.Controls.Add(this.STREAM_TEXTURES_CHECK_CANVAS);
@@ -590,7 +592,7 @@ namespace matrix_engine {
             this.RES_IMGS.BackColor = System.Drawing.Color.Transparent;
             this.RES_IMGS.Location = new System.Drawing.Point(478, 85);
             this.RES_IMGS.Name = "RES_IMGS";
-            this.RES_IMGS.Size = new System.Drawing.Size(303, 221);
+            this.RES_IMGS.Size = new System.Drawing.Size(305, 221);
             this.RES_IMGS.TabIndex = 117;
             this.RES_IMGS.Visible = false;
             // 
@@ -638,6 +640,19 @@ namespace matrix_engine {
             this.POSITION.Name = "POSITION";
             this.POSITION.Size = new System.Drawing.Size(302, 38);
             this.POSITION.TabIndex = 103;
+            // 
+            // CANVAS_TEXTURE_URL
+            // 
+            this.CANVAS_TEXTURE_URL.BackColor = System.Drawing.Color.Black;
+            this.CANVAS_TEXTURE_URL.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CANVAS_TEXTURE_URL.ForeColor = System.Drawing.Color.DarkOrange;
+            this.CANVAS_TEXTURE_URL.Location = new System.Drawing.Point(623, 343);
+            this.CANVAS_TEXTURE_URL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CANVAS_TEXTURE_URL.Name = "CANVAS_TEXTURE_URL";
+            this.CANVAS_TEXTURE_URL.Size = new System.Drawing.Size(160, 21);
+            this.CANVAS_TEXTURE_URL.TabIndex = 122;
+            this.CANVAS_TEXTURE_URL.Text = "http://localhost/2DTextureEditor/templates/slot/";
+            this.toolTip1.SetToolTip(this.CANVAS_TEXTURE_URL, "${this.Text}");
             // 
             // ScritpEditor3d
             // 
@@ -713,5 +728,6 @@ namespace matrix_engine {
         private System.Windows.Forms.CheckBox STREAM_TEXTURES_CHECK_CAMERA;
         private System.Windows.Forms.CheckBox STREAM_TEXTURES_CHECK_CANVAS;
         private System.Windows.Forms.WebBrowser BROWSER_VIDEOS;
+        public System.Windows.Forms.TextBox CANVAS_TEXTURE_URL;
     }
 }

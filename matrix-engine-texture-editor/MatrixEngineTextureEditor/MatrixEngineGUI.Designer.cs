@@ -78,6 +78,7 @@ namespace matrix_engine
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.goToMatrixengineSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToVisualJS3SourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToMEGUIEditorSourcethisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.URLTEXT = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -85,7 +86,6 @@ namespace matrix_engine
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.goToMEGUIEditorSourcethisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -96,7 +96,7 @@ namespace matrix_engine
             // 
             // chromiumWebBrowser1
             // 
-            this.chromiumWebBrowser1.ActivateBrowserOnCreation = false;
+            this.chromiumWebBrowser1.ActivateBrowserOnCreation = true;
             this.chromiumWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chromiumWebBrowser1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
@@ -503,6 +503,13 @@ namespace matrix_engine
             this.goToVisualJS3SourceToolStripMenuItem.Text = "Go to visualJS3 source";
             this.goToVisualJS3SourceToolStripMenuItem.Click += new System.EventHandler(this.goToVisualJS3SourceToolStripMenuItem_Click);
             // 
+            // goToMEGUIEditorSourcethisToolStripMenuItem
+            // 
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Name = "goToMEGUIEditorSourcethisToolStripMenuItem";
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Text = "Go to ME GUI Editor source [this]";
+            this.goToMEGUIEditorSourcethisToolStripMenuItem.Click += new System.EventHandler(this.goToMEGUIEditorSourcethisToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
@@ -581,13 +588,6 @@ namespace matrix_engine
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 36);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // goToMEGUIEditorSourcethisToolStripMenuItem
-            // 
-            this.goToMEGUIEditorSourcethisToolStripMenuItem.Name = "goToMEGUIEditorSourcethisToolStripMenuItem";
-            this.goToMEGUIEditorSourcethisToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
-            this.goToMEGUIEditorSourcethisToolStripMenuItem.Text = "Go to ME GUI Editor source [this]";
-            this.goToMEGUIEditorSourcethisToolStripMenuItem.Click += new System.EventHandler(this.goToMEGUIEditorSourcethisToolStripMenuItem_Click);
             // 
             // MatrixEngineGUI
             // 

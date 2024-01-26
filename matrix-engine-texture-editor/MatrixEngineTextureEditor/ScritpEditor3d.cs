@@ -191,8 +191,8 @@ namespace matrix_engine {
                         "  source: ['res/images/default/default-pink-64.png'],\n" +
                         "  mix_operation: 'multiply'\n" +
                         " }\n";
-                    CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
-                    CODE_EDITOR.SelectedText = " let ACCESS_CAMERA = matrixEngine.Engine.ACCESS_CAMERA;\n";
+                    CODE_EDITOR.SelectedText = "  world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+                    CODE_EDITOR.SelectedText = "  let ACCESS_CAMERA = matrixEngine.Engine.ACCESS_CAMERA;\n";
                     CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".streamTextures = new ACCESS_CAMERA('webcam_beta');\n";
                     // byId('webcam_beta').style.display = 'block';
                     // Example who to switch between simple camera tex and cameraMixCanvas2d (videoImage)
@@ -214,6 +214,13 @@ namespace matrix_engine {
                         "  mix_operation: 'multiply'\n" +
                         " }\n";
                     CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', tex" + addNewObjectFieldName.Text + " ); \n";
+
+                    // CANVAS_TEXTURE_URL
+                    // App.scene.outsideBox.streamTextures = new anyCanvas("../2DTextureEditor/templates/slot/", "HELLO_WORLD")
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".streamTextures = new matrixEngine.Engine.anyCanvas('" + CANVAS_TEXTURE_URL.Text + "', 'HELLO_WORLD');\n";
+                    CODE_EDITOR.SelectedText = "   App.scene." + addNewObjectFieldName.Text + ".streamTextures.showTextureEditor();";
+
+
 
                 } else {
 
