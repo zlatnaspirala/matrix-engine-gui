@@ -85,5 +85,9 @@ namespace matrix_engine {
             g.DrawLine(myPen, 0, FUNY, this.Width, FUNY);
             // g.DrawLine(myPen, FUNY, 0, FUNY, this.Height);
         }
-       }
+
+        private void label5_Click(object sender, EventArgs e) {
+
+        }
+    }
     }

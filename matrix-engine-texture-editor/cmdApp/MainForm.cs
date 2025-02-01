@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 /***************************************************************************************
@@ -206,10 +207,13 @@ namespace CmdWindowControlTestApp {
                 resultEditor.Text = text + DateTime.Now.ToString("yyyyMMddHHmmssfff");
             } else if (text.Contains("npm audit fix")) {
                 resultNpmI.Text = "npm done" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            } else if (text.Contains("Build succeeded")) {
+            } else if (text.Contains("Build succeeded") || 
+                   text.Contains("browserify ./gui/app.js -p esmify > ./public/gui.build.js")) {
                 if (preventHYBRYD_IF_WEBGL == false) {
+                    Thread.Sleep(2000);
                     nativeExeBuild.Text = "native-" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
                 } else {
+                    Thread.Sleep(2000);
                     exportedwebgl.Text = "webgl.done" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
                 }
             } else if (text.Contains("The build file was created")) {

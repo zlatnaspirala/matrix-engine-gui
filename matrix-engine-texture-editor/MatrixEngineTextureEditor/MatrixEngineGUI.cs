@@ -8,6 +8,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -197,16 +199,27 @@ namespace matrix_engine {
 
 
         public static void Initate(CefSharp.WinForms.CefSettings settings) {
+            MessageBox.Show("NICE");
             settings.CefCommandLineArgs["autoplay-policy"] = "no-user-gesture-required";
+            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
         }
 
         public MatrixEngineGUI(string args) {
+
+
+            CefSharp.WinForms.CefSettings C = new CefSharp.WinForms.CefSettings();
+            C.IgnoreCertificateErrors = true;
+            C.CefCommandLineArgs.Add("--enable-media-stream");
+            CefSharp.Cef.Initialize(C);
+
             InitializeComponent();
+
             string URLStart = "https://maximumroulette.com/apps/matrix-engine/query-build.html?u=welcome_gui_editor";
             URLTEXT.Text = URLStart;
             if (args.ToString() != "") {
                 URLStart = args.Replace("url=", "");
                 chromiumWebBrowser1.LoadUrl(URLStart);
+                chromiumWebBrowser1.ShowDevTools();
             } else {
                 chromiumWebBrowser1.LoadUrl(URLStart);
                 this.Text = "Matrix-Engine [" + URLStart + "]";
@@ -874,7 +887,7 @@ namespace matrix_engine {
             }
 
             if (cmdWebglHOST != null && cmdWebglHOST.IsDisposed == false) {
-                cmdWebglHOST.Hide();
+               //  cmdWebglHOST.Hide();
             }
 
             cmdWebglRun.WindowState = FormWindowState.Minimized;
@@ -935,21 +948,31 @@ namespace matrix_engine {
             cmdWebglHOST.txtBxStdin.Text = @"c:";
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
             // Host root!
-            cmdWebglHOST.txtBxStdin.Text = @"npm run host-public";
-            // cmdWebglHOST.txtBxStdin.Text = @"http-server ./ -S -C fabrikam.crt";
+            // cmdWebglHOST.txtBxStdin.Text = @"npm run host-public";
+            cmdWebglHOST.txtBxStdin.Text = @"http-server ./ -S -C fabrikam.crt";
             // 
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
+        }
+
+        public static string GetLocalIPAddress() {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList) {
+                if (ip.AddressFamily == AddressFamily.InterNetwork) {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
         private void button2_Click(object sender, EventArgs e) {
             if (chromiumWebBrowser1 != null && chromiumWebBrowser1.IsDisposed == false && chromiumWebBrowser1.Visible == true) {
                 ClearCache();
-                URLTEXT.Text = "http://192.168.0.31/public/gui.html";
-                chromiumWebBrowser1.LoadUrl("http://192.168.0.31/public/gui.html");
+                URLTEXT.Text = "https://"+ GetLocalIPAddress() + "/public/gui.html";
+                chromiumWebBrowser1.LoadUrl("https://"+ GetLocalIPAddress() + "/public/gui.html");
             } else {
                 if (FSBrowser != null && FSBrowser.IsDisposed == false && FSBrowser.chromiumWebBrowser1.IsDisposed == false && FSBrowser.Visible == true) {
                     ClearCachePopup();
-                    URLTEXT.Text = "http://192.168.0.31/public/gui.html";
+                    URLTEXT.Text = "https://"+ GetLocalIPAddress() + "/public/gui.html";
                     FSBrowser.chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
                 }
             }

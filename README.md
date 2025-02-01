@@ -1,6 +1,9 @@
 # matrix-engine-gui
 Matrix-Engine-GUI Editor is windows desktop application.
 
+ - SYNC with MatrixEngine 2.3.0
+ 
+
  - This is welcome screen.
 <img src="https://github.com/zlatnaspirala/matrix-engine-gui/blob/main/welcome.png" width="768" height="480">
 

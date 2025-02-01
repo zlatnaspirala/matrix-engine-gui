@@ -78,10 +78,10 @@ namespace matrix_engine {
             SCRIPT_SRC.Text = SCRIPT_SRC.Text.Replace("gui-texture-editor.js", "");
             if (Directory.Exists(SCRIPT_SRC.Text)) {
                 ProcessStartInfo startInfo = new ProcessStartInfo {
-                Arguments = SCRIPT_SRC.Text,
-                FileName = "explorer.exe"
-            };
-            Process.Start(startInfo);
+                    Arguments = SCRIPT_SRC.Text,
+                    FileName = "explorer.exe"
+                };
+                Process.Start(startInfo);
             } else {
                 MessageBox.Show(string.Format("{0} Directory does not exist!", SCRIPT_SRC.Text));
             }
@@ -113,11 +113,13 @@ namespace matrix_engine {
             text_paths = text_paths.Replace(@"\", "/");
             text_paths = text_paths.Replace("'", "");
 
+ 
+        
 
             if (typeList.SelectedItem.ToString() == "pyramid") {
                 MessageBox.Show("Add color pyramid", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // CLOR PROTOTYPE
-                 CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
+                CODE_EDITOR.SelectedText = "world.Add('" + typeList.SelectedItem.ToString() + "', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "'); \n";
                 CODE_EDITOR.SelectedText = " App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");";
                 CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";";
                 CODE_EDITOR.SelectedText = "App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";";
@@ -249,8 +251,46 @@ namespace matrix_engine {
 
                 CODE_EDITOR.Paste();
 
-            } else if (typeList.SelectedItem.ToString() == "obj") {
-                MessageBox.Show("Add color obj", "3d Code editor - Add new object form", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else if (typeList.SelectedItem.ToString() == "obj") { 
+
+                OBJ_PATH.Enabled = true;
+                MessageBox.Show("Add obj", "3d Code editor - Add new obj form", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // streaming tex
+                // normala tex
+                // TEX POTOTYPE
+                CODE_EDITOR.SelectedText = "var tex" + addNewObjectFieldName.Text + " = {" +
+                    " source: ['res/images/" +
+                    text_paths
+                    + "'],\n" +
+                    " mix_operation: 'multiply'" +
+                    "} \n";
+
+
+                //
+                CODE_EDITOR.SelectedText = "matrixEngine.objLoader.downloadMeshes( {'" + typeList.SelectedItem.ToString() + "': " + OBJ_PATH.Text.ToString() + " }, " +
+                    "   " + addNewObjectFieldName.Text + "OnLoadObj );\n";
+
+                CODE_EDITOR.SelectedText = "" +
+                    "function " + addNewObjectFieldName.Text + "OnLoadObj(meshes) {\n" +
+                       "for(let key in meshes) { matrixEngine.objLoader.initMeshBuffers(world.GL.gl, meshes[key])}\n" +
+                    "\n" +
+                    "world.Add('obj', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', " +
+                    "tex" + addNewObjectFieldName.Text + " , meshes." + addNewObjectFieldName.Text + ");";
+                    
+
+                // position etc...
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotx = " + initialRotation.GetX() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.roty = " + initialRotation.GetY() + ";\n";
+                CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotz = " + initialRotation.GetZ() + ";\n";
+                if (activeRotation.isAllZero() == false) {
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.x = " + activeRotation.GetX() + ";\n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
+                    CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
+                }
+
+                CODE_EDITOR.SelectedText = "}";
             }
 
             // common
@@ -263,7 +303,7 @@ namespace matrix_engine {
             }
 
             helpPanelAddNewObject.Visible = false;
- 
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
@@ -284,7 +324,7 @@ namespace matrix_engine {
         }
 
         private void back_Click(object sender, EventArgs e) {
-        
+
         }
 
         private void positionControl_Load(object sender, EventArgs e) {
@@ -305,6 +345,12 @@ namespace matrix_engine {
 
         private void typeList_SelectedIndexChanged(object sender, EventArgs e) {
             // MessageBox.Show("SELCT TYPE CHANGE" + typeList.SelectedItem.ToString() , "Matrix-Engine Add new object procedure");
+            //    
+            if (typeList.SelectedItem.ToString() == "obj") {
+                OBJ_PATH.Enabled = true;
+            } else {
+                OBJ_PATH.Enabled = false;
+            }
             if (typeList.SelectedItem.ToString() == "cube" || typeList.SelectedItem.ToString() == "triangle" ||
                  typeList.SelectedItem.ToString() == "square" || typeList.SelectedItem.ToString() == "pyramid") {
                 solidColor.Enabled = true;
@@ -314,6 +360,7 @@ namespace matrix_engine {
                 STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
                 STREAM_TEXTURES_CHECK_CAMERA.Visible = false;
                 STREAM_TEXTURES_CHECK_CANVAS.Visible = false;
+                CANVAS_TEXTURE_URL.Visible = false;
             } else {
                 solidColor.Enabled = false;
                 ambientColor.Enabled = true;
@@ -322,6 +369,7 @@ namespace matrix_engine {
                 STREAM_TEXTURES_CHECK_VIDEO.Visible = true;
                 STREAM_TEXTURES_CHECK_CAMERA.Visible = true;
                 STREAM_TEXTURES_CHECK_CANVAS.Visible = true;
+                CANVAS_TEXTURE_URL.Visible = true;
                 //...
             }
         }
@@ -345,8 +393,12 @@ namespace matrix_engine {
         private void rayhiteventToolStripMenuItem_Click(object sender, EventArgs e) {
             Clipboard.Clear();
             CODE_EDITOR.SelectedText = " window.addEventListener('ray.hit.event', (ev) => {\n" +
-                "   console.log('You shoot the object. Nice!', ev)\n" + 
-            " });\n";
+                "   console.log('You shoot the object. Nice!', ev)\n" +
+            " });\n" +
+            " \n " +
+            " canvas.addEventListener('mousedown', (ev) => { \n" +
+            "   matrixEngine.raycaster.checkingProcedure(ev); \n " +
+            "  });     \n";
             CODE_EDITOR.Paste();
         }
 
@@ -415,7 +467,7 @@ namespace matrix_engine {
             StringCollection sc = Clipboard.GetFileDropList();
             foreach (string name in sc) {
                 MessageBox.Show(name, "WHAT IS SC ");
-            }            
+            }
         }
 
         private void BROWSER_VIDEOS_FileDownload(object sender, EventArgs e) {
@@ -425,14 +477,18 @@ namespace matrix_engine {
         private bool bCancel = false;
 
         private void BROWSER_VIDEOS_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-             
+
         }
 
         private void BROWSER_VIDEOS_Navigating(object sender, WebBrowserNavigatingEventArgs e) {
-    
+
         }
 
         private void codeHelperToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e) {
 
         }
     }

@@ -153,6 +153,7 @@ namespace matrix_engine {
             this.label5.TabIndex = 14;
             this.label5.Text = "You must have standard modern develor staff on your computer.\r\n - git \r\n - Node.j" +
     "s / npm\r\n\r\n";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
