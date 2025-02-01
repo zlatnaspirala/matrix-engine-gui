@@ -62,6 +62,7 @@ namespace matrix_engine
             this.iphoneX275x812ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.useTexWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sHODEVTOOLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideClassicTexViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.resourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +87,7 @@ namespace matrix_engine
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.sHODEVTOOLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SHOW_DEV = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -382,9 +383,16 @@ namespace matrix_engine
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
+            // sHODEVTOOLSToolStripMenuItem
+            // 
+            this.sHODEVTOOLSToolStripMenuItem.Name = "sHODEVTOOLSToolStripMenuItem";
+            this.sHODEVTOOLSToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.sHODEVTOOLSToolStripMenuItem.Text = "DEV TOOLS";
+            this.sHODEVTOOLSToolStripMenuItem.Click += new System.EventHandler(this.sHODEVTOOLSToolStripMenuItem_Click);
             // 
             // hideClassicTexViewToolStripMenuItem
             // 
@@ -397,12 +405,13 @@ namespace matrix_engine
             // showToolStripMenuItem1
             // 
             this.showToolStripMenuItem1.Name = "showToolStripMenuItem1";
-            this.showToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.showToolStripMenuItem1.Text = "Show";
             this.showToolStripMenuItem1.Click += new System.EventHandler(this.showToolStripMenuItem1_Click);
             // 
             // resourcesToolStripMenuItem
             // 
+            this.resourcesToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.star;
             this.resourcesToolStripMenuItem.Name = "resourcesToolStripMenuItem";
             this.resourcesToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.resourcesToolStripMenuItem.Text = "Resources [imgs,fonts,videos]";
@@ -428,7 +437,9 @@ namespace matrix_engine
             // 
             // scriptEditorandroidWrapperToolStripMenuItem
             // 
-            this.scriptEditorandroidWrapperToolStripMenuItem.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.scriptEditorandroidWrapperToolStripMenuItem.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.scriptEditorandroidWrapperToolStripMenuItem.Image = global::matrix_engine.Properties.Resources._64x64;
+            this.scriptEditorandroidWrapperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Turquoise;
             this.scriptEditorandroidWrapperToolStripMenuItem.Name = "scriptEditorandroidWrapperToolStripMenuItem";
             this.scriptEditorandroidWrapperToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.scriptEditorandroidWrapperToolStripMenuItem.Text = "Script - Android Wrapper";
@@ -436,7 +447,8 @@ namespace matrix_engine
             // 
             // scriptEditormatrixengineAppToolStripMenuItem
             // 
-            this.scriptEditormatrixengineAppToolStripMenuItem.BackColor = System.Drawing.Color.PaleGreen;
+            this.scriptEditormatrixengineAppToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.scriptEditormatrixengineAppToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.android_icon;
             this.scriptEditormatrixengineAppToolStripMenuItem.Name = "scriptEditormatrixengineAppToolStripMenuItem";
             this.scriptEditormatrixengineAppToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.scriptEditormatrixengineAppToolStripMenuItem.Text = "Script - APP";
@@ -530,7 +542,7 @@ namespace matrix_engine
             this.URLTEXT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.URLTEXT.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.URLTEXT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.URLTEXT.Location = new System.Drawing.Point(464, 3);
+            this.URLTEXT.Location = new System.Drawing.Point(605, 3);
             this.URLTEXT.Multiline = true;
             this.URLTEXT.Name = "URLTEXT";
             this.URLTEXT.Size = new System.Drawing.Size(805, 28);
@@ -587,6 +599,7 @@ namespace matrix_engine
             // 
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.SHOW_DEV);
             this.flowLayoutPanel1.Controls.Add(this.URLTEXT);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -594,12 +607,21 @@ namespace matrix_engine
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 36);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // sHODEVTOOLSToolStripMenuItem
+            // SHOW_DEV
             // 
-            this.sHODEVTOOLSToolStripMenuItem.Name = "sHODEVTOOLSToolStripMenuItem";
-            this.sHODEVTOOLSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sHODEVTOOLSToolStripMenuItem.Text = "DEV TOOLS";
-            this.sHODEVTOOLSToolStripMenuItem.Click += new System.EventHandler(this.sHODEVTOOLSToolStripMenuItem_Click);
+            this.SHOW_DEV.BackColor = System.Drawing.Color.Black;
+            this.SHOW_DEV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SHOW_DEV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SHOW_DEV.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SHOW_DEV.ForeColor = System.Drawing.Color.Lime;
+            this.SHOW_DEV.Location = new System.Drawing.Point(464, 3);
+            this.SHOW_DEV.Name = "SHOW_DEV";
+            this.SHOW_DEV.Size = new System.Drawing.Size(135, 28);
+            this.SHOW_DEV.TabIndex = 6;
+            this.SHOW_DEV.Text = "Debugger";
+            this.toolTip1.SetToolTip(this.SHOW_DEV, "Show Debugger");
+            this.SHOW_DEV.UseVisualStyleBackColor = false;
+            this.SHOW_DEV.Click += new System.EventHandler(this.SHOW_DEV_Click);
             // 
             // MatrixEngineGUI
             // 
@@ -691,6 +713,7 @@ namespace matrix_engine
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem goToMEGUIEditorSourcethisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sHODEVTOOLSToolStripMenuItem;
+        public System.Windows.Forms.Button SHOW_DEV;
     }
 }
 

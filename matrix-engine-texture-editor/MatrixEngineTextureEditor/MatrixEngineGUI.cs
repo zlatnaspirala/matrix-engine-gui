@@ -1077,5 +1077,9 @@ namespace matrix_engine {
         private void sHODEVTOOLSToolStripMenuItem_Click(object sender, EventArgs e) {
             chromiumWebBrowser1.ShowDevTools();
         }
+
+        private void SHOW_DEV_Click(object sender, EventArgs e) {
+            chromiumWebBrowser1.ShowDevTools();
+        }
     }
 }

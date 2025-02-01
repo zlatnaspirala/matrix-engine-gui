@@ -113,6 +113,16 @@ namespace matrix_engine.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap brickBlue10 {
+            get {
+                object obj = ResourceManager.GetObject("brickBlue10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exitLeft {
             get {
                 object obj = ResourceManager.GetObject("exitLeft", resourceCulture);
@@ -126,6 +136,26 @@ namespace matrix_engine.Properties {
         internal static System.Drawing.Bitmap exitRight {
             get {
                 object obj = ResourceManager.GetObject("exitRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flatLight29 {
+            get {
+                object obj = ResourceManager.GetObject("flatLight29", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glazing_zigzag_4 {
+            get {
+                object obj = ResourceManager.GetObject("glazing_zigzag_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -322,6 +352,26 @@ namespace matrix_engine.Properties {
         internal static System.Drawing.Bitmap slogan {
             get {
                 object obj = ResourceManager.GetObject("slogan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spritesheet {
+            get {
+                object obj = ResourceManager.GetObject("spritesheet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star {
+            get {
+                object obj = ResourceManager.GetObject("star", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
