@@ -86,6 +86,7 @@ namespace matrix_engine
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.sHODEVTOOLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -113,9 +114,9 @@ namespace matrix_engine
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Lime;
-            this.button1.Location = new System.Drawing.Point(131, 3);
+            this.button1.Location = new System.Drawing.Point(231, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 28);
+            this.button1.Size = new System.Drawing.Size(227, 28);
             this.button1.TabIndex = 1;
             this.button1.Text = "2D Editor";
             this.toolTip1.SetToolTip(this.button1, "You need to run 2d texture editor (visualjs)");
@@ -267,7 +268,7 @@ namespace matrix_engine
             this.showAllToolStripMenuItem,
             this.showFreeTerminalToolStripMenuItem});
             this.nodeWindowsToolStripMenuItem.Name = "nodeWindowsToolStripMenuItem";
-            this.nodeWindowsToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.nodeWindowsToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.nodeWindowsToolStripMenuItem.Text = "Node windows";
             // 
             // hideAllToolStripMenuItem
@@ -300,7 +301,7 @@ namespace matrix_engine
             this.androidDevicesToolStripMenuItem,
             this.iOSDevicesToolStripMenuItem});
             this.setScreenSizeToolStripMenuItem.Name = "setScreenSizeToolStripMenuItem";
-            this.setScreenSizeToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.setScreenSizeToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.setScreenSizeToolStripMenuItem.Text = "Set screen size";
             // 
             // x512ToolStripMenuItem
@@ -372,15 +373,16 @@ namespace matrix_engine
             // useTexWindowToolStripMenuItem
             // 
             this.useTexWindowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showToolStripMenuItem});
+            this.showToolStripMenuItem,
+            this.sHODEVTOOLSToolStripMenuItem});
             this.useTexWindowToolStripMenuItem.Name = "useTexWindowToolStripMenuItem";
-            this.useTexWindowToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.useTexWindowToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.useTexWindowToolStripMenuItem.Text = "Window browser";
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
@@ -389,52 +391,55 @@ namespace matrix_engine
             this.hideClassicTexViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem1});
             this.hideClassicTexViewToolStripMenuItem.Name = "hideClassicTexViewToolStripMenuItem";
-            this.hideClassicTexViewToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.hideClassicTexViewToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.hideClassicTexViewToolStripMenuItem.Text = "Frame browser";
             // 
             // showToolStripMenuItem1
             // 
             this.showToolStripMenuItem1.Name = "showToolStripMenuItem1";
-            this.showToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.showToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.showToolStripMenuItem1.Text = "Show";
             this.showToolStripMenuItem1.Click += new System.EventHandler(this.showToolStripMenuItem1_Click);
             // 
             // resourcesToolStripMenuItem
             // 
             this.resourcesToolStripMenuItem.Name = "resourcesToolStripMenuItem";
-            this.resourcesToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.resourcesToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.resourcesToolStripMenuItem.Text = "Resources [imgs,fonts,videos]";
             this.resourcesToolStripMenuItem.Click += new System.EventHandler(this.resourcesToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(282, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(268, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(282, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(268, 6);
             // 
             // scriptEditorToolStripMenuItem
             // 
+            this.scriptEditorToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue;
             this.scriptEditorToolStripMenuItem.Name = "scriptEditorToolStripMenuItem";
-            this.scriptEditorToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
-            this.scriptEditorToolStripMenuItem.Text = "Script editor [2d tetxure]";
+            this.scriptEditorToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.scriptEditorToolStripMenuItem.Text = "Script - 2D Texture";
             this.scriptEditorToolStripMenuItem.Click += new System.EventHandler(this.scriptEditorToolStripMenuItem_Click);
             // 
             // scriptEditorandroidWrapperToolStripMenuItem
             // 
+            this.scriptEditorandroidWrapperToolStripMenuItem.BackColor = System.Drawing.Color.PaleVioletRed;
             this.scriptEditorandroidWrapperToolStripMenuItem.Name = "scriptEditorandroidWrapperToolStripMenuItem";
-            this.scriptEditorandroidWrapperToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
-            this.scriptEditorandroidWrapperToolStripMenuItem.Text = "Script editor [android wrapper]";
+            this.scriptEditorandroidWrapperToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.scriptEditorandroidWrapperToolStripMenuItem.Text = "Script - Android Wrapper";
             this.scriptEditorandroidWrapperToolStripMenuItem.Click += new System.EventHandler(this.scriptEditorandroidWrapperToolStripMenuItem_Click);
             // 
             // scriptEditormatrixengineAppToolStripMenuItem
             // 
+            this.scriptEditormatrixengineAppToolStripMenuItem.BackColor = System.Drawing.Color.PaleGreen;
             this.scriptEditormatrixengineAppToolStripMenuItem.Name = "scriptEditormatrixengineAppToolStripMenuItem";
-            this.scriptEditormatrixengineAppToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
-            this.scriptEditormatrixengineAppToolStripMenuItem.Text = "Script editor [matrix-engine app]";
+            this.scriptEditormatrixengineAppToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.scriptEditormatrixengineAppToolStripMenuItem.Text = "Script - APP";
             this.scriptEditormatrixengineAppToolStripMenuItem.Click += new System.EventHandler(this.scriptEditormatrixengineAppToolStripMenuItem_Click);
             // 
             // editorToolStripMenuItem
@@ -525,7 +530,7 @@ namespace matrix_engine
             this.URLTEXT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.URLTEXT.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.URLTEXT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.URLTEXT.Location = new System.Drawing.Point(259, 3);
+            this.URLTEXT.Location = new System.Drawing.Point(464, 3);
             this.URLTEXT.Multiline = true;
             this.URLTEXT.Name = "URLTEXT";
             this.URLTEXT.Size = new System.Drawing.Size(805, 28);
@@ -551,7 +556,7 @@ namespace matrix_engine
             this.button2.ForeColor = System.Drawing.Color.Lime;
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 28);
+            this.button2.Size = new System.Drawing.Size(222, 28);
             this.button2.TabIndex = 5;
             this.button2.Text = "Matrix-Engine";
             this.toolTip1.SetToolTip(this.button2, "Load matrix-engine app");
@@ -588,6 +593,13 @@ namespace matrix_engine
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 36);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // sHODEVTOOLSToolStripMenuItem
+            // 
+            this.sHODEVTOOLSToolStripMenuItem.Name = "sHODEVTOOLSToolStripMenuItem";
+            this.sHODEVTOOLSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sHODEVTOOLSToolStripMenuItem.Text = "DEV TOOLS";
+            this.sHODEVTOOLSToolStripMenuItem.Click += new System.EventHandler(this.sHODEVTOOLSToolStripMenuItem_Click);
             // 
             // MatrixEngineGUI
             // 
@@ -678,6 +690,7 @@ namespace matrix_engine
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem goToMEGUIEditorSourcethisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sHODEVTOOLSToolStripMenuItem;
     }
 }
 

@@ -219,13 +219,15 @@ namespace matrix_engine {
             if (args.ToString() != "") {
                 URLStart = args.Replace("url=", "");
                 chromiumWebBrowser1.LoadUrl(URLStart);
-                chromiumWebBrowser1.ShowDevTools();
             } else {
                 chromiumWebBrowser1.LoadUrl(URLStart);
                 this.Text = "Matrix-Engine [" + URLStart + "]";
             }
         }
-        private void chromiumWebBrowser1_LoadingStateChanged(object sender, CefSharp.LoadingStateChangedEventArgs e) { }
+        private void chromiumWebBrowser1_LoadingStateChanged(object sender, CefSharp.LoadingStateChangedEventArgs e) {
+        
+
+        }
 
         public void buildRes() {
             if (cmdKillerProc == null || cmdKillerProc.IsDisposed) {
@@ -1070,6 +1072,10 @@ namespace matrix_engine {
         private void goToMEGUIEditorSourcethisToolStripMenuItem_Click(object sender, EventArgs e) {
             var t = "https://github.com/zlatnaspirala/matrix-engine-gui";
             Process.Start("chrome.exe", t);
+        }
+
+        private void sHODEVTOOLSToolStripMenuItem_Click(object sender, EventArgs e) {
+            chromiumWebBrowser1.ShowDevTools();
         }
     }
 }
