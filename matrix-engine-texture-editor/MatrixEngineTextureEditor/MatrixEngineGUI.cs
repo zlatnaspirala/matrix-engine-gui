@@ -376,7 +376,7 @@ namespace matrix_engine {
             cmdLoader.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdLoader.btnSendStdinToProcess.PerformClick();
             // npm run host-for-gui Refer on canvas2d part
-            cmdLoader.txtBxStdin.Text = @"npm run host-for-gui";
+            cmdLoader.txtBxStdin.Text = @"http-server -S -C cert.pem -K key.pem -d";
             cmdLoader.btnSendStdinToProcess.PerformClick();
         }
 
@@ -778,6 +778,14 @@ namespace matrix_engine {
             if (resForm != null) {
                 Y_POS = resForm.Location.Y;
                 timer1.Start();
+            } else {
+                // Resouce form
+                resForm = new ResourceVJS3(APP_DIR, this);
+                resForm.Show();
+                resForm.Location = new Point(0, this.Size.Height / 100 * 65);
+                resForm.Size = new Size(this.Size.Width, this.Size.Height / 100 * 35);
+                Y_POS = resForm.Location.Y;
+                this.hideAllToolStripMenuItem.PerformClick();
             }
         }
 
@@ -949,7 +957,7 @@ namespace matrix_engine {
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
             // Host root!
             // cmdWebglHOST.txtBxStdin.Text = @"npm run host-public";
-            cmdWebglHOST.txtBxStdin.Text = @"http-server ./ -S -C fabrikam.crt";
+            cmdWebglHOST.txtBxStdin.Text = @"http-server ./ -S -C cert.pem -d -p 443";
             // 
             cmdWebglHOST.btnSendStdinToProcess.PerformClick();
         }

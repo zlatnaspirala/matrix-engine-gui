@@ -266,18 +266,12 @@ namespace matrix_engine {
                     " mix_operation: 'multiply'" +
                     "} \n";
 
-
-                //
-                CODE_EDITOR.SelectedText = "matrixEngine.objLoader.downloadMeshes( {'" + typeList.SelectedItem.ToString() + "': " + OBJ_PATH.Text.ToString() + " }, " +
-                    "   " + addNewObjectFieldName.Text + "OnLoadObj );\n";
-
                 CODE_EDITOR.SelectedText = "" +
                     "function " + addNewObjectFieldName.Text + "OnLoadObj(meshes) {\n" +
                        "for(let key in meshes) { matrixEngine.objLoader.initMeshBuffers(world.GL.gl, meshes[key])}\n" +
                     "\n" +
                     "world.Add('obj', " + initialScale.Text + ", '" + addNewObjectFieldName.Text + "', " +
                     "tex" + addNewObjectFieldName.Text + " , meshes." + addNewObjectFieldName.Text + ");";
-                    
 
                 // position etc...
                 CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".position.setPosition(" + POSITION.GetX() + ", " + POSITION.GetY() + ", " + POSITION.GetZ() + ");\n";
@@ -289,8 +283,10 @@ namespace matrix_engine {
                     CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.y = " + activeRotation.GetY() + ";\n";
                     CODE_EDITOR.SelectedText = "  App.scene." + addNewObjectFieldName.Text + ".rotation.rotationSpeed.z = " + activeRotation.GetZ() + ";\n";
                 }
+                CODE_EDITOR.SelectedText = "}\n";
 
-                CODE_EDITOR.SelectedText = "}";
+                CODE_EDITOR.SelectedText = "matrixEngine.objLoader.downloadMeshes({" + addNewObjectFieldName.Text + ": '" + OBJ_PATH.Text.ToString() + "'}, " +
+                    addNewObjectFieldName.Text + "OnLoadObj );\n";
             }
 
             // common
