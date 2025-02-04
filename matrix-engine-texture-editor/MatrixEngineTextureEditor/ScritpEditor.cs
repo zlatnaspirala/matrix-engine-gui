@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,9 +28,20 @@ namespace matrix_engine {
             MAINFORM = MAINFORM_;
         }
 
+        public static string GetLocalIPAddress() {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList) {
+                if (ip.AddressFamily == AddressFamily.InterNetwork) {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
         private void ScritpEditor_Load(object sender, EventArgs e) {
             // empty
             toolTip1.SetToolTip(this.SCRIPT_SRC, "Click to open in file explorer.");
+            // DEMOSWEBBROWSER.Navigate("https://" + GetLocalIPAddress() + "/public/examples-builds.html");
         }
 
         private void saveBtn_Click(object sender, EventArgs e) {
@@ -70,6 +83,14 @@ namespace matrix_engine {
             CODE_EDITOR.Text = CODE_EDITOR.Text.Replace("// READONLY_LINE loadEditor();", "loadEditor();");
             CODE_EDITOR.Text = CODE_EDITOR.Text.Replace("// READONLY_LINE loadEditorObjects();", "loadEditorObjects();");
             CODE_EDITOR.Text = CODE_EDITOR.Text.Replace("APPLICATION.EDITOR = false;", "// READONLY_LINE APPLICATION.EDITOR = false;");
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void CODE_EDITOR_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

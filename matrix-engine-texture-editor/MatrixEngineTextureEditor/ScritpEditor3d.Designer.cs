@@ -51,6 +51,8 @@ namespace matrix_engine {
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.helpPanelAddNewObject = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.OBJ_PATH = new System.Windows.Forms.TextBox();
             this.BROWSER_VIDEOS = new System.Windows.Forms.WebBrowser();
             this.RES_IMGS = new matrix_engine.RESOURCE_EXPLORER_CODE_HELPER();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,13 +72,18 @@ namespace matrix_engine {
             this.helpAddNewGameObjectBTN = new System.Windows.Forms.Button();
             this.addNewObjectFieldName = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label7 = new System.Windows.Forms.Label();
-            this.OBJ_PATH = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnGIT = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.helpPanelAddNewObject.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // CODE_EDITOR
@@ -87,6 +94,7 @@ namespace matrix_engine {
             this.CODE_EDITOR.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CODE_EDITOR.ForeColor = System.Drawing.Color.Black;
             this.CODE_EDITOR.Location = new System.Drawing.Point(0, 0);
+            this.CODE_EDITOR.Margin = new System.Windows.Forms.Padding(0);
             this.CODE_EDITOR.Name = "CODE_EDITOR";
             this.CODE_EDITOR.Size = new System.Drawing.Size(916, 635);
             this.CODE_EDITOR.TabIndex = 0;
@@ -109,7 +117,7 @@ namespace matrix_engine {
             this.SCRIPT_SRC.AutoSize = true;
             this.SCRIPT_SRC.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SCRIPT_SRC.ForeColor = System.Drawing.Color.SeaShell;
-            this.SCRIPT_SRC.Location = new System.Drawing.Point(296, 0);
+            this.SCRIPT_SRC.Location = new System.Drawing.Point(3, 22);
             this.SCRIPT_SRC.Name = "SCRIPT_SRC";
             this.SCRIPT_SRC.Size = new System.Drawing.Size(72, 14);
             this.SCRIPT_SRC.TabIndex = 10;
@@ -166,7 +174,7 @@ namespace matrix_engine {
             "generatorLightTex"});
             this.typeList.Location = new System.Drawing.Point(37, 141);
             this.typeList.Name = "typeList";
-            this.typeList.Size = new System.Drawing.Size(218, 21);
+            this.typeList.Size = new System.Drawing.Size(218, 26);
             this.typeList.TabIndex = 89;
             this.toolTip1.SetToolTip(this.typeList, "Choose your matrix-engine game object type.");
             this.typeList.SelectedIndexChanged += new System.EventHandler(this.typeList_SelectedIndexChanged);
@@ -210,7 +218,7 @@ namespace matrix_engine {
             "SRC_ALPHA_SATURATE"});
             this.blendSrc.Location = new System.Drawing.Point(84, 466);
             this.blendSrc.Name = "blendSrc";
-            this.blendSrc.Size = new System.Drawing.Size(171, 21);
+            this.blendSrc.Size = new System.Drawing.Size(171, 26);
             this.blendSrc.TabIndex = 113;
             this.toolTip1.SetToolTip(this.blendSrc, "Choose your matrix-engine game object type.");
             // 
@@ -236,7 +244,7 @@ namespace matrix_engine {
             "SRC_ALPHA_SATURATE"});
             this.blendDest.Location = new System.Drawing.Point(84, 493);
             this.blendDest.Name = "blendDest";
-            this.blendDest.Size = new System.Drawing.Size(171, 21);
+            this.blendDest.Size = new System.Drawing.Size(171, 26);
             this.blendDest.TabIndex = 114;
             this.toolTip1.SetToolTip(this.blendDest, "Choose your matrix-engine game object type.");
             // 
@@ -298,9 +306,10 @@ namespace matrix_engine {
             this.CANVAS_TEXTURE_URL.Name = "CANVAS_TEXTURE_URL";
             this.CANVAS_TEXTURE_URL.Size = new System.Drawing.Size(160, 21);
             this.CANVAS_TEXTURE_URL.TabIndex = 122;
-            this.CANVAS_TEXTURE_URL.Text = "http://localhost/2DTextureEditor/templates/slot/";
+            this.CANVAS_TEXTURE_URL.Text = "https://localhost/2DTextureEditor/templates/slot/";
             this.toolTip1.SetToolTip(this.CANVAS_TEXTURE_URL, "${this.Text}");
             this.CANVAS_TEXTURE_URL.Visible = false;
+            this.CANVAS_TEXTURE_URL.TextChanged += new System.EventHandler(this.CANVAS_TEXTURE_URL_TextChanged);
             // 
             // imageList1
             // 
@@ -392,19 +401,18 @@ namespace matrix_engine {
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.SCRIPT_SRC);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(916, 30);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(916, 40);
             this.flowLayoutPanel2.TabIndex = 17;
+            this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.helpPanelAddNewObject);
             this.panel1.Controls.Add(this.CODE_EDITOR);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(18, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(916, 635);
             this.panel1.TabIndex = 18;
@@ -449,6 +457,32 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.TabIndex = 1;
             this.helpPanelAddNewObject.Visible = false;
             this.helpPanelAddNewObject.Paint += new System.Windows.Forms.PaintEventHandler(this.helpPanelAddNewObject_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label7.Location = new System.Drawing.Point(34, 162);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 15);
+            this.label7.TabIndex = 124;
+            this.label7.Text = "Obj path:";
+            // 
+            // OBJ_PATH
+            // 
+            this.OBJ_PATH.BackColor = System.Drawing.Color.Black;
+            this.OBJ_PATH.Enabled = false;
+            this.OBJ_PATH.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OBJ_PATH.ForeColor = System.Drawing.Color.DarkOrange;
+            this.OBJ_PATH.Location = new System.Drawing.Point(37, 181);
+            this.OBJ_PATH.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.OBJ_PATH.Name = "OBJ_PATH";
+            this.OBJ_PATH.Size = new System.Drawing.Size(367, 21);
+            this.OBJ_PATH.TabIndex = 123;
+            this.OBJ_PATH.Text = "res/3d-objects/";
+            this.OBJ_PATH.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // BROWSER_VIDEOS
             // 
@@ -659,31 +693,52 @@ namespace matrix_engine {
             this.addNewObjectFieldName.Size = new System.Drawing.Size(218, 21);
             this.addNewObjectFieldName.TabIndex = 45;
             // 
-            // label7
+            // tabControl1
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label7.Location = new System.Drawing.Point(34, 162);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 15);
-            this.label7.TabIndex = 124;
-            this.label7.Text = "Obj path:";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControl1.Font = new System.Drawing.Font("Orbitron", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(0, 46);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(916, 619);
+            this.tabControl1.TabIndex = 19;
             // 
-            // OBJ_PATH
+            // tabPage1
             // 
-            this.OBJ_PATH.BackColor = System.Drawing.Color.Black;
-            this.OBJ_PATH.Enabled = false;
-            this.OBJ_PATH.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OBJ_PATH.ForeColor = System.Drawing.Color.DarkOrange;
-            this.OBJ_PATH.Location = new System.Drawing.Point(37, 181);
-            this.OBJ_PATH.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.OBJ_PATH.Name = "OBJ_PATH";
-            this.OBJ_PATH.Size = new System.Drawing.Size(367, 21);
-            this.OBJ_PATH.TabIndex = 123;
-            this.OBJ_PATH.Text = "res/3d-objects/";
-            this.OBJ_PATH.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.tabPage1.BackColor = System.Drawing.Color.Black;
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Font = new System.Drawing.Font("Orbitron", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(908, 590);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "App.js";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.btnGIT);
+            this.tabPage2.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(908, 590);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Examples";
+            // 
+            // btnGIT
+            // 
+            this.btnGIT.Location = new System.Drawing.Point(146, 107);
+            this.btnGIT.Name = "btnGIT";
+            this.btnGIT.Size = new System.Drawing.Size(140, 52);
+            this.btnGIT.TabIndex = 0;
+            this.btnGIT.Text = "button3";
+            this.btnGIT.UseVisualStyleBackColor = true;
+            this.btnGIT.Click += new System.EventHandler(this.btnGIT_Click);
             // 
             // ScritpEditor3d
             // 
@@ -691,10 +746,9 @@ namespace matrix_engine {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(916, 701);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ScritpEditor3d";
             this.Text = "ScritpEditor";
@@ -709,6 +763,9 @@ namespace matrix_engine {
             this.panel1.ResumeLayout(false);
             this.helpPanelAddNewObject.ResumeLayout(false);
             this.helpPanelAddNewObject.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -762,5 +819,9 @@ namespace matrix_engine {
         public System.Windows.Forms.TextBox CANVAS_TEXTURE_URL;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox OBJ_PATH;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnGIT;
     }
 }

@@ -206,5 +206,9 @@ namespace matrix_engine {
                     }
             }
         }
+
+        private void buttonBack_Click(object sender, EventArgs e) {
+            FILEPREVIEW3D.GoBack();
+        }
     }
 }

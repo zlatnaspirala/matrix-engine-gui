@@ -199,7 +199,7 @@ namespace CmdWindowControlTestApp {
             if (text.Contains("listen EADDRINUSE")) {
                 // buildgui.Text = "Build gui 3d ME done.";
                 ADDRESSINUSE.Text = "true";
-            } else if (text.Contains("http://127.0.0.1")) {
+            } else if (text.Contains("https://127.0.0.1")) {
                 if (preventSignalForHost == true) { return; }
                 text = text.Replace("  ", "");
                 result.Text = text;
@@ -248,7 +248,12 @@ namespace CmdWindowControlTestApp {
         }
 
         private void KILL_Click(object sender, EventArgs e) {
-            runningProcess.Kill();
+            try {
+                runningProcess.Kill();
+                runningProcess.Dispose();
+            } catch (Exception err) {
+                MessageBox.Show(@"ERROR IN KILL PROCCESS", "PID : " +  _PID_.ToString() );
+            }
         }
 
         private void groupBox3_Enter(object sender, EventArgs e) {

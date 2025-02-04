@@ -487,5 +487,18 @@ namespace matrix_engine {
         private void textBox1_TextChanged_1(object sender, EventArgs e) {
 
         }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void CANVAS_TEXTURE_URL_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btnGIT_Click(object sender, EventArgs e) {
+            var exampleForm = new Examples();
+            exampleForm.Show();
+        }
     }
 }

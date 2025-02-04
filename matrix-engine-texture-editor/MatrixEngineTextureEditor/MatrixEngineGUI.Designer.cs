@@ -38,6 +38,7 @@ namespace matrix_engine
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runMatrixengineAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopWebServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeFinalPackageAndExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLEARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,9 +86,10 @@ namespace matrix_engine
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.SHOW_DEV = new System.Windows.Forms.Button();
+            this.GO = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.SHOW_DEV = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -104,7 +106,7 @@ namespace matrix_engine
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.chromiumWebBrowser1.Margin = new System.Windows.Forms.Padding(0);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1563, 868);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1563, 877);
             this.chromiumWebBrowser1.TabIndex = 0;
             this.chromiumWebBrowser1.LoadingStateChanged += new System.EventHandler<CefSharp.LoadingStateChangedEventArgs>(this.chromiumWebBrowser1_LoadingStateChanged);
             // 
@@ -150,6 +152,7 @@ namespace matrix_engine
             this.newProjectToolStripMenuItem,
             this.runMatrixengineAppToolStripMenuItem,
             this.loadProjectToolStripMenuItem,
+            this.stopWebServerToolStripMenuItem,
             this.stopEditorToolStripMenuItem,
             this.makeFinalPackageAndExportToolStripMenuItem,
             this.cLEARToolStripMenuItem,
@@ -184,6 +187,14 @@ namespace matrix_engine
             this.loadProjectToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.loadProjectToolStripMenuItem.Text = "Run 2d editor";
             this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
+            // 
+            // stopWebServerToolStripMenuItem
+            // 
+            this.stopWebServerToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.shadedDark35;
+            this.stopWebServerToolStripMenuItem.Name = "stopWebServerToolStripMenuItem";
+            this.stopWebServerToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.stopWebServerToolStripMenuItem.Text = "Stop matrix-engine app";
+            this.stopWebServerToolStripMenuItem.Click += new System.EventHandler(this.stopWebServerToolStripMenuItem_Click);
             // 
             // stopEditorToolStripMenuItem
             // 
@@ -575,6 +586,38 @@ namespace matrix_engine
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // SHOW_DEV
+            // 
+            this.SHOW_DEV.BackColor = System.Drawing.Color.Black;
+            this.SHOW_DEV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SHOW_DEV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SHOW_DEV.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SHOW_DEV.ForeColor = System.Drawing.Color.Lime;
+            this.SHOW_DEV.Location = new System.Drawing.Point(464, 3);
+            this.SHOW_DEV.Name = "SHOW_DEV";
+            this.SHOW_DEV.Size = new System.Drawing.Size(135, 28);
+            this.SHOW_DEV.TabIndex = 6;
+            this.SHOW_DEV.Text = "Debugger";
+            this.toolTip1.SetToolTip(this.SHOW_DEV, "Show Debugger");
+            this.SHOW_DEV.UseVisualStyleBackColor = false;
+            this.SHOW_DEV.Click += new System.EventHandler(this.SHOW_DEV_Click);
+            // 
+            // GO
+            // 
+            this.GO.BackColor = System.Drawing.Color.Black;
+            this.GO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GO.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GO.ForeColor = System.Drawing.Color.Lime;
+            this.GO.Location = new System.Drawing.Point(1416, 3);
+            this.GO.Name = "GO";
+            this.GO.Size = new System.Drawing.Size(59, 28);
+            this.GO.TabIndex = 7;
+            this.GO.Text = "GO";
+            this.toolTip1.SetToolTip(this.GO, "Show Debugger");
+            this.GO.UseVisualStyleBackColor = false;
+            this.GO.Click += new System.EventHandler(this.GO_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -592,8 +635,9 @@ namespace matrix_engine
             this.splitContainer1.Panel2.Controls.Add(this.chromiumWebBrowser1);
             this.splitContainer1.Panel2MinSize = 100;
             this.splitContainer1.Size = new System.Drawing.Size(1563, 908);
-            this.splitContainer1.SplitterDistance = 36;
+            this.splitContainer1.SplitterDistance = 27;
             this.splitContainer1.TabIndex = 6;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // flowLayoutPanel1
             // 
@@ -601,27 +645,12 @@ namespace matrix_engine
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.SHOW_DEV);
             this.flowLayoutPanel1.Controls.Add(this.URLTEXT);
+            this.flowLayoutPanel1.Controls.Add(this.GO);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 27);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // SHOW_DEV
-            // 
-            this.SHOW_DEV.BackColor = System.Drawing.Color.Black;
-            this.SHOW_DEV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SHOW_DEV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SHOW_DEV.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SHOW_DEV.ForeColor = System.Drawing.Color.Lime;
-            this.SHOW_DEV.Location = new System.Drawing.Point(464, 3);
-            this.SHOW_DEV.Name = "SHOW_DEV";
-            this.SHOW_DEV.Size = new System.Drawing.Size(135, 28);
-            this.SHOW_DEV.TabIndex = 6;
-            this.SHOW_DEV.Text = "Debugger";
-            this.toolTip1.SetToolTip(this.SHOW_DEV, "Show Debugger");
-            this.SHOW_DEV.UseVisualStyleBackColor = false;
-            this.SHOW_DEV.Click += new System.EventHandler(this.SHOW_DEV_Click);
             // 
             // MatrixEngineGUI
             // 
@@ -714,6 +743,8 @@ namespace matrix_engine
         private System.Windows.Forms.ToolStripMenuItem goToMEGUIEditorSourcethisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sHODEVTOOLSToolStripMenuItem;
         public System.Windows.Forms.Button SHOW_DEV;
+        public System.Windows.Forms.Button GO;
+        private System.Windows.Forms.ToolStripMenuItem stopWebServerToolStripMenuItem;
     }
 }
 

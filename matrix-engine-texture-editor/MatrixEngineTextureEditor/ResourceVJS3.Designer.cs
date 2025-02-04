@@ -40,6 +40,7 @@ namespace matrix_engine {
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.DESC = new System.Windows.Forms.Label();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -120,6 +121,7 @@ namespace matrix_engine {
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.buttonBack);
             this.tabPage2.Controls.Add(this.FILEPREVIEW3D);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -174,9 +176,9 @@ namespace matrix_engine {
             this.hideMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideMe.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hideMe.ForeColor = System.Drawing.Color.DarkOrange;
-            this.hideMe.Location = new System.Drawing.Point(855, 0);
+            this.hideMe.Location = new System.Drawing.Point(918, 0);
             this.hideMe.Name = "hideMe";
-            this.hideMe.Size = new System.Drawing.Size(198, 42);
+            this.hideMe.Size = new System.Drawing.Size(135, 42);
             this.hideMe.TabIndex = 17;
             this.hideMe.Text = "Hide";
             this.hideMe.UseVisualStyleBackColor = false;
@@ -201,6 +203,20 @@ namespace matrix_engine {
             this.DESC.Size = new System.Drawing.Size(51, 16);
             this.DESC.TabIndex = 18;
             this.DESC.Text = "DESC";
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.BackColor = System.Drawing.Color.Black;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Stormfaze", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBack.ForeColor = System.Drawing.Color.DarkOrange;
+            this.buttonBack.Location = new System.Drawing.Point(1, 257);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(100, 23);
+            this.buttonBack.TabIndex = 18;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // ResourceVJS3
             // 
@@ -248,5 +264,6 @@ namespace matrix_engine {
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.WebBrowser FILEPREVIEW3D;
         private System.Windows.Forms.Label DESC;
+        private System.Windows.Forms.Button buttonBack;
     }
 }

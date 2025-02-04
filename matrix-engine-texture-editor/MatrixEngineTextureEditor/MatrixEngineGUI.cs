@@ -133,8 +133,10 @@ namespace matrix_engine {
 
         private void detectHost(object sender, EventArgs e) {
             string navUrl = cmdLoader.result.Text;
-            URLTEXT.Text = navUrl + "/gui.html";
-            APP_2D_URL = URLTEXT.Text;
+            // URLTEXT.Text = navUrl;
+            URLTEXT.Text = "https://" + GetLocalIPAddress() + "/2DTextureEditor/gui.html";
+           APP_2D_URL = URLTEXT.Text;
+
             if (chromiumWebBrowser1 != null) {
                 chromiumWebBrowser1.Load(URLTEXT.Text);
             }
@@ -147,7 +149,7 @@ namespace matrix_engine {
 
         private void detectEditorRunStatus(object sender, EventArgs e) {
             string navUrl = cmdLoader.result.Text;
-            URLTEXT.Text = navUrl + "\\gui.html";
+            URLTEXT.Text = "https://" + GetLocalIPAddress() + "/2DTextureEditor/gui.html";
             if (chromiumWebBrowser1 != null) {
                 chromiumWebBrowser1.Load(URLTEXT.Text);
             }
@@ -194,7 +196,7 @@ namespace matrix_engine {
             resForm.Location = new Point(0, this.Size.Height / 100 * 65);
             resForm.Size = new Size(this.Size.Width, this.Size.Height / 100 * 35);
             Y_POS = resForm.Location.Y;
-            this.hideAllToolStripMenuItem.PerformClick();
+            // this.hideAllToolStripMenuItem.PerformClick();
         }
 
 
@@ -357,6 +359,7 @@ namespace matrix_engine {
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
             cmdVJS3EDITOR.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
+            // Node.js app/part
             cmdVJS3EDITOR.txtBxStdin.Text = @"npm run te";
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
         }
@@ -378,7 +381,7 @@ namespace matrix_engine {
             cmdLoader.txtBxStdin.Text = @"cd " + APP_DIR;
             cmdLoader.btnSendStdinToProcess.PerformClick();
             // npm run host-for-gui Refer on canvas2d part
-            cmdLoader.txtBxStdin.Text = @"http-server -S -C cert.pem -K key.pem -d";
+            cmdLoader.txtBxStdin.Text = @"http-server ./ -S -C cert.pem -K key.pem -p 8080";
             cmdLoader.btnSendStdinToProcess.PerformClick();
         }
 
@@ -543,7 +546,9 @@ namespace matrix_engine {
                     cmdVJS3WATCH.Dispose();
                 }
 
-            } catch (Exception err) { }
+            } catch (Exception err) {
+                MessageBox.Show("ERRRR",  err.ToString());
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -582,13 +587,18 @@ namespace matrix_engine {
         }
 
         private void hideAllToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cmdLoader != null && cmdVJS3EDITOR != null && cmdVJS3WATCH != null) {
+            if (cmdLoader != null && cmdLoader.IsDisposed == false) {
                 cmdLoader.Hide();
-                cmdVJS3EDITOR.Hide();
-                cmdVJS3WATCH.Hide();
-            } else {
-                //  MessageBox.Show("You need to run editor first!", "Info", MessageBoxButtons.OK);
             }
+
+            if (cmdVJS3EDITOR != null && cmdVJS3EDITOR.IsDisposed == false) {
+                cmdVJS3EDITOR.Hide();
+            }
+
+            if (cmdVJS3WATCH != null && cmdVJS3WATCH.IsDisposed == false) {
+                cmdVJS3WATCH.Hide();
+            }
+
             if (cmdKillerProc != null && cmdKillerProc.IsDisposed == false) {
                 cmdKillerProc.Hide();
             }
@@ -659,9 +669,15 @@ namespace matrix_engine {
 
         private void showAllToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cmdLoader != null && cmdVJS3EDITOR != null && cmdVJS3WATCH != null) {
-                cmdLoader.Show();
-                cmdVJS3EDITOR.Show();
-                cmdVJS3WATCH.Show();
+                if (cmdLoader.IsDisposed == false) {
+                    cmdLoader.Show();
+                }
+                if (cmdVJS3EDITOR.IsDisposed == false) {
+                    cmdVJS3EDITOR.Show();
+                }
+                if (cmdVJS3WATCH.IsDisposed == false) {
+                    cmdVJS3WATCH.Show();
+                }
             } else {
                // MessageBox.Show("You need to run editor first!", "Info", MessageBoxButtons.OK);
             }
@@ -861,7 +877,7 @@ namespace matrix_engine {
         }
 
         private void runMatrixengineAppToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cmdWebglHOST != null) {
+            if (cmdWebglHOST != null && cmdWebglHOST.IsDisposed == false) {
                 MessageBox.Show("Matrix-engine [3d part] hosting already runned...", "Matrix-Engine", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -1080,6 +1096,22 @@ namespace matrix_engine {
 
         private void SHOW_DEV_Click(object sender, EventArgs e) {
             chromiumWebBrowser1.ShowDevTools();
+        }
+
+        private void GO_Click(object sender, EventArgs e) {
+            chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
+
+        }
+
+        private void stopWebServerToolStripMenuItem_Click(object sender, EventArgs e) {
+            // cmdWebglHOST.KILL.PerformClick();
+            KillProcessAndChildren(cmdWebglHOST._PID_);
+            cmdWebglHOST.Close();
+            cmdWebglHOST.Dispose();
+
         }
     }
 }
