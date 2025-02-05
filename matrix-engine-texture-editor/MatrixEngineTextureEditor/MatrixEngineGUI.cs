@@ -135,7 +135,7 @@ namespace matrix_engine {
             string navUrl = cmdLoader.result.Text;
             // URLTEXT.Text = navUrl;
             URLTEXT.Text = "https://" + GetLocalIPAddress() + "/2DTextureEditor/gui.html";
-           APP_2D_URL = URLTEXT.Text;
+            APP_2D_URL = URLTEXT.Text;
 
             if (chromiumWebBrowser1 != null) {
                 chromiumWebBrowser1.Load(URLTEXT.Text);
@@ -179,7 +179,7 @@ namespace matrix_engine {
             // MatrixEngine webGL part
             scriptGUIEditor3d = new ScritpEditor3d(APP_DIR, APP_NAME, this);
             scriptGUIEditor3d.Show();
-            scriptGUIEditor3d.Location = new Point(this.Size.Width / 100 * 60, 25);
+            scriptGUIEditor3d.Location = new Point(this.Size.Width / 100 * 50, 25);
             scriptGUIEditor3d.SCRIPT_SRC.Text = APP_DIR;
             // scritpEditorAndroid new 
             if (scritpEditorAndroid != null && scritpEditorAndroid.IsDisposed == false) {
@@ -187,7 +187,7 @@ namespace matrix_engine {
             } else {
                 scritpEditorAndroid = new ScritpEditorAndroid(APP_DIR, APP_NAME, this);
                 scritpEditorAndroid.Show();
-                scritpEditorAndroid.Location = new Point(this.Size.Width / 100 * 60, 25);
+                scritpEditorAndroid.Location = new Point(this.Size.Width / 100 * 50, 25);
                 scritpEditorAndroid.SCRIPT_SRC.Text = APP_DIR;
             }
             // Resouce form
@@ -227,7 +227,7 @@ namespace matrix_engine {
             }
         }
         private void chromiumWebBrowser1_LoadingStateChanged(object sender, CefSharp.LoadingStateChangedEventArgs e) {
-        
+
 
         }
 
@@ -341,7 +341,7 @@ namespace matrix_engine {
         public void cmdKillerLoader(object sender, EventArgs e) { }
 
         private void cmdWATCHLoader(object sender, EventArgs e) {
-            cmdVJS3WATCH.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + this.Size.Height / 4);
+            cmdVJS3WATCH.Location = new Point(Location.X + Size.Width / 100 * 50, Location.Y + this.Size.Height / 4);
             cmdVJS3WATCH.txtBxStdin.Text = @"c:";
             cmdVJS3WATCH.btnSendStdinToProcess.PerformClick();
             cmdVJS3WATCH.txtBxStdin.Text = @"cd " + APP_DIR;
@@ -354,7 +354,7 @@ namespace matrix_engine {
 
         private void cmdEDITORLoader(object sender, EventArgs e) {
             cmdVJS3EDITOR.resultEditor.TextChanged += detectEditorRunStatus;
-            cmdVJS3EDITOR.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + 2 * this.Size.Height / 4);
+            cmdVJS3EDITOR.Location = new Point(Location.X + Size.Width / 100 * 50, Location.Y + 2 * this.Size.Height / 4);
             cmdVJS3EDITOR.txtBxStdin.Text = @"c:";
             cmdVJS3EDITOR.btnSendStdinToProcess.PerformClick();
             cmdVJS3EDITOR.txtBxStdin.Text = @"cd " + APP_DIR;
@@ -375,7 +375,7 @@ namespace matrix_engine {
             if (File.Exists(TEXTURE_JS_FILE) != true) {
                 File.WriteAllText(TEXTURE_JS_FILE, PACKAGE_CONTENT);
             }
-            cmdLoader.Location = new Point(Location.X + Size.Width / 100 * 55, Location.Y + 3 * this.Size.Height / 4);
+            cmdLoader.Location = new Point(Location.X + Size.Width / 100 * 50, Location.Y + 3 * this.Size.Height / 4);
             cmdLoader.txtBxStdin.Text = @"c:";
             cmdLoader.btnSendStdinToProcess.PerformClick();
             cmdLoader.txtBxStdin.Text = @"cd " + APP_DIR;
@@ -547,7 +547,7 @@ namespace matrix_engine {
                 }
 
             } catch (Exception err) {
-                MessageBox.Show("ERRRR",  err.ToString());
+                MessageBox.Show("ERRRR", err.ToString());
             }
         }
 
@@ -616,9 +616,9 @@ namespace matrix_engine {
                 cmdKillerProc.Show();
             } else {
                 cmdKillerProc.Show();
-            }            
+            }
         }
-          
+
         private void x512ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (chromiumWebBrowser1 != null) {
                 chromiumWebBrowser1.Dock = DockStyle.None;
@@ -668,19 +668,20 @@ namespace matrix_engine {
         }
 
         private void showAllToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cmdLoader != null && cmdVJS3EDITOR != null && cmdVJS3WATCH != null) {
-                if (cmdLoader.IsDisposed == false) {
-                    cmdLoader.Show();
-                }
-                if (cmdVJS3EDITOR.IsDisposed == false) {
-                    cmdVJS3EDITOR.Show();
-                }
-                if (cmdVJS3WATCH.IsDisposed == false) {
-                    cmdVJS3WATCH.Show();
-                }
-            } else {
-               // MessageBox.Show("You need to run editor first!", "Info", MessageBoxButtons.OK);
+            // cmdWebglRun
+            if (cmdWebglRun != null && cmdWebglRun.IsDisposed == false) {
+                cmdWebglRun.Show();
             }
+            if (cmdLoader != null && cmdLoader.IsDisposed == false) {
+                cmdLoader.Show();
+            }
+            if (cmdVJS3EDITOR != null && cmdVJS3EDITOR.IsDisposed == false) {
+                cmdVJS3EDITOR.Show();
+            }
+            if (cmdVJS3WATCH != null && cmdVJS3WATCH.IsDisposed == false) {
+                cmdVJS3WATCH.Show();
+            }
+
 
             if (cmdKillerProc != null && cmdKillerProc.IsDisposed == false) {
                 cmdKillerProc.Show();
@@ -773,19 +774,19 @@ namespace matrix_engine {
                 if (chromiumWebBrowser1 != null) {
                     chromiumWebBrowser1.Show();
                 }
-            } catch (Exception err) {   }
+            } catch (Exception err) { }
         }
 
         public Rectangle GetScreen() {
             return Screen.FromControl(this).Bounds;
         }
 
-        
+
         private void SHOW_RES_FORM(object sender, EventArgs e) {
             if (resForm != null && resForm.IsDisposed == false) {
                 Y_POS = Y_POS - 12;
                 resForm.Location = new Point(resForm.Location.X, Y_POS);
-                if (Y_POS < GetScreen().Height /100 * 67) {
+                if (Y_POS < GetScreen().Height / 100 * 67) {
                     timer1.Stop();
                 }
             }
@@ -855,7 +856,7 @@ namespace matrix_engine {
             } else {
                 // MessageBox.Show("Editor is not active!", "MatrixEngine GUI editor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 APP_DIR = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
-            }          
+            }
         }
 
         private void eXPORTSToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -913,7 +914,7 @@ namespace matrix_engine {
             }
 
             if (cmdWebglHOST != null && cmdWebglHOST.IsDisposed == false) {
-               //  cmdWebglHOST.Hide();
+                //  cmdWebglHOST.Hide();
             }
 
             cmdWebglRun.WindowState = FormWindowState.Minimized;
@@ -993,12 +994,12 @@ namespace matrix_engine {
         private void button2_Click(object sender, EventArgs e) {
             if (chromiumWebBrowser1 != null && chromiumWebBrowser1.IsDisposed == false && chromiumWebBrowser1.Visible == true) {
                 ClearCache();
-                URLTEXT.Text = "https://"+ GetLocalIPAddress() + "/public/gui.html";
-                chromiumWebBrowser1.LoadUrl("https://"+ GetLocalIPAddress() + "/public/gui.html");
+                URLTEXT.Text = "https://" + GetLocalIPAddress() + "/public/gui.html";
+                chromiumWebBrowser1.LoadUrl("https://" + GetLocalIPAddress() + "/public/gui.html");
             } else {
                 if (FSBrowser != null && FSBrowser.IsDisposed == false && FSBrowser.chromiumWebBrowser1.IsDisposed == false && FSBrowser.Visible == true) {
                     ClearCachePopup();
-                    URLTEXT.Text = "https://"+ GetLocalIPAddress() + "/public/gui.html";
+                    URLTEXT.Text = "https://" + GetLocalIPAddress() + "/public/gui.html";
                     FSBrowser.chromiumWebBrowser1.LoadUrl(URLTEXT.Text);
                 }
             }
@@ -1067,7 +1068,7 @@ namespace matrix_engine {
         }
 
         private void aLLDEPSLIBSToolStripMenuItem_Click(object sender, EventArgs e) {
-            DialogResult dialogResult = MessageBox.Show("Are you sure to delete all deps libraries ", "Matrix-Engine GUI" , MessageBoxButtons.YesNo , MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Are you sure to delete all deps libraries ", "Matrix-Engine GUI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes) {
                 var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\";
                 Directory.Delete(APP_DIR_TEST, true);

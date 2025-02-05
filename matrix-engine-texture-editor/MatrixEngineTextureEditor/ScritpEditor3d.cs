@@ -17,6 +17,7 @@ namespace matrix_engine {
     public partial class ScritpEditor3d : Form {
         MatrixEngineGUI MAINFORM;
         public string PATH = "";
+        public string ROOT_PATH = "";
         public CmdWindowControlTestApp.Android cmdVJS3WATCH;
         Boolean PREVENT_SAVE = false;
         public string RES3DFOLDER = "";
@@ -26,7 +27,8 @@ namespace matrix_engine {
 
         public ScritpEditor3d(String P, String APP_NAME, MatrixEngineGUI MAINFORM_) {
             InitializeComponent();
-            PATH = P + "\\gui\\app.js";
+            ROOT_PATH = P;
+            PATH = P + "gui\\app.js";
             RES3DFOLDER = P + @"public\res";
             RES3DFOLDER_IMGS = P + @"public\res\images";
             RES3DFOLDER_VIDEOS = P + @"public\res\video-texture";
@@ -48,6 +50,7 @@ namespace matrix_engine {
         public void test(object sender, EventArgs e) {
             // MessageBox.Show("Matrix-engine project js pack builded.", "Status good");
             PREVENT_SAVE = false;
+            Thread.Sleep(1500);
             MAINFORM.button2.PerformClick();
         }
         private void saveBtn_Click(object sender, EventArgs e) {
@@ -499,6 +502,42 @@ namespace matrix_engine {
         private void btnGIT_Click(object sender, EventArgs e) {
             var exampleForm = new Examples();
             exampleForm.Show();
+        }
+
+        private void GAME_TEMPLATES_FPS_Click(object sender, EventArgs e) {
+
+            var loadFPS_CODE = ROOT_PATH + "\\apps\\fps_player_controller.js";
+            StreamReader sr = new StreamReader(loadFPS_CODE);
+            CODE_EDITOR.Text = sr.ReadToEnd().ToString();
+            // FIX
+            CODE_EDITOR.Text.Replace("'./rocket-crafting-server/dom.js'", "'./apps/rocket-crafting-server/dom.js'");
+
+            sr.Close();
+
+
+            CODE_EDITOR.Text += @"
+                var world;
+
+                window.addEventListener('load', function(e) {
+	                if('serviceWorker' in navigator) {
+		                // navigator.serviceWorker.register('worker.js'); DISABLED
+	                } else {
+		                console.warn('Matrix Engine: No webWorkers for locahost OR No support for web workers in this browser.');
+	                }
+	                App.ready = true;
+	                matrixEngine.Engine.initApp(webGLStart);
+                });
+
+                window.webGLStart = () => {
+	                window.App = App;
+	                world = matrixEngine.matrixWorld.defineworld(canvas);
+	                world.callReDraw();
+	                runThis(world);
+                };
+
+                window.matrixEngine = matrixEngine;";
+
+
         }
     }
 }
