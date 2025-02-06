@@ -1070,8 +1070,38 @@ namespace matrix_engine {
         private void aLLDEPSLIBSToolStripMenuItem_Click(object sender, EventArgs e) {
             DialogResult dialogResult = MessageBox.Show("Are you sure to delete all deps libraries ", "Matrix-Engine GUI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes) {
-                var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\";
-                Directory.Delete(APP_DIR_TEST, true);
+                var APP_DIR_TEST = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine\";
+                try {
+                    if (cmdKillerProc == null) {
+                        cmdKillerProc = new CmdWindowControlTestApp.MainForm();
+                        // cmdKillerProc.Load += cmdKillerLoader;
+                    }
+                    cmdKillerProc.Show();
+                    // 
+                    // 
+
+                    cmdKillerProc.txtBxStdin.Text = @"cd " + APP_DIR_TEST;
+                    cmdKillerProc.btnSendStdinToProcess.PerformClick();
+
+                    cmdKillerProc.txtBxStdin.Text = APP_DIR_TEST[0] + @":";
+                    cmdKillerProc.btnSendStdinToProcess.PerformClick();
+
+                    // rm -rf .git
+                    cmdKillerProc.txtBxStdin.Text = @"rm -rf .git";
+                    cmdKillerProc.btnSendStdinToProcess.PerformClick();
+
+                    cmdKillerProc.txtBxStdin.Text = @"cd ..";
+                    cmdKillerProc.btnSendStdinToProcess.PerformClick();
+
+                    cmdKillerProc.txtBxStdin.Text = @"cd ..";
+                    cmdKillerProc.btnSendStdinToProcess.PerformClick();
+
+                    Directory.Delete(APP_DIR_TEST, true);
+
+                    newProjectToolStripMenuItem.Enabled = true;
+                } catch (Exception err) {
+                    MessageBox.Show(@"Error  : " + err, "Error in clearing deps procedure...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

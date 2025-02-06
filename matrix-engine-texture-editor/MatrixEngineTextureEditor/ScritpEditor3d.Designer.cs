@@ -340,15 +340,16 @@ namespace matrix_engine {
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.menuStrip1.Font = new System.Drawing.Font("Stormfaze", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Stormfaze", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codeHelperToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip1.Location = new System.Drawing.Point(421, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(489, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(230, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(162, 31);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -364,7 +365,7 @@ namespace matrix_engine {
             this.physicsToolStripMenuItem});
             this.codeHelperToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.codeHelperToolStripMenuItem.Name = "codeHelperToolStripMenuItem";
-            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(162, 30);
             this.codeHelperToolStripMenuItem.Text = "Code helper";
             this.codeHelperToolStripMenuItem.Click += new System.EventHandler(this.codeHelperToolStripMenuItem_Click);
             // 
@@ -373,21 +374,21 @@ namespace matrix_engine {
             this.addNewCubeToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.addNewCubeToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.addNewCubeToolStripMenuItem.Name = "addNewCubeToolStripMenuItem";
-            this.addNewCubeToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.addNewCubeToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.addNewCubeToolStripMenuItem.Text = "Add new game object";
             this.addNewCubeToolStripMenuItem.Click += new System.EventHandler(this.addNewCubeToolStripMenuItem_Click);
             // 
             // aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem
             // 
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Name = "aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem";
-            this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Text = "Add first person camera";
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Click += new System.EventHandler(this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem_Click);
             // 
             // addSceneCameraToolStripMenuItem
             // 
             this.addSceneCameraToolStripMenuItem.Name = "addSceneCameraToolStripMenuItem";
-            this.addSceneCameraToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.addSceneCameraToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.addSceneCameraToolStripMenuItem.Text = "Add Scene camera";
             this.addSceneCameraToolStripMenuItem.Click += new System.EventHandler(this.addSceneCameraToolStripMenuItem_Click);
             // 
@@ -397,13 +398,13 @@ namespace matrix_engine {
             this.rayhiteventToolStripMenuItem,
             this.rayhiteventOnMousemoveToolStripMenuItem});
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
-            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.addEventToolStripMenuItem.Text = "Add event";
             // 
             // rayhiteventToolStripMenuItem
             // 
             this.rayhiteventToolStripMenuItem.Name = "rayhiteventToolStripMenuItem";
-            this.rayhiteventToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.rayhiteventToolStripMenuItem.Size = new System.Drawing.Size(411, 30);
             this.rayhiteventToolStripMenuItem.Text = "ray.hit.event on mousedown";
             this.rayhiteventToolStripMenuItem.Click += new System.EventHandler(this.rayhiteventToolStripMenuItem_Click);
             // 
@@ -800,20 +801,20 @@ namespace matrix_engine {
             this.networkingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addActivateCodeToolStripMenuItem});
             this.networkingToolStripMenuItem.Name = "networkingToolStripMenuItem";
-            this.networkingToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.networkingToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.networkingToolStripMenuItem.Text = "Networking";
             // 
             // addActivateCodeToolStripMenuItem
             // 
             this.addActivateCodeToolStripMenuItem.Name = "addActivateCodeToolStripMenuItem";
-            this.addActivateCodeToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addActivateCodeToolStripMenuItem.Size = new System.Drawing.Size(287, 30);
             this.addActivateCodeToolStripMenuItem.Text = "Add Activate code";
             this.addActivateCodeToolStripMenuItem.Click += new System.EventHandler(this.addActivateCodeToolStripMenuItem_Click);
             // 
             // rayhiteventOnMousemoveToolStripMenuItem
             // 
             this.rayhiteventOnMousemoveToolStripMenuItem.Name = "rayhiteventOnMousemoveToolStripMenuItem";
-            this.rayhiteventOnMousemoveToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.rayhiteventOnMousemoveToolStripMenuItem.Size = new System.Drawing.Size(411, 30);
             this.rayhiteventOnMousemoveToolStripMenuItem.Text = "ray.hit.event on mousemove";
             this.rayhiteventOnMousemoveToolStripMenuItem.Click += new System.EventHandler(this.rayhiteventOnMousemoveToolStripMenuItem_Click);
             // 
@@ -823,20 +824,20 @@ namespace matrix_engine {
             this.activateCodeToolStripMenuItem,
             this.addCubeToolStripMenuItem});
             this.physicsToolStripMenuItem.Name = "physicsToolStripMenuItem";
-            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(375, 30);
             this.physicsToolStripMenuItem.Text = "Physics";
             // 
             // activateCodeToolStripMenuItem
             // 
             this.activateCodeToolStripMenuItem.Name = "activateCodeToolStripMenuItem";
-            this.activateCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.activateCodeToolStripMenuItem.Size = new System.Drawing.Size(237, 30);
             this.activateCodeToolStripMenuItem.Text = "Activate code";
             this.activateCodeToolStripMenuItem.Click += new System.EventHandler(this.activateCodeToolStripMenuItem_Click);
             // 
             // addCubeToolStripMenuItem
             // 
             this.addCubeToolStripMenuItem.Name = "addCubeToolStripMenuItem";
-            this.addCubeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addCubeToolStripMenuItem.Size = new System.Drawing.Size(237, 30);
             this.addCubeToolStripMenuItem.Text = "Add cube";
             this.addCubeToolStripMenuItem.Click += new System.EventHandler(this.addCubeToolStripMenuItem_Click);
             // 
