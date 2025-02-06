@@ -505,15 +505,12 @@ namespace matrix_engine {
         }
 
         private void GAME_TEMPLATES_FPS_Click(object sender, EventArgs e) {
-
             var loadFPS_CODE = ROOT_PATH + "\\apps\\fps_player_controller.js";
             StreamReader sr = new StreamReader(loadFPS_CODE);
             CODE_EDITOR.Text = sr.ReadToEnd().ToString();
             // FIX
             CODE_EDITOR.Text.Replace("'./rocket-crafting-server/dom.js'", "'./apps/rocket-crafting-server/dom.js'");
-
             sr.Close();
-
 
             CODE_EDITOR.Text += @"
                 var world;
@@ -538,6 +535,59 @@ namespace matrix_engine {
                 window.matrixEngine = matrixEngine;";
 
 
+        }
+
+        private void addActivateCodeToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = " \n" +
+            "  matrixEngine.Engine.activateNet2(undefined, \n " +
+            "{ \n" +
+            "    sessionName: 'matrix-engine-shared-object', \n" +
+		    "    resolution: '240x160' \n" +
+            " }) ;\n" + 
+            "      \n";
+            CODE_EDITOR.Paste();
+        }
+
+        private void rayhiteventOnMousemoveToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = " \n" +
+            " window.addEventListener('ray.hit.event', (ev) => {\n" +
+            "   console.log('You shoot the object. Nice!', ev)\n" +
+            " });\n" +
+            " \n " +
+            " canvas.addEventListener('mousemove', (ev) => {\n" +
+            "   matrixEngine.raycaster.checkingProcedure(ev);\n " +
+            "  });\n";
+            CODE_EDITOR.Paste();
+        }
+
+        private void activateCodeToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = " \n" +
+            " let gravityVector = [0, 0, -9.82];\n" +
+            " let physics = world.loadPhysics(gravityVector);\n" +
+            " // Add ground\n" +
+            " physics.addGround(App, world, tex);\n";
+            CODE_EDITOR.Paste();
+
+        }
+
+        private void addCubeToolStripMenuItem_Click(object sender, EventArgs e) {
+            Clipboard.Clear();
+            CODE_EDITOR.SelectedText = " \n" +
+            " world.Add('cubeLightTex', 1, 'CUBE', tex); \n" +
+            " var b = new CANNON.Body({\n" +
+            "    mass: 5,\n" +
+            "    position: new CANNON.Vec3(0, -15, 2),\n" +
+            "    shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1))\n" +
+            " });\n" +
+            " physics.world.addBody(b);\n" +
+            " // Physics\n" +
+            " App.scene.CUBE.physics.currentBody = b;\n" +
+            " App.scene.CUBE.physics.enabled = true;\n";
+            CODE_EDITOR.Paste();
         }
     }
 }

@@ -79,6 +79,12 @@ namespace matrix_engine {
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnGIT = new System.Windows.Forms.Button();
+            this.networkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addActivateCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rayhiteventOnMousemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.physicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activateCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -98,7 +104,7 @@ namespace matrix_engine {
             this.CODE_EDITOR.Location = new System.Drawing.Point(0, 0);
             this.CODE_EDITOR.Margin = new System.Windows.Forms.Padding(0);
             this.CODE_EDITOR.Name = "CODE_EDITOR";
-            this.CODE_EDITOR.Size = new System.Drawing.Size(1017, 596);
+            this.CODE_EDITOR.Size = new System.Drawing.Size(1017, 369);
             this.CODE_EDITOR.TabIndex = 0;
             this.CODE_EDITOR.Text = "";
             this.CODE_EDITOR.TextChanged += new System.EventHandler(this.CODE_EDITOR_TextChanged);
@@ -326,7 +332,7 @@ namespace matrix_engine {
             this.flowLayoutPanel1.Controls.Add(this.menuStrip1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 665);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 438);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1025, 36);
             this.flowLayoutPanel1.TabIndex = 16;
@@ -334,15 +340,15 @@ namespace matrix_engine {
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.menuStrip1.Font = new System.Drawing.Font("Stormfaze", 8.25F);
+            this.menuStrip1.Font = new System.Drawing.Font("Stormfaze", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.codeHelperToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip1.Location = new System.Drawing.Point(557, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(421, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(94, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(230, 31);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -353,10 +359,12 @@ namespace matrix_engine {
             this.addNewCubeToolStripMenuItem,
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem,
             this.addSceneCameraToolStripMenuItem,
-            this.addEventToolStripMenuItem});
+            this.addEventToolStripMenuItem,
+            this.networkingToolStripMenuItem,
+            this.physicsToolStripMenuItem});
             this.codeHelperToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.codeHelperToolStripMenuItem.Name = "codeHelperToolStripMenuItem";
-            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(91, 17);
+            this.codeHelperToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.codeHelperToolStripMenuItem.Text = "Code helper";
             this.codeHelperToolStripMenuItem.Click += new System.EventHandler(this.codeHelperToolStripMenuItem_Click);
             // 
@@ -365,37 +373,38 @@ namespace matrix_engine {
             this.addNewCubeToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.addNewCubeToolStripMenuItem.ForeColor = System.Drawing.Color.OrangeRed;
             this.addNewCubeToolStripMenuItem.Name = "addNewCubeToolStripMenuItem";
-            this.addNewCubeToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.addNewCubeToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.addNewCubeToolStripMenuItem.Text = "Add new game object";
             this.addNewCubeToolStripMenuItem.Click += new System.EventHandler(this.addNewCubeToolStripMenuItem_Click);
             // 
             // aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem
             // 
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Name = "aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem";
-            this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Text = "Add first person camera";
             this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem.Click += new System.EventHandler(this.aDDFIRSTPERSONLOOKCAMERAToolStripMenuItem_Click);
             // 
             // addSceneCameraToolStripMenuItem
             // 
             this.addSceneCameraToolStripMenuItem.Name = "addSceneCameraToolStripMenuItem";
-            this.addSceneCameraToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.addSceneCameraToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.addSceneCameraToolStripMenuItem.Text = "Add Scene camera";
             this.addSceneCameraToolStripMenuItem.Click += new System.EventHandler(this.addSceneCameraToolStripMenuItem_Click);
             // 
             // addEventToolStripMenuItem
             // 
             this.addEventToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rayhiteventToolStripMenuItem});
+            this.rayhiteventToolStripMenuItem,
+            this.rayhiteventOnMousemoveToolStripMenuItem});
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
-            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.addEventToolStripMenuItem.Text = "Add event";
             // 
             // rayhiteventToolStripMenuItem
             // 
             this.rayhiteventToolStripMenuItem.Name = "rayhiteventToolStripMenuItem";
-            this.rayhiteventToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.rayhiteventToolStripMenuItem.Text = "ray.hit.event";
+            this.rayhiteventToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.rayhiteventToolStripMenuItem.Text = "ray.hit.event on mousedown";
             this.rayhiteventToolStripMenuItem.Click += new System.EventHandler(this.rayhiteventToolStripMenuItem_Click);
             // 
             // flowLayoutPanel2
@@ -420,7 +429,7 @@ namespace matrix_engine {
             this.tabControl1.Location = new System.Drawing.Point(0, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1025, 625);
+            this.tabControl1.Size = new System.Drawing.Size(1025, 398);
             this.tabControl1.TabIndex = 19;
             // 
             // tabPage1
@@ -433,7 +442,7 @@ namespace matrix_engine {
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1017, 596);
+            this.tabPage1.Size = new System.Drawing.Size(1017, 369);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "App.js";
             // 
@@ -473,7 +482,7 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.helpPanelAddNewObject.Location = new System.Drawing.Point(0, 0);
             this.helpPanelAddNewObject.Name = "helpPanelAddNewObject";
-            this.helpPanelAddNewObject.Size = new System.Drawing.Size(1017, 596);
+            this.helpPanelAddNewObject.Size = new System.Drawing.Size(1017, 369);
             this.helpPanelAddNewObject.TabIndex = 1;
             this.helpPanelAddNewObject.Visible = false;
             this.helpPanelAddNewObject.Paint += new System.Windows.Forms.PaintEventHandler(this.helpPanelAddNewObject_Paint);
@@ -715,7 +724,7 @@ namespace matrix_engine {
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.BackColor = System.Drawing.Color.Black;
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.GAME_TEMPLATES_FPS);
             this.tabPage2.Controls.Add(this.label9);
@@ -725,7 +734,7 @@ namespace matrix_engine {
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1017, 590);
+            this.tabPage2.Size = new System.Drawing.Size(1017, 596);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Examples and Live Demos";
             // 
@@ -786,12 +795,57 @@ namespace matrix_engine {
             this.btnGIT.UseVisualStyleBackColor = false;
             this.btnGIT.Click += new System.EventHandler(this.btnGIT_Click);
             // 
+            // networkingToolStripMenuItem
+            // 
+            this.networkingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addActivateCodeToolStripMenuItem});
+            this.networkingToolStripMenuItem.Name = "networkingToolStripMenuItem";
+            this.networkingToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.networkingToolStripMenuItem.Text = "Networking";
+            // 
+            // addActivateCodeToolStripMenuItem
+            // 
+            this.addActivateCodeToolStripMenuItem.Name = "addActivateCodeToolStripMenuItem";
+            this.addActivateCodeToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addActivateCodeToolStripMenuItem.Text = "Add Activate code";
+            this.addActivateCodeToolStripMenuItem.Click += new System.EventHandler(this.addActivateCodeToolStripMenuItem_Click);
+            // 
+            // rayhiteventOnMousemoveToolStripMenuItem
+            // 
+            this.rayhiteventOnMousemoveToolStripMenuItem.Name = "rayhiteventOnMousemoveToolStripMenuItem";
+            this.rayhiteventOnMousemoveToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.rayhiteventOnMousemoveToolStripMenuItem.Text = "ray.hit.event on mousemove";
+            this.rayhiteventOnMousemoveToolStripMenuItem.Click += new System.EventHandler(this.rayhiteventOnMousemoveToolStripMenuItem_Click);
+            // 
+            // physicsToolStripMenuItem
+            // 
+            this.physicsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.activateCodeToolStripMenuItem,
+            this.addCubeToolStripMenuItem});
+            this.physicsToolStripMenuItem.Name = "physicsToolStripMenuItem";
+            this.physicsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.physicsToolStripMenuItem.Text = "Physics";
+            // 
+            // activateCodeToolStripMenuItem
+            // 
+            this.activateCodeToolStripMenuItem.Name = "activateCodeToolStripMenuItem";
+            this.activateCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.activateCodeToolStripMenuItem.Text = "Activate code";
+            this.activateCodeToolStripMenuItem.Click += new System.EventHandler(this.activateCodeToolStripMenuItem_Click);
+            // 
+            // addCubeToolStripMenuItem
+            // 
+            this.addCubeToolStripMenuItem.Name = "addCubeToolStripMenuItem";
+            this.addCubeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addCubeToolStripMenuItem.Text = "Add cube";
+            this.addCubeToolStripMenuItem.Click += new System.EventHandler(this.addCubeToolStripMenuItem_Click);
+            // 
             // ScritpEditor3d
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1025, 701);
+            this.ClientSize = new System.Drawing.Size(1025, 474);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -872,5 +926,11 @@ namespace matrix_engine {
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button helpAddNewGameObjectBTN;
         public System.Windows.Forms.TextBox addNewObjectFieldName;
+        private System.Windows.Forms.ToolStripMenuItem networkingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addActivateCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rayhiteventOnMousemoveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem physicsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activateCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCubeToolStripMenuItem;
     }
 }
