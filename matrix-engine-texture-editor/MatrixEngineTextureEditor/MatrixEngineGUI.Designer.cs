@@ -106,7 +106,7 @@ namespace matrix_engine
             this.chromiumWebBrowser1.Location = new System.Drawing.Point(0, 0);
             this.chromiumWebBrowser1.Margin = new System.Windows.Forms.Padding(0);
             this.chromiumWebBrowser1.Name = "chromiumWebBrowser1";
-            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1563, 877);
+            this.chromiumWebBrowser1.Size = new System.Drawing.Size(1563, 873);
             this.chromiumWebBrowser1.TabIndex = 0;
             this.chromiumWebBrowser1.LoadingStateChanged += new System.EventHandler<CefSharp.LoadingStateChangedEventArgs>(this.chromiumWebBrowser1_LoadingStateChanged);
             // 
@@ -549,8 +549,10 @@ namespace matrix_engine
             // 
             // URLTEXT
             // 
+            this.URLTEXT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.URLTEXT.BackColor = System.Drawing.Color.Black;
-            this.URLTEXT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.URLTEXT.Font = new System.Drawing.Font("Orbitron", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.URLTEXT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.URLTEXT.Location = new System.Drawing.Point(605, 3);
@@ -558,6 +560,7 @@ namespace matrix_engine
             this.URLTEXT.Name = "URLTEXT";
             this.URLTEXT.Size = new System.Drawing.Size(805, 28);
             this.URLTEXT.TabIndex = 4;
+            this.URLTEXT.Text = "www";
             this.URLTEXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.URLTEXT.TextChanged += new System.EventHandler(this.URLTEXT_TextChanged);
             // 
@@ -581,7 +584,7 @@ namespace matrix_engine
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(222, 28);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Matrix-Engine";
+            this.button2.Text = "Run App.js";
             this.toolTip1.SetToolTip(this.button2, "Load matrix-engine app");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -635,7 +638,7 @@ namespace matrix_engine
             this.splitContainer1.Panel2.Controls.Add(this.chromiumWebBrowser1);
             this.splitContainer1.Panel2MinSize = 100;
             this.splitContainer1.Size = new System.Drawing.Size(1563, 908);
-            this.splitContainer1.SplitterDistance = 27;
+            this.splitContainer1.SplitterDistance = 31;
             this.splitContainer1.TabIndex = 6;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -649,7 +652,7 @@ namespace matrix_engine
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1563, 31);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MatrixEngineGUI

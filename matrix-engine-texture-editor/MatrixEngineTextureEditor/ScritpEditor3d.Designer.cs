@@ -31,6 +31,14 @@ namespace matrix_engine {
             this.saveBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.typeList = new System.Windows.Forms.ComboBox();
+            this.initialScale = new System.Windows.Forms.TextBox();
+            this.blendSrc = new System.Windows.Forms.ComboBox();
+            this.blendDest = new System.Windows.Forms.ComboBox();
+            this.STREAM_TEXTURES_CHECK_VIDEO = new System.Windows.Forms.CheckBox();
+            this.STREAM_TEXTURES_CHECK_CANVAS = new System.Windows.Forms.CheckBox();
+            this.STREAM_TEXTURES_CHECK_CAMERA = new System.Windows.Forms.CheckBox();
+            this.CANVAS_TEXTURE_URL = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -44,48 +52,40 @@ namespace matrix_engine {
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnGIT = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.GAME_TEMPLATES_FPS = new System.Windows.Forms.Button();
             this.helpPanelAddNewObject = new System.Windows.Forms.Panel();
-            this.addNewObjectFieldName = new System.Windows.Forms.TextBox();
-            this.helpAddNewGameObjectBTN = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.typeList = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.initialScale = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.resetToDefault = new System.Windows.Forms.Button();
-            this.BLEND = new System.Windows.Forms.CheckBox();
-            this.blendSrc = new System.Windows.Forms.ComboBox();
-            this.blendDest = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.STREAM_TEXTURES_CHECK_VIDEO = new System.Windows.Forms.CheckBox();
-            this.STREAM_TEXTURES_CHECK_CANVAS = new System.Windows.Forms.CheckBox();
-            this.STREAM_TEXTURES_CHECK_CAMERA = new System.Windows.Forms.CheckBox();
-            this.BROWSER_VIDEOS = new System.Windows.Forms.WebBrowser();
-            this.CANVAS_TEXTURE_URL = new System.Windows.Forms.TextBox();
-            this.OBJ_PATH = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.OBJ_PATH = new System.Windows.Forms.TextBox();
+            this.BROWSER_VIDEOS = new System.Windows.Forms.WebBrowser();
             this.RES_IMGS = new matrix_engine.RESOURCE_EXPLORER_CODE_HELPER();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BLEND = new System.Windows.Forms.CheckBox();
             this.ambientColor = new matrix_engine.MeColor();
             this.solidColor = new matrix_engine.MeColor();
             this.activeRotation = new matrix_engine.MatrixValuesControl();
             this.initialRotation = new matrix_engine.MatrixValuesControl();
+            this.resetToDefault = new System.Windows.Forms.Button();
             this.POSITION = new matrix_engine.MatrixValuesControl();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.helpAddNewGameObjectBTN = new System.Windows.Forms.Button();
+            this.addNewObjectFieldName = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.GAME_TEMPLATES_FPS = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnGIT = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.helpPanelAddNewObject.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // CODE_EDITOR
@@ -98,7 +98,7 @@ namespace matrix_engine {
             this.CODE_EDITOR.Location = new System.Drawing.Point(0, 0);
             this.CODE_EDITOR.Margin = new System.Windows.Forms.Padding(0);
             this.CODE_EDITOR.Name = "CODE_EDITOR";
-            this.CODE_EDITOR.Size = new System.Drawing.Size(1017, 590);
+            this.CODE_EDITOR.Size = new System.Drawing.Size(1017, 596);
             this.CODE_EDITOR.TabIndex = 0;
             this.CODE_EDITOR.Text = "";
             this.CODE_EDITOR.TextChanged += new System.EventHandler(this.CODE_EDITOR_TextChanged);
@@ -155,6 +155,163 @@ namespace matrix_engine {
             this.button1.Text = "HIDE";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // typeList
+            // 
+            this.typeList.BackColor = System.Drawing.Color.Black;
+            this.typeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.typeList.ForeColor = System.Drawing.Color.OrangeRed;
+            this.typeList.FormattingEnabled = true;
+            this.typeList.Items.AddRange(new object[] {
+            "triangle",
+            "square",
+            "squareTex",
+            "cube",
+            "sphereLightTex",
+            "pyramid",
+            "obj",
+            "cubeLightTex",
+            "cubeMapTex",
+            "generatorLightTex"});
+            this.typeList.Location = new System.Drawing.Point(37, 141);
+            this.typeList.Name = "typeList";
+            this.typeList.Size = new System.Drawing.Size(218, 26);
+            this.typeList.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.typeList, "Choose your matrix-engine game object type.");
+            this.typeList.SelectedIndexChanged += new System.EventHandler(this.typeList_SelectedIndexChanged);
+            // 
+            // initialScale
+            // 
+            this.initialScale.BackColor = System.Drawing.Color.Black;
+            this.initialScale.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialScale.ForeColor = System.Drawing.Color.DarkOrange;
+            this.initialScale.Location = new System.Drawing.Point(119, 254);
+            this.initialScale.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.initialScale.Multiline = true;
+            this.initialScale.Name = "initialScale";
+            this.initialScale.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.initialScale.Size = new System.Drawing.Size(44, 21);
+            this.initialScale.TabIndex = 99;
+            this.initialScale.Text = "1";
+            this.initialScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.initialScale, "Set GL world position for new object.");
+            this.initialScale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.initialScale_KeyPress);
+            // 
+            // blendSrc
+            // 
+            this.blendSrc.BackColor = System.Drawing.Color.Black;
+            this.blendSrc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blendSrc.Enabled = false;
+            this.blendSrc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.blendSrc.ForeColor = System.Drawing.Color.OrangeRed;
+            this.blendSrc.FormattingEnabled = true;
+            this.blendSrc.Items.AddRange(new object[] {
+            "ZERO",
+            "ONE",
+            "SRC_COLOR",
+            "DST_COLOR",
+            "ONE_MINUS_SRC_COLOR",
+            "ONE_MINUS_DST_COLOR",
+            "SRC_ALPHA",
+            "DST_ALPHA",
+            "ONE_MINUS_SRC_ALPHA",
+            "ONE_MINUS_DST_ALPHA",
+            "SRC_ALPHA_SATURATE"});
+            this.blendSrc.Location = new System.Drawing.Point(84, 466);
+            this.blendSrc.Name = "blendSrc";
+            this.blendSrc.Size = new System.Drawing.Size(171, 26);
+            this.blendSrc.TabIndex = 113;
+            this.toolTip1.SetToolTip(this.blendSrc, "Choose your matrix-engine game object type.");
+            // 
+            // blendDest
+            // 
+            this.blendDest.BackColor = System.Drawing.Color.Black;
+            this.blendDest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blendDest.Enabled = false;
+            this.blendDest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.blendDest.ForeColor = System.Drawing.Color.OrangeRed;
+            this.blendDest.FormattingEnabled = true;
+            this.blendDest.Items.AddRange(new object[] {
+            "ZERO",
+            "ONE",
+            "SRC_COLOR",
+            "DST_COLOR",
+            "ONE_MINUS_SRC_COLOR",
+            "ONE_MINUS_DST_COLOR",
+            "SRC_ALPHA",
+            "DST_ALPHA",
+            "ONE_MINUS_SRC_ALPHA",
+            "ONE_MINUS_DST_ALPHA",
+            "SRC_ALPHA_SATURATE"});
+            this.blendDest.Location = new System.Drawing.Point(84, 493);
+            this.blendDest.Name = "blendDest";
+            this.blendDest.Size = new System.Drawing.Size(171, 26);
+            this.blendDest.TabIndex = 114;
+            this.toolTip1.SetToolTip(this.blendDest, "Choose your matrix-engine game object type.");
+            // 
+            // STREAM_TEXTURES_CHECK_VIDEO
+            // 
+            this.STREAM_TEXTURES_CHECK_VIDEO.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_VIDEO.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_VIDEO.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Location = new System.Drawing.Point(478, 319);
+            this.STREAM_TEXTURES_CHECK_VIDEO.Name = "STREAM_TEXTURES_CHECK_VIDEO";
+            this.STREAM_TEXTURES_CHECK_VIDEO.Size = new System.Drawing.Size(272, 19);
+            this.STREAM_TEXTURES_CHECK_VIDEO.TabIndex = 118;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Text = "Video textures [recommended webm]";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_VIDEO, "If you wanna video textures.");
+            this.STREAM_TEXTURES_CHECK_VIDEO.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
+            this.STREAM_TEXTURES_CHECK_VIDEO.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CheckedChanged);
+            // 
+            // STREAM_TEXTURES_CHECK_CANVAS
+            // 
+            this.STREAM_TEXTURES_CHECK_CANVAS.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_CANVAS.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_CANVAS.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Location = new System.Drawing.Point(478, 344);
+            this.STREAM_TEXTURES_CHECK_CANVAS.Name = "STREAM_TEXTURES_CHECK_CANVAS";
+            this.STREAM_TEXTURES_CHECK_CANVAS.Size = new System.Drawing.Size(137, 19);
+            this.STREAM_TEXTURES_CHECK_CANVAS.TabIndex = 119;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Text = "Canvas textures";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CANVAS, "If you wanna canvas textures.");
+            this.STREAM_TEXTURES_CHECK_CANVAS.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_CANVAS.Visible = false;
+            this.STREAM_TEXTURES_CHECK_CANVAS.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CANVAS_CheckedChanged);
+            // 
+            // STREAM_TEXTURES_CHECK_CAMERA
+            // 
+            this.STREAM_TEXTURES_CHECK_CAMERA.AutoSize = true;
+            this.STREAM_TEXTURES_CHECK_CAMERA.BackColor = System.Drawing.Color.Transparent;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STREAM_TEXTURES_CHECK_CAMERA.ForeColor = System.Drawing.Color.OrangeRed;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Location = new System.Drawing.Point(478, 369);
+            this.STREAM_TEXTURES_CHECK_CAMERA.Name = "STREAM_TEXTURES_CHECK_CAMERA";
+            this.STREAM_TEXTURES_CHECK_CAMERA.Size = new System.Drawing.Size(138, 19);
+            this.STREAM_TEXTURES_CHECK_CAMERA.TabIndex = 120;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Text = "Camera textures";
+            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CAMERA, "If you wanna webcam surface textures.");
+            this.STREAM_TEXTURES_CHECK_CAMERA.UseVisualStyleBackColor = false;
+            this.STREAM_TEXTURES_CHECK_CAMERA.Visible = false;
+            this.STREAM_TEXTURES_CHECK_CAMERA.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CAMERA_CheckedChanged);
+            // 
+            // CANVAS_TEXTURE_URL
+            // 
+            this.CANVAS_TEXTURE_URL.BackColor = System.Drawing.Color.Black;
+            this.CANVAS_TEXTURE_URL.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CANVAS_TEXTURE_URL.ForeColor = System.Drawing.Color.DarkOrange;
+            this.CANVAS_TEXTURE_URL.Location = new System.Drawing.Point(623, 343);
+            this.CANVAS_TEXTURE_URL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CANVAS_TEXTURE_URL.Name = "CANVAS_TEXTURE_URL";
+            this.CANVAS_TEXTURE_URL.Size = new System.Drawing.Size(160, 21);
+            this.CANVAS_TEXTURE_URL.TabIndex = 122;
+            this.CANVAS_TEXTURE_URL.Text = "https://localhost/2DTextureEditor/templates/slot/";
+            this.toolTip1.SetToolTip(this.CANVAS_TEXTURE_URL, "${this.Text}");
+            this.CANVAS_TEXTURE_URL.Visible = false;
+            this.CANVAS_TEXTURE_URL.TextChanged += new System.EventHandler(this.CANVAS_TEXTURE_URL_TextChanged);
             // 
             // imageList1
             // 
@@ -246,10 +403,11 @@ namespace matrix_engine {
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.SCRIPT_SRC);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(916, 40);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1025, 40);
             this.flowLayoutPanel2.TabIndex = 17;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -257,12 +415,12 @@ namespace matrix_engine {
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Orbitron", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 46);
+            this.tabControl1.Location = new System.Drawing.Point(0, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1025, 619);
+            this.tabControl1.Size = new System.Drawing.Size(1025, 625);
             this.tabControl1.TabIndex = 19;
             // 
             // tabPage1
@@ -275,82 +433,9 @@ namespace matrix_engine {
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1017, 590);
+            this.tabPage1.Size = new System.Drawing.Size(1017, 596);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "App.js";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.GAME_TEMPLATES_FPS);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.btnGIT);
-            this.tabPage2.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1017, 590);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Examples and Live Demos";
-            // 
-            // btnGIT
-            // 
-            this.btnGIT.BackColor = System.Drawing.Color.Black;
-            this.btnGIT.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnGIT.Location = new System.Drawing.Point(68, 94);
-            this.btnGIT.Name = "btnGIT";
-            this.btnGIT.Size = new System.Drawing.Size(238, 47);
-            this.btnGIT.TabIndex = 0;
-            this.btnGIT.Text = "Soutce and Live demos";
-            this.btnGIT.UseVisualStyleBackColor = false;
-            this.btnGIT.Click += new System.EventHandler(this.btnGIT_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label8.Location = new System.Drawing.Point(49, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(745, 20);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Open new split container form with git source demos page and live demo preview.";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Orbitron", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label9.Location = new System.Drawing.Point(263, 15);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(374, 22);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Matrix-engine Examples help form";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label11.Location = new System.Drawing.Point(49, 176);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(445, 20);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Use projects from matrix-engine-starter project. ";
-            // 
-            // GAME_TEMPLATES_FPS
-            // 
-            this.GAME_TEMPLATES_FPS.BackColor = System.Drawing.Color.Black;
-            this.GAME_TEMPLATES_FPS.ForeColor = System.Drawing.Color.DarkOrange;
-            this.GAME_TEMPLATES_FPS.Location = new System.Drawing.Point(68, 205);
-            this.GAME_TEMPLATES_FPS.Name = "GAME_TEMPLATES_FPS";
-            this.GAME_TEMPLATES_FPS.Size = new System.Drawing.Size(238, 47);
-            this.GAME_TEMPLATES_FPS.TabIndex = 12;
-            this.GAME_TEMPLATES_FPS.Text = "First Person Shooter";
-            this.GAME_TEMPLATES_FPS.UseVisualStyleBackColor = false;
-            this.GAME_TEMPLATES_FPS.Click += new System.EventHandler(this.GAME_TEMPLATES_FPS_Click);
             // 
             // helpPanelAddNewObject
             // 
@@ -388,322 +473,22 @@ namespace matrix_engine {
             this.helpPanelAddNewObject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.helpPanelAddNewObject.Location = new System.Drawing.Point(0, 0);
             this.helpPanelAddNewObject.Name = "helpPanelAddNewObject";
-            this.helpPanelAddNewObject.Size = new System.Drawing.Size(1017, 590);
+            this.helpPanelAddNewObject.Size = new System.Drawing.Size(1017, 596);
             this.helpPanelAddNewObject.TabIndex = 1;
             this.helpPanelAddNewObject.Visible = false;
             this.helpPanelAddNewObject.Paint += new System.Windows.Forms.PaintEventHandler(this.helpPanelAddNewObject_Paint);
             // 
-            // addNewObjectFieldName
+            // label7
             // 
-            this.addNewObjectFieldName.BackColor = System.Drawing.Color.Black;
-            this.addNewObjectFieldName.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addNewObjectFieldName.ForeColor = System.Drawing.Color.DarkOrange;
-            this.addNewObjectFieldName.Location = new System.Drawing.Point(37, 91);
-            this.addNewObjectFieldName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.addNewObjectFieldName.Name = "addNewObjectFieldName";
-            this.addNewObjectFieldName.Size = new System.Drawing.Size(218, 21);
-            this.addNewObjectFieldName.TabIndex = 45;
-            // 
-            // helpAddNewGameObjectBTN
-            // 
-            this.helpAddNewGameObjectBTN.BackColor = System.Drawing.Color.OrangeRed;
-            this.helpAddNewGameObjectBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.helpAddNewGameObjectBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.helpAddNewGameObjectBTN.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpAddNewGameObjectBTN.ForeColor = System.Drawing.Color.Black;
-            this.helpAddNewGameObjectBTN.Location = new System.Drawing.Point(266, 540);
-            this.helpAddNewGameObjectBTN.Name = "helpAddNewGameObjectBTN";
-            this.helpAddNewGameObjectBTN.Size = new System.Drawing.Size(181, 37);
-            this.helpAddNewGameObjectBTN.TabIndex = 46;
-            this.helpAddNewGameObjectBTN.Text = "Add new game object";
-            this.helpAddNewGameObjectBTN.UseVisualStyleBackColor = false;
-            this.helpAddNewGameObjectBTN.Click += new System.EventHandler(this.helpAddNewGameObjectBTN_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label2.Location = new System.Drawing.Point(34, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 15);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "Name:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Orbitron", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label5.Location = new System.Drawing.Point(283, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(236, 22);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "Add new game object";
-            // 
-            // typeList
-            // 
-            this.typeList.BackColor = System.Drawing.Color.Black;
-            this.typeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.typeList.ForeColor = System.Drawing.Color.OrangeRed;
-            this.typeList.FormattingEnabled = true;
-            this.typeList.Items.AddRange(new object[] {
-            "triangle",
-            "square",
-            "squareTex",
-            "cube",
-            "sphereLightTex",
-            "pyramid",
-            "obj",
-            "cubeLightTex",
-            "cubeMapTex",
-            "generatorLightTex"});
-            this.typeList.Location = new System.Drawing.Point(37, 141);
-            this.typeList.Name = "typeList";
-            this.typeList.Size = new System.Drawing.Size(218, 26);
-            this.typeList.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.typeList, "Choose your matrix-engine game object type.");
-            this.typeList.SelectedIndexChanged += new System.EventHandler(this.typeList_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label3.Location = new System.Drawing.Point(34, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "Type:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label10.Location = new System.Drawing.Point(33, 256);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 15);
-            this.label10.TabIndex = 98;
-            this.label10.Text = "Initial scale:";
-            // 
-            // initialScale
-            // 
-            this.initialScale.BackColor = System.Drawing.Color.Black;
-            this.initialScale.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialScale.ForeColor = System.Drawing.Color.DarkOrange;
-            this.initialScale.Location = new System.Drawing.Point(119, 254);
-            this.initialScale.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.initialScale.Multiline = true;
-            this.initialScale.Name = "initialScale";
-            this.initialScale.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.initialScale.Size = new System.Drawing.Size(44, 21);
-            this.initialScale.TabIndex = 99;
-            this.initialScale.Text = "1";
-            this.initialScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.initialScale, "Set GL world position for new object.");
-            this.initialScale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.initialScale_KeyPress);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.OrangeRed;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(521, 540);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 37);
-            this.button2.TabIndex = 100;
-            this.button2.Text = "Hide";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // resetToDefault
-            // 
-            this.resetToDefault.BackColor = System.Drawing.Color.OrangeRed;
-            this.resetToDefault.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetToDefault.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetToDefault.ForeColor = System.Drawing.Color.Black;
-            this.resetToDefault.Location = new System.Drawing.Point(453, 540);
-            this.resetToDefault.Name = "resetToDefault";
-            this.resetToDefault.Size = new System.Drawing.Size(62, 37);
-            this.resetToDefault.TabIndex = 104;
-            this.resetToDefault.Text = "Reset";
-            this.resetToDefault.UseVisualStyleBackColor = false;
-            this.resetToDefault.Click += new System.EventHandler(this.resetToDefault_Click);
-            // 
-            // BLEND
-            // 
-            this.BLEND.AutoSize = true;
-            this.BLEND.BackColor = System.Drawing.Color.Transparent;
-            this.BLEND.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLEND.ForeColor = System.Drawing.Color.OrangeRed;
-            this.BLEND.Location = new System.Drawing.Point(33, 441);
-            this.BLEND.Name = "BLEND";
-            this.BLEND.Size = new System.Drawing.Size(64, 19);
-            this.BLEND.TabIndex = 112;
-            this.BLEND.Text = "Blend";
-            this.BLEND.UseVisualStyleBackColor = false;
-            this.BLEND.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // blendSrc
-            // 
-            this.blendSrc.BackColor = System.Drawing.Color.Black;
-            this.blendSrc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.blendSrc.Enabled = false;
-            this.blendSrc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.blendSrc.ForeColor = System.Drawing.Color.OrangeRed;
-            this.blendSrc.FormattingEnabled = true;
-            this.blendSrc.Items.AddRange(new object[] {
-            "ZERO",
-            "ONE",
-            "SRC_COLOR",
-            "DST_COLOR",
-            "ONE_MINUS_SRC_COLOR",
-            "ONE_MINUS_DST_COLOR",
-            "SRC_ALPHA",
-            "DST_ALPHA",
-            "ONE_MINUS_SRC_ALPHA",
-            "ONE_MINUS_DST_ALPHA",
-            "SRC_ALPHA_SATURATE"});
-            this.blendSrc.Location = new System.Drawing.Point(84, 466);
-            this.blendSrc.Name = "blendSrc";
-            this.blendSrc.Size = new System.Drawing.Size(171, 26);
-            this.blendSrc.TabIndex = 113;
-            this.toolTip1.SetToolTip(this.blendSrc, "Choose your matrix-engine game object type.");
-            // 
-            // blendDest
-            // 
-            this.blendDest.BackColor = System.Drawing.Color.Black;
-            this.blendDest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.blendDest.Enabled = false;
-            this.blendDest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.blendDest.ForeColor = System.Drawing.Color.OrangeRed;
-            this.blendDest.FormattingEnabled = true;
-            this.blendDest.Items.AddRange(new object[] {
-            "ZERO",
-            "ONE",
-            "SRC_COLOR",
-            "DST_COLOR",
-            "ONE_MINUS_SRC_COLOR",
-            "ONE_MINUS_DST_COLOR",
-            "SRC_ALPHA",
-            "DST_ALPHA",
-            "ONE_MINUS_SRC_ALPHA",
-            "ONE_MINUS_DST_ALPHA",
-            "SRC_ALPHA_SATURATE"});
-            this.blendDest.Location = new System.Drawing.Point(84, 493);
-            this.blendDest.Name = "blendDest";
-            this.blendDest.Size = new System.Drawing.Size(171, 26);
-            this.blendDest.TabIndex = 114;
-            this.toolTip1.SetToolTip(this.blendDest, "Choose your matrix-engine game object type.");
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label4.Location = new System.Drawing.Point(45, 472);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 15);
-            this.label4.TabIndex = 115;
-            this.label4.Text = "Src";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label6.Location = new System.Drawing.Point(44, 495);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 15);
-            this.label6.TabIndex = 116;
-            this.label6.Text = "Dest";
-            // 
-            // STREAM_TEXTURES_CHECK_VIDEO
-            // 
-            this.STREAM_TEXTURES_CHECK_VIDEO.AutoSize = true;
-            this.STREAM_TEXTURES_CHECK_VIDEO.BackColor = System.Drawing.Color.Transparent;
-            this.STREAM_TEXTURES_CHECK_VIDEO.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.STREAM_TEXTURES_CHECK_VIDEO.ForeColor = System.Drawing.Color.OrangeRed;
-            this.STREAM_TEXTURES_CHECK_VIDEO.Location = new System.Drawing.Point(478, 319);
-            this.STREAM_TEXTURES_CHECK_VIDEO.Name = "STREAM_TEXTURES_CHECK_VIDEO";
-            this.STREAM_TEXTURES_CHECK_VIDEO.Size = new System.Drawing.Size(272, 19);
-            this.STREAM_TEXTURES_CHECK_VIDEO.TabIndex = 118;
-            this.STREAM_TEXTURES_CHECK_VIDEO.Text = "Video textures [recommended webm]";
-            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_VIDEO, "If you wanna video textures.");
-            this.STREAM_TEXTURES_CHECK_VIDEO.UseVisualStyleBackColor = false;
-            this.STREAM_TEXTURES_CHECK_VIDEO.Visible = false;
-            this.STREAM_TEXTURES_CHECK_VIDEO.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CheckedChanged);
-            // 
-            // STREAM_TEXTURES_CHECK_CANVAS
-            // 
-            this.STREAM_TEXTURES_CHECK_CANVAS.AutoSize = true;
-            this.STREAM_TEXTURES_CHECK_CANVAS.BackColor = System.Drawing.Color.Transparent;
-            this.STREAM_TEXTURES_CHECK_CANVAS.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.STREAM_TEXTURES_CHECK_CANVAS.ForeColor = System.Drawing.Color.OrangeRed;
-            this.STREAM_TEXTURES_CHECK_CANVAS.Location = new System.Drawing.Point(478, 344);
-            this.STREAM_TEXTURES_CHECK_CANVAS.Name = "STREAM_TEXTURES_CHECK_CANVAS";
-            this.STREAM_TEXTURES_CHECK_CANVAS.Size = new System.Drawing.Size(137, 19);
-            this.STREAM_TEXTURES_CHECK_CANVAS.TabIndex = 119;
-            this.STREAM_TEXTURES_CHECK_CANVAS.Text = "Canvas textures";
-            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CANVAS, "If you wanna canvas textures.");
-            this.STREAM_TEXTURES_CHECK_CANVAS.UseVisualStyleBackColor = false;
-            this.STREAM_TEXTURES_CHECK_CANVAS.Visible = false;
-            this.STREAM_TEXTURES_CHECK_CANVAS.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CANVAS_CheckedChanged);
-            // 
-            // STREAM_TEXTURES_CHECK_CAMERA
-            // 
-            this.STREAM_TEXTURES_CHECK_CAMERA.AutoSize = true;
-            this.STREAM_TEXTURES_CHECK_CAMERA.BackColor = System.Drawing.Color.Transparent;
-            this.STREAM_TEXTURES_CHECK_CAMERA.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.STREAM_TEXTURES_CHECK_CAMERA.ForeColor = System.Drawing.Color.OrangeRed;
-            this.STREAM_TEXTURES_CHECK_CAMERA.Location = new System.Drawing.Point(478, 369);
-            this.STREAM_TEXTURES_CHECK_CAMERA.Name = "STREAM_TEXTURES_CHECK_CAMERA";
-            this.STREAM_TEXTURES_CHECK_CAMERA.Size = new System.Drawing.Size(138, 19);
-            this.STREAM_TEXTURES_CHECK_CAMERA.TabIndex = 120;
-            this.STREAM_TEXTURES_CHECK_CAMERA.Text = "Camera textures";
-            this.toolTip1.SetToolTip(this.STREAM_TEXTURES_CHECK_CAMERA, "If you wanna webcam surface textures.");
-            this.STREAM_TEXTURES_CHECK_CAMERA.UseVisualStyleBackColor = false;
-            this.STREAM_TEXTURES_CHECK_CAMERA.Visible = false;
-            this.STREAM_TEXTURES_CHECK_CAMERA.CheckedChanged += new System.EventHandler(this.STREAM_TEXTURES_CHECK_CAMERA_CheckedChanged);
-            // 
-            // BROWSER_VIDEOS
-            // 
-            this.BROWSER_VIDEOS.Location = new System.Drawing.Point(669, 29);
-            this.BROWSER_VIDEOS.MinimumSize = new System.Drawing.Size(20, 20);
-            this.BROWSER_VIDEOS.Name = "BROWSER_VIDEOS";
-            this.BROWSER_VIDEOS.Size = new System.Drawing.Size(96, 20);
-            this.BROWSER_VIDEOS.TabIndex = 121;
-            this.BROWSER_VIDEOS.Visible = false;
-            this.BROWSER_VIDEOS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.BROWSER_VIDEOS_DocumentCompleted);
-            this.BROWSER_VIDEOS.FileDownload += new System.EventHandler(this.BROWSER_VIDEOS_FileDownload);
-            this.BROWSER_VIDEOS.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.BROWSER_VIDEOS_Navigating);
-            this.BROWSER_VIDEOS.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.BROWSER_VIDEOS_PreviewKeyDown);
-            // 
-            // CANVAS_TEXTURE_URL
-            // 
-            this.CANVAS_TEXTURE_URL.BackColor = System.Drawing.Color.Black;
-            this.CANVAS_TEXTURE_URL.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CANVAS_TEXTURE_URL.ForeColor = System.Drawing.Color.DarkOrange;
-            this.CANVAS_TEXTURE_URL.Location = new System.Drawing.Point(623, 343);
-            this.CANVAS_TEXTURE_URL.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.CANVAS_TEXTURE_URL.Name = "CANVAS_TEXTURE_URL";
-            this.CANVAS_TEXTURE_URL.Size = new System.Drawing.Size(160, 21);
-            this.CANVAS_TEXTURE_URL.TabIndex = 122;
-            this.CANVAS_TEXTURE_URL.Text = "https://localhost/2DTextureEditor/templates/slot/";
-            this.toolTip1.SetToolTip(this.CANVAS_TEXTURE_URL, "${this.Text}");
-            this.CANVAS_TEXTURE_URL.Visible = false;
-            this.CANVAS_TEXTURE_URL.TextChanged += new System.EventHandler(this.CANVAS_TEXTURE_URL_TextChanged);
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label7.Location = new System.Drawing.Point(34, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 15);
+            this.label7.TabIndex = 124;
+            this.label7.Text = "Obj path:";
             // 
             // OBJ_PATH
             // 
@@ -719,17 +504,18 @@ namespace matrix_engine {
             this.OBJ_PATH.Text = "res/3d-objects/";
             this.OBJ_PATH.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
-            // label7
+            // BROWSER_VIDEOS
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label7.Location = new System.Drawing.Point(34, 170);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 15);
-            this.label7.TabIndex = 124;
-            this.label7.Text = "Obj path:";
+            this.BROWSER_VIDEOS.Location = new System.Drawing.Point(669, 29);
+            this.BROWSER_VIDEOS.MinimumSize = new System.Drawing.Size(20, 20);
+            this.BROWSER_VIDEOS.Name = "BROWSER_VIDEOS";
+            this.BROWSER_VIDEOS.Size = new System.Drawing.Size(96, 20);
+            this.BROWSER_VIDEOS.TabIndex = 121;
+            this.BROWSER_VIDEOS.Visible = false;
+            this.BROWSER_VIDEOS.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.BROWSER_VIDEOS_DocumentCompleted);
+            this.BROWSER_VIDEOS.FileDownload += new System.EventHandler(this.BROWSER_VIDEOS_FileDownload);
+            this.BROWSER_VIDEOS.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.BROWSER_VIDEOS_Navigating);
+            this.BROWSER_VIDEOS.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.BROWSER_VIDEOS_PreviewKeyDown);
             // 
             // RES_IMGS
             // 
@@ -739,6 +525,44 @@ namespace matrix_engine {
             this.RES_IMGS.Size = new System.Drawing.Size(305, 221);
             this.RES_IMGS.TabIndex = 117;
             this.RES_IMGS.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label6.Location = new System.Drawing.Point(44, 495);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 15);
+            this.label6.TabIndex = 116;
+            this.label6.Text = "Dest";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label4.Location = new System.Drawing.Point(45, 472);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 15);
+            this.label4.TabIndex = 115;
+            this.label4.Text = "Src";
+            // 
+            // BLEND
+            // 
+            this.BLEND.AutoSize = true;
+            this.BLEND.BackColor = System.Drawing.Color.Transparent;
+            this.BLEND.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BLEND.ForeColor = System.Drawing.Color.OrangeRed;
+            this.BLEND.Location = new System.Drawing.Point(33, 441);
+            this.BLEND.Name = "BLEND";
+            this.BLEND.Size = new System.Drawing.Size(64, 19);
+            this.BLEND.TabIndex = 112;
+            this.BLEND.Text = "Blend";
+            this.BLEND.UseVisualStyleBackColor = false;
+            this.BLEND.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // ambientColor
             // 
@@ -776,6 +600,21 @@ namespace matrix_engine {
             this.initialRotation.Size = new System.Drawing.Size(302, 38);
             this.initialRotation.TabIndex = 105;
             // 
+            // resetToDefault
+            // 
+            this.resetToDefault.BackColor = System.Drawing.Color.OrangeRed;
+            this.resetToDefault.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetToDefault.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetToDefault.ForeColor = System.Drawing.Color.Black;
+            this.resetToDefault.Location = new System.Drawing.Point(453, 540);
+            this.resetToDefault.Name = "resetToDefault";
+            this.resetToDefault.Size = new System.Drawing.Size(62, 37);
+            this.resetToDefault.TabIndex = 104;
+            this.resetToDefault.Text = "Reset";
+            this.resetToDefault.UseVisualStyleBackColor = false;
+            this.resetToDefault.Click += new System.EventHandler(this.resetToDefault_Click);
+            // 
             // POSITION
             // 
             this.POSITION.BackColor = System.Drawing.Color.Transparent;
@@ -784,6 +623,168 @@ namespace matrix_engine {
             this.POSITION.Name = "POSITION";
             this.POSITION.Size = new System.Drawing.Size(302, 38);
             this.POSITION.TabIndex = 103;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.OrangeRed;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(521, 540);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(62, 37);
+            this.button2.TabIndex = 100;
+            this.button2.Text = "Hide";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label10.Location = new System.Drawing.Point(33, 256);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 15);
+            this.label10.TabIndex = 98;
+            this.label10.Text = "Initial scale:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.Location = new System.Drawing.Point(34, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 15);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "Type:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Orbitron", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label5.Location = new System.Drawing.Point(283, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(236, 22);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Add new game object";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label2.Location = new System.Drawing.Point(34, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 15);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Name:";
+            // 
+            // helpAddNewGameObjectBTN
+            // 
+            this.helpAddNewGameObjectBTN.BackColor = System.Drawing.Color.OrangeRed;
+            this.helpAddNewGameObjectBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpAddNewGameObjectBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.helpAddNewGameObjectBTN.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpAddNewGameObjectBTN.ForeColor = System.Drawing.Color.Black;
+            this.helpAddNewGameObjectBTN.Location = new System.Drawing.Point(266, 540);
+            this.helpAddNewGameObjectBTN.Name = "helpAddNewGameObjectBTN";
+            this.helpAddNewGameObjectBTN.Size = new System.Drawing.Size(181, 37);
+            this.helpAddNewGameObjectBTN.TabIndex = 46;
+            this.helpAddNewGameObjectBTN.Text = "Add new game object";
+            this.helpAddNewGameObjectBTN.UseVisualStyleBackColor = false;
+            this.helpAddNewGameObjectBTN.Click += new System.EventHandler(this.helpAddNewGameObjectBTN_Click);
+            // 
+            // addNewObjectFieldName
+            // 
+            this.addNewObjectFieldName.BackColor = System.Drawing.Color.Black;
+            this.addNewObjectFieldName.Font = new System.Drawing.Font("Orbitron", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewObjectFieldName.ForeColor = System.Drawing.Color.DarkOrange;
+            this.addNewObjectFieldName.Location = new System.Drawing.Point(37, 91);
+            this.addNewObjectFieldName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.addNewObjectFieldName.Name = "addNewObjectFieldName";
+            this.addNewObjectFieldName.Size = new System.Drawing.Size(218, 21);
+            this.addNewObjectFieldName.TabIndex = 45;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.GAME_TEMPLATES_FPS);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.btnGIT);
+            this.tabPage2.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1017, 590);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Examples and Live Demos";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label11.Location = new System.Drawing.Point(49, 176);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(445, 20);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Use projects from matrix-engine-starter project. ";
+            // 
+            // GAME_TEMPLATES_FPS
+            // 
+            this.GAME_TEMPLATES_FPS.BackColor = System.Drawing.Color.Black;
+            this.GAME_TEMPLATES_FPS.ForeColor = System.Drawing.Color.DarkOrange;
+            this.GAME_TEMPLATES_FPS.Location = new System.Drawing.Point(68, 205);
+            this.GAME_TEMPLATES_FPS.Name = "GAME_TEMPLATES_FPS";
+            this.GAME_TEMPLATES_FPS.Size = new System.Drawing.Size(238, 47);
+            this.GAME_TEMPLATES_FPS.TabIndex = 12;
+            this.GAME_TEMPLATES_FPS.Text = "First Person Shooter";
+            this.GAME_TEMPLATES_FPS.UseVisualStyleBackColor = false;
+            this.GAME_TEMPLATES_FPS.Click += new System.EventHandler(this.GAME_TEMPLATES_FPS_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Orbitron", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label9.Location = new System.Drawing.Point(263, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(374, 22);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Matrix-engine Examples help form";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Orbitron", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label8.Location = new System.Drawing.Point(49, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(745, 20);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Open new split container form with git source demos page and live demo preview.";
+            // 
+            // btnGIT
+            // 
+            this.btnGIT.BackColor = System.Drawing.Color.Black;
+            this.btnGIT.ForeColor = System.Drawing.Color.DarkOrange;
+            this.btnGIT.Location = new System.Drawing.Point(68, 94);
+            this.btnGIT.Name = "btnGIT";
+            this.btnGIT.Size = new System.Drawing.Size(238, 47);
+            this.btnGIT.TabIndex = 0;
+            this.btnGIT.Text = "Soutce and Live demos";
+            this.btnGIT.UseVisualStyleBackColor = false;
+            this.btnGIT.Click += new System.EventHandler(this.btnGIT_Click);
             // 
             // ScritpEditor3d
             // 
@@ -807,10 +808,10 @@ namespace matrix_engine {
             this.flowLayoutPanel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.helpPanelAddNewObject.ResumeLayout(false);
             this.helpPanelAddNewObject.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }

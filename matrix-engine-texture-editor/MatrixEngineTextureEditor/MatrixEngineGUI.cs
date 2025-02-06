@@ -296,9 +296,9 @@ namespace matrix_engine {
             cmdKillerProc.Show();
             cmdKillerProc.txtBxStdin.Text = @"c:";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
-            cmdKillerProc.txtBxStdin.Text = @"cd " + APP_DIR + @"\2DTextureEditor";
-            cmdKillerProc.btnSendStdinToProcess.PerformClick();
-            cmdKillerProc.txtBxStdin.Text = @"node install-paths.js";
+            // cmdKillerProc.txtBxStdin.Text = @"cd " + APP_DIR + @"\2DTextureEditor";
+            // cmdKillerProc.btnSendStdinToProcess.PerformClick();
+            cmdKillerProc.txtBxStdin.Text = @"node install-paths-for-2dtextureEditor.js";
             cmdKillerProc.btnSendStdinToProcess.PerformClick();
         }
 
@@ -894,7 +894,7 @@ namespace matrix_engine {
         }
 
         private void detectWebglHost(object sender, EventArgs e) {
-            MessageBox.Show("Ruuning matrix-engine 3d instance!");
+            MessageBox.Show("After clicking save in Script editor wait one secound for rebuild.", "Running matrix-engine 3d instance.");
             if (scritpEditorAndroid != null && scritpEditorAndroid.IsDisposed == false) {
                 scritpEditorAndroid.Show();
             } else {
