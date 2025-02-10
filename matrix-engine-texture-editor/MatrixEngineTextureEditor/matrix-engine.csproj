@@ -278,6 +278,9 @@
     <None Include="Resources\brickBlue10.png" />
     <None Include="Resources\glazing_zigzag_4.png" />
     <None Include="Resources\flatLight29.png" />
+    <None Include="Resources\hud_p3Alt.png" />
+    <None Include="Resources\exitRight1.png" />
+    <None Include="Resources\pieceBlue_border09.png" />
     <Content Include="Resources\resolutions.txt" />
     <None Include="Resources\gui-texture-editor.js" />
     <None Include="Resources\webgl2glmatrix2.jpg" />
