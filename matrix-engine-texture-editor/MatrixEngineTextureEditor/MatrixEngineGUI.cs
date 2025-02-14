@@ -476,15 +476,19 @@ namespace matrix_engine {
         }
 
         private void killAllNodeOnMyComputerToolStripMenuItem_Click(object sender, EventArgs e) {
-            killNODEProcess();
+            // killNODEProcess();
         }
 
         public void killNODEProcess() {
-            if (cmdKillerProc != null) {
+
+            if (cmdKillerProc == null || cmdKillerProc.IsDisposed) {
+                cmdKillerProc = new CmdWindowControlTestApp.MainForm();
+                cmdKillerProc.Show();
                 cmdKillerProc.txtBxStdin.Text = @"taskkill /im node.exe /T /F";
                 cmdKillerProc.btnSendStdinToProcess.PerformClick();
             } else {
-                // MessageBox.Show("Nothing for dispose!");
+                cmdKillerProc.txtBxStdin.Text = @"taskkill /im node.exe /T /F";
+                cmdKillerProc.btnSendStdinToProcess.PerformClick();
             }
         }
 
@@ -1143,6 +1147,10 @@ namespace matrix_engine {
             cmdWebglHOST.Close();
             cmdWebglHOST.Dispose();
 
+        }
+
+        private void killAllNodeOnMyComputerToolStripMenuItem1_Click(object sender, EventArgs e) {
+            killNODEProcess();
         }
     }
 }

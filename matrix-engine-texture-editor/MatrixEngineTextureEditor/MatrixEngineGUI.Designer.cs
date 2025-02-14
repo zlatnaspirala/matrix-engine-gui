@@ -41,11 +41,12 @@ namespace matrix_engine
             this.stopWebServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeFinalPackageAndExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.killAllNodeOnMyComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.killAllNodeOnMyComputerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cLEARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aLLDEPSLIBSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.killAllNodeOnMyComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nodeWindowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,6 @@ namespace matrix_engine
             this.scriptEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scriptEditorandroidWrapperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scriptEditormatrixengineAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opetEditorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitEditorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +82,7 @@ namespace matrix_engine
             this.goToMatrixengineSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToVisualJS3SourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToMEGUIEditorSourcethisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.URLTEXT = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -159,9 +160,9 @@ namespace matrix_engine
             this.stopWebServerToolStripMenuItem,
             this.stopEditorToolStripMenuItem,
             this.makeFinalPackageAndExportToolStripMenuItem,
+            this.killAllNodeOnMyComputerToolStripMenuItem,
             this.cLEARToolStripMenuItem,
-            this.exitToolStripMenuItem,
-            this.killAllNodeOnMyComputerToolStripMenuItem});
+            this.exitToolStripMenuItem});
             this.startToolStripMenuItem.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.startToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.android_icon;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
@@ -174,7 +175,7 @@ namespace matrix_engine
             this.newProjectToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.newProjectToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.transparentDark20;
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.newProjectToolStripMenuItem.Text = "Install dep [one time]";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
@@ -183,7 +184,7 @@ namespace matrix_engine
             this.runMatrixengineAppToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.runMatrixengineAppToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.android_icon;
             this.runMatrixengineAppToolStripMenuItem.Name = "runMatrixengineAppToolStripMenuItem";
-            this.runMatrixengineAppToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.runMatrixengineAppToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.runMatrixengineAppToolStripMenuItem.Text = "Run matrix-engine app";
             this.runMatrixengineAppToolStripMenuItem.Click += new System.EventHandler(this.runMatrixengineAppToolStripMenuItem_Click);
             // 
@@ -192,7 +193,7 @@ namespace matrix_engine
             this.loadProjectToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.loadProjectToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.android_icon;
             this.loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            this.loadProjectToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.loadProjectToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.loadProjectToolStripMenuItem.Text = "Run 2d editor";
             this.loadProjectToolStripMenuItem.Click += new System.EventHandler(this.loadProjectToolStripMenuItem_Click);
             // 
@@ -201,7 +202,7 @@ namespace matrix_engine
             this.stopWebServerToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.stopWebServerToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.shadedDark35;
             this.stopWebServerToolStripMenuItem.Name = "stopWebServerToolStripMenuItem";
-            this.stopWebServerToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.stopWebServerToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.stopWebServerToolStripMenuItem.Text = "Stop matrix-engine app";
             this.stopWebServerToolStripMenuItem.Click += new System.EventHandler(this.stopWebServerToolStripMenuItem_Click);
             // 
@@ -210,7 +211,7 @@ namespace matrix_engine
             this.stopEditorToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.stopEditorToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.shadedDark35;
             this.stopEditorToolStripMenuItem.Name = "stopEditorToolStripMenuItem";
-            this.stopEditorToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.stopEditorToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.stopEditorToolStripMenuItem.Text = "Stop 2d editor";
             this.stopEditorToolStripMenuItem.Click += new System.EventHandler(this.stopEditorToolStripMenuItem_Click);
             // 
@@ -219,9 +220,27 @@ namespace matrix_engine
             this.makeFinalPackageAndExportToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.makeFinalPackageAndExportToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.save;
             this.makeFinalPackageAndExportToolStripMenuItem.Name = "makeFinalPackageAndExportToolStripMenuItem";
-            this.makeFinalPackageAndExportToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.makeFinalPackageAndExportToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.makeFinalPackageAndExportToolStripMenuItem.Text = "Make final package and export";
             this.makeFinalPackageAndExportToolStripMenuItem.Click += new System.EventHandler(this.makeFinalPackageAndExportToolStripMenuItem_Click);
+            // 
+            // killAllNodeOnMyComputerToolStripMenuItem
+            // 
+            this.killAllNodeOnMyComputerToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
+            this.killAllNodeOnMyComputerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.killAllNodeOnMyComputerToolStripMenuItem1});
+            this.killAllNodeOnMyComputerToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.warning;
+            this.killAllNodeOnMyComputerToolStripMenuItem.Name = "killAllNodeOnMyComputerToolStripMenuItem";
+            this.killAllNodeOnMyComputerToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
+            this.killAllNodeOnMyComputerToolStripMenuItem.Text = "Nodes  ⚠️";
+            this.killAllNodeOnMyComputerToolStripMenuItem.Click += new System.EventHandler(this.killAllNodeOnMyComputerToolStripMenuItem_Click);
+            // 
+            // killAllNodeOnMyComputerToolStripMenuItem1
+            // 
+            this.killAllNodeOnMyComputerToolStripMenuItem1.Name = "killAllNodeOnMyComputerToolStripMenuItem1";
+            this.killAllNodeOnMyComputerToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
+            this.killAllNodeOnMyComputerToolStripMenuItem1.Text = "Kill all node on my computer  ⚠️";
+            this.killAllNodeOnMyComputerToolStripMenuItem1.Click += new System.EventHandler(this.killAllNodeOnMyComputerToolStripMenuItem1_Click);
             // 
             // cLEARToolStripMenuItem
             // 
@@ -230,7 +249,7 @@ namespace matrix_engine
             this.eXPORTSToolStripMenuItem,
             this.aLLDEPSLIBSToolStripMenuItem});
             this.cLEARToolStripMenuItem.Name = "cLEARToolStripMenuItem";
-            this.cLEARToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.cLEARToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.cLEARToolStripMenuItem.Text = "Clear";
             // 
             // eXPORTSToolStripMenuItem
@@ -256,19 +275,9 @@ namespace matrix_engine
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.exitToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.exitRight;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(292, 38);
             this.exitToolStripMenuItem.Text = "&&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // killAllNodeOnMyComputerToolStripMenuItem
-            // 
-            this.killAllNodeOnMyComputerToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
-            this.killAllNodeOnMyComputerToolStripMenuItem.Enabled = false;
-            this.killAllNodeOnMyComputerToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.warning;
-            this.killAllNodeOnMyComputerToolStripMenuItem.Name = "killAllNodeOnMyComputerToolStripMenuItem";
-            this.killAllNodeOnMyComputerToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
-            this.killAllNodeOnMyComputerToolStripMenuItem.Text = "Kill all node on my computer  ⚠️";
-            this.killAllNodeOnMyComputerToolStripMenuItem.Click += new System.EventHandler(this.killAllNodeOnMyComputerToolStripMenuItem_Click);
             // 
             // buildToolStripMenuItem
             // 
@@ -293,6 +302,7 @@ namespace matrix_engine
             // 
             // nodeWindowsToolStripMenuItem
             // 
+            this.nodeWindowsToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.nodeWindowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hideAllToolStripMenuItem,
             this.showAllToolStripMenuItem,
@@ -324,6 +334,7 @@ namespace matrix_engine
             // 
             // setScreenSizeToolStripMenuItem
             // 
+            this.setScreenSizeToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.setScreenSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.x512ToolStripMenuItem,
             this.x1024ToolStripMenuItem,
@@ -402,6 +413,7 @@ namespace matrix_engine
             // 
             // useTexWindowToolStripMenuItem
             // 
+            this.useTexWindowToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.useTexWindowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem,
             this.sHODEVTOOLSToolStripMenuItem});
@@ -425,6 +437,7 @@ namespace matrix_engine
             // 
             // hideClassicTexViewToolStripMenuItem
             // 
+            this.hideClassicTexViewToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.hideClassicTexViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem1});
             this.hideClassicTexViewToolStripMenuItem.Name = "hideClassicTexViewToolStripMenuItem";
@@ -468,7 +481,7 @@ namespace matrix_engine
             // 
             // scriptEditorandroidWrapperToolStripMenuItem
             // 
-            this.scriptEditorandroidWrapperToolStripMenuItem.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.scriptEditorandroidWrapperToolStripMenuItem.BackColor = System.Drawing.Color.MediumAquamarine;
             this.scriptEditorandroidWrapperToolStripMenuItem.Image = global::matrix_engine.Properties.Resources._64x64;
             this.scriptEditorandroidWrapperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Turquoise;
             this.scriptEditorandroidWrapperToolStripMenuItem.Name = "scriptEditorandroidWrapperToolStripMenuItem";
@@ -485,23 +498,15 @@ namespace matrix_engine
             this.scriptEditormatrixengineAppToolStripMenuItem.Text = "Script - APP";
             this.scriptEditormatrixengineAppToolStripMenuItem.Click += new System.EventHandler(this.scriptEditormatrixengineAppToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem1
-            // 
-            this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.LightGray;
-            this.exitToolStripMenuItem1.Image = global::matrix_engine.Properties.Resources.exitRight1;
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(108, 36);
-            this.exitToolStripMenuItem1.Text = "Quit App";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
-            // 
             // editorToolStripMenuItem
             // 
             this.editorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opetEditorModeToolStripMenuItem,
             this.exitEditorModeToolStripMenuItem});
             this.editorToolStripMenuItem.ForeColor = System.Drawing.Color.LightGray;
+            this.editorToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.brickBlue10;
             this.editorToolStripMenuItem.Name = "editorToolStripMenuItem";
-            this.editorToolStripMenuItem.Size = new System.Drawing.Size(138, 36);
+            this.editorToolStripMenuItem.Size = new System.Drawing.Size(170, 36);
             this.editorToolStripMenuItem.Text = "2DTexture Editor ";
             // 
             // opetEditorModeToolStripMenuItem
@@ -509,16 +514,16 @@ namespace matrix_engine
             this.opetEditorModeToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.opetEditorModeToolStripMenuItem.Image = global::matrix_engine.Properties.Resources.transparentDark20;
             this.opetEditorModeToolStripMenuItem.Name = "opetEditorModeToolStripMenuItem";
-            this.opetEditorModeToolStripMenuItem.Size = new System.Drawing.Size(203, 38);
-            this.opetEditorModeToolStripMenuItem.Text = "Opet editor mode";
+            this.opetEditorModeToolStripMenuItem.Size = new System.Drawing.Size(231, 38);
+            this.opetEditorModeToolStripMenuItem.Text = "Opet 2D editor mode ";
             this.opetEditorModeToolStripMenuItem.Click += new System.EventHandler(this.opetEditorModeToolStripMenuItem_Click);
             // 
             // exitEditorModeToolStripMenuItem
             // 
             this.exitEditorModeToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
             this.exitEditorModeToolStripMenuItem.Name = "exitEditorModeToolStripMenuItem";
-            this.exitEditorModeToolStripMenuItem.Size = new System.Drawing.Size(203, 38);
-            this.exitEditorModeToolStripMenuItem.Text = "Exit editor mode";
+            this.exitEditorModeToolStripMenuItem.Size = new System.Drawing.Size(231, 38);
+            this.exitEditorModeToolStripMenuItem.Text = "Exit 2D editor mode";
             this.exitEditorModeToolStripMenuItem.Click += new System.EventHandler(this.exitEditorModeToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
@@ -572,6 +577,15 @@ namespace matrix_engine
             this.goToMEGUIEditorSourcethisToolStripMenuItem.Size = new System.Drawing.Size(358, 38);
             this.goToMEGUIEditorSourcethisToolStripMenuItem.Text = "Go to ME GUI Editor source [this]";
             this.goToMEGUIEditorSourcethisToolStripMenuItem.Click += new System.EventHandler(this.goToMEGUIEditorSourcethisToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.LightGray;
+            this.exitToolStripMenuItem1.Image = global::matrix_engine.Properties.Resources.exitRight1;
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(108, 36);
+            this.exitToolStripMenuItem1.Text = "Quit App";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // URLTEXT
             // 
@@ -777,6 +791,7 @@ namespace matrix_engine
         public System.Windows.Forms.Button SHOW_DEV;
         public System.Windows.Forms.Button GO;
         private System.Windows.Forms.ToolStripMenuItem stopWebServerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem killAllNodeOnMyComputerToolStripMenuItem1;
     }
 }
 
