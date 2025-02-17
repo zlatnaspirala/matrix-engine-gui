@@ -514,37 +514,37 @@ namespace matrix_engine {
         public void killSubProcess() {
             try {
 
-                if (cmdWebglRun != null) {
+                if (cmdWebglRun != null && cmdWebglRun.IsDisposed == false) {
                     KillProcessAndChildren(cmdWebglRun._PID_);
                     cmdWebglRun.Close();
                     cmdWebglRun.Dispose();
                 }
 
-                if (cmdWebglHOST != null) {
+                if (cmdWebglHOST != null && cmdWebglHOST.IsDisposed == false) {
                     KillProcessAndChildren(cmdWebglHOST._PID_);
                     cmdWebglHOST.Close();
                     cmdWebglHOST.Dispose();
                 }
 
-                if (cmdStream != null) {
+                if (cmdStream != null && cmdStream.IsDisposed == false) {
                     KillProcessAndChildren(cmdStream._PID_);
                     cmdStream.Close();
                     cmdStream.Dispose();
                 }
 
-                if (cmdLoader != null) {
+                if (cmdLoader != null && cmdLoader.IsDisposed == false) {
                     KillProcessAndChildren(cmdLoader._PID_);
                     cmdLoader.Close();
                     cmdLoader.Dispose();
                 }
 
-                if (cmdVJS3EDITOR != null) {
+                if (cmdVJS3EDITOR != null && cmdVJS3EDITOR.IsDisposed == false) {
                     KillProcessAndChildren(cmdVJS3EDITOR._PID_);
                     cmdVJS3EDITOR.Close();
                     cmdVJS3EDITOR.Dispose();
                 }
 
-                if (cmdVJS3WATCH != null) {
+                if (cmdVJS3WATCH != null && cmdVJS3WATCH.IsDisposed == false) {
                     KillProcessAndChildren(cmdVJS3WATCH._PID_);
                     cmdVJS3WATCH.Close();
                     cmdVJS3WATCH.Dispose();
