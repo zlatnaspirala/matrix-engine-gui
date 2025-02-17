@@ -657,5 +657,10 @@ namespace matrix_engine {
             ANDROID_CMD_ADB_RUN.txtBxArgs.Text = rc2;
             ANDROID_CMD_ADB_RUN.btnRunCommand.PerformClick();
         }
+
+        private void label12_Click_1(object sender, EventArgs e) {
+            var t = "https://learn.microsoft.com/en-us/visualstudio/msbuild/walkthrough-using-msbuild?view=vs-2022#install-msbuild";
+            Process.Start("chrome.exe", t);
+        }
     }
 }

@@ -89,6 +89,8 @@ namespace matrix_engine {
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // buildcanvas2dBtn
@@ -943,6 +945,21 @@ namespace matrix_engine {
             this.label25.TabIndex = 91;
             this.label25.Text = "not guaranteed";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label12.Location = new System.Drawing.Point(17, 328);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(269, 30);
+            this.label12.TabIndex = 93;
+            this.label12.Text = "You need to have msbuild.exe installed \r\non you computer. Download official link." +
+    "";
+            this.toolTip1.SetToolTip(this.label12, "If you have already installed Visual Studio\r\n then you have msbuild.");
+            this.label12.Click += new System.EventHandler(this.label12_Click_1);
+            // 
             // PackageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 16F);
@@ -950,6 +967,7 @@ namespace matrix_engine {
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::matrix_engine.Properties.Resources.packager2;
             this.ClientSize = new System.Drawing.Size(1378, 829);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.RUN_ANDROIDBTN_NOARG);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
@@ -1095,5 +1113,7 @@ namespace matrix_engine {
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.Button RUN_ANDROIDBTN_NOARG;
+        public System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }
