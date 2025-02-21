@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("matrix-engine gui editor")]
+[assembly: AssemblyTitle("matrix-engine GUI")]
 [assembly: AssemblyDescription("MatrixEngine GUIEditor use matrix-engine cloned github project. For 2dEditor part is used visualjs3. GUI app automate all needed procedured for running matrix-engine.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nikola Lukic zlatnaspirala@gmail.com")]
-[assembly: AssemblyProduct("matrix-engine BETA")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyProduct("matrix-engine BETA Version")]
+[assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("maximumroulette.com")]
 [assembly: AssemblyCulture("")]
 

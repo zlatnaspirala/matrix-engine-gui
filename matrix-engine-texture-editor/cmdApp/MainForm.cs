@@ -43,7 +43,7 @@ namespace CmdWindowControlTestApp {
         public Process runningProcess;
         public int _PID_;
         public Boolean preventSignalForHost = false;
-        public Boolean preventHYBRYD_IF_WEBGL = false;
+        public Boolean preventHYBRYD_IF_WEBGL = true;
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -207,8 +207,8 @@ namespace CmdWindowControlTestApp {
                 resultEditor.Text = text + DateTime.Now.ToString("yyyyMMddHHmmssfff");
             } else if (text.Contains("npm audit fix")) {
                 resultNpmI.Text = "npm done" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            } else if (text.Contains("Build succeeded") || 
-                   text.Contains("browserify ./gui/app.js -p esmify > ./public/gui.build.js")) {
+            } else if (text.Contains("Build succeeded")  || 
+                       text.Contains("browserify ./gui/app.js -p esmify > ./public/gui.build.js")) {
                 if (preventHYBRYD_IF_WEBGL == false) {
                     Thread.Sleep(2000);
                     nativeExeBuild.Text = "native-" + DateTime.Now.ToString("yyyyMMddHHmmssfff");

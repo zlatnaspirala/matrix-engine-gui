@@ -407,7 +407,7 @@ namespace matrix_engine {
 
         private void button1_Click(object sender, EventArgs e) {
             if (APP_2D_URL == "") {
-                MessageBox.Show("You have to start the 2d texture editor first", "Matrix-engine", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // MessageBox.Show("You have to start the 2d texture editor first", "Matrix-engine", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             URLTEXT.Text = APP_2D_URL;
@@ -551,7 +551,7 @@ namespace matrix_engine {
                 }
 
             } catch (Exception err) {
-                MessageBox.Show("ERRRR", err.ToString());
+                MessageBox.Show(err.ToString(), "Matrix-engine Error");
             }
         }
 
@@ -898,7 +898,7 @@ namespace matrix_engine {
         }
 
         private void detectWebglHost(object sender, EventArgs e) {
-            MessageBox.Show("After clicking save in Script editor wait one secound for rebuild.", "Running matrix-engine 3d instance.");
+            // MessageBox.Show("After clicking save in Script editor wait one secound for rebuild.", "Running matrix-engine 3d instance.");
             if (scritpEditorAndroid != null && scritpEditorAndroid.IsDisposed == false) {
                 scritpEditorAndroid.Show();
             } else {

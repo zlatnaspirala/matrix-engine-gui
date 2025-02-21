@@ -42,11 +42,11 @@ namespace matrix_engine {
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e) {
-           /* Console.WriteLine("TIMER TEST 1 !!");
-            aTimer.Elapsed -= new ElapsedEventHandler(OnTimedEvent);
-            aTimer.Enabled = false;
-            this.Invalidate();
-            this.Update(); */
+            /* Console.WriteLine("TIMER TEST 1 !!");
+             aTimer.Elapsed -= new ElapsedEventHandler(OnTimedEvent);
+             aTimer.Enabled = false;
+             this.Invalidate();
+             this.Update(); */
         }
 
         public PackageForm(MatrixEngineGUI MAIN) {
@@ -64,6 +64,9 @@ namespace matrix_engine {
                 Directory.CreateDirectory(APP_DIR_TEST_EXPORTS);
             }
             webAppExportPath.Text = APP_DIR_TEST_EXPORTS;
+
+            // test
+            LoadCurrentDirectory();
         }
 
         private void BuildForHybrid_Click(object sender, EventArgs e) {
@@ -235,11 +238,22 @@ namespace matrix_engine {
             if (NATIVEBuildPATH.Text == "") return;
             var T = NATIVEBuildPATH.Text + @"\me.txt";
             if (File.Exists(T)) {
-                Process.Start(T);
+                try {
+                    Process.Start("code", T);
+                } catch (Exception ex) {
+                    Process.Start(T);
+                    // MessageBox.Show("Error opening file with VS Code: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             } else {
                 // Create me.txt if not exist
                 var PACKAGE_CONTENT = "{ \"APP_STATUS\": \"APP_LOCALHOST\", \"APP_PRODUCTION\": \"https://maximumroulette.com\", \"APP_DEV\": \"https://localhost/dev\", \"APP_LOCALHOST\": \"http://localhost/\" }";
                 File.WriteAllText(T, PACKAGE_CONTENT.ToString());
+                try {
+                    Process.Start("code", T);
+                } catch (Exception ex) {
+                    Process.Start(T);
+                    // MessageBox.Show("Error opening file with VS Code: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -251,9 +265,15 @@ namespace matrix_engine {
         }
 
         private void runLastNATIVEBuildBtn_Click(object sender, EventArgs e) {
-            if (NATIVEBuildPATH.Text == "" || MAINFORM.cmdKillerProc == null) {
+            if (NATIVEBuildPATH.Text == "") {
                 MessageBox.Show("No actual build.");
                 return;
+            }
+            if (MAINFORM.cmdKillerProc == null || MAINFORM.cmdKillerProc.IsDisposed == true) {
+                MAINFORM.cmdKillerProc = new CmdWindowControlTestApp.MainForm();
+                MAINFORM.cmdKillerProc.Load += MAINFORM.cmdKillerLoader;
+                MAINFORM.cmdKillerProc.TransparencyKey = Color.Turquoise;
+                MAINFORM.cmdKillerProc.BackColor = Color.Turquoise;
             }
             // RUNNING
             MAINFORM.cmdKillerProc.Show();
@@ -289,7 +309,7 @@ namespace matrix_engine {
                 } else {
                     HOST_LOCALHOST.txtBxStdin.Text = @"http-server ./ -p " + HOSTPORT.Text;
                 }
-                
+
                 HOST_LOCALHOST.btnSendStdinToProcess.PerformClick();
             } else {
                 KillProcessAndChildren(HOST_LOCALHOST._PID_);
@@ -370,10 +390,10 @@ namespace matrix_engine {
             GRADLEW.txtBxStdin.Text = @"gradlew.bat build";
             GRADLEW.btnSendStdinToProcess.PerformClick();
         }
-        
+
         private void buildForAndroid_Click(object sender, EventArgs e) {
             if (Directory.Exists(ANDROIDSDKPATH.Text.ToString()) != true || ANDROIDSDKPATH.Text.ToString() == "") {
-                MessageBox.Show("Please set ANDROID SDK Path !", "Matrix-engine GUI Editor",  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please set ANDROID SDK Path !", "Matrix-engine GUI Editor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var APP_DIRINFLY = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\matrix-texture-tool\matrixengine\matrix-engine";
@@ -396,7 +416,7 @@ namespace matrix_engine {
             ANDROID_CMD_ADB.txtBxStdin.Text = "SET PATH=%PATH%;" + ANDROIDSDKPATH.Text.ToString() + "/platform-tools";
             ANDROID_CMD_ADB.btnSendStdinToProcess.PerformClick();
             ANDROID_CMD_ADB.txtBxStdin.Text = @"adb install -g app-debug.apk";
-            ANDROID_CMD_ADB.btnSendStdinToProcess.PerformClick();            
+            ANDROID_CMD_ADB.btnSendStdinToProcess.PerformClick();
         }
 
         private void ANDROIDSDKPATH_TextChanged(object sender, EventArgs e) {
@@ -462,7 +482,7 @@ namespace matrix_engine {
         }
 
         private void BUILD_ANDROID_APPBTN_Click(object sender, EventArgs e) {
-             BUILD_ANDROID_PROJECT();
+            BUILD_ANDROID_PROJECT();
         }
 
         private void ANDROID_STUDIOBTN_Click(object sender, EventArgs e) {
@@ -556,7 +576,7 @@ namespace matrix_engine {
             ANDROID_CMD_ADB_LOG = new CmdWindowControlTestApp.Android(this, "ANDROID_CMD_ADB_LOG");
             ANDROID_CMD_ADB_LOG.Show();
             ANDROID_CMD_ADB_LOG.txtBxCmd.Text = "adb.exe";
-            ANDROID_CMD_ADB_LOG.txtBxDirectory.Text = ANDROIDSDKPATH.Text.ToString() + "/platform-tools";            
+            ANDROID_CMD_ADB_LOG.txtBxDirectory.Text = ANDROIDSDKPATH.Text.ToString() + "/platform-tools";
             DEVICES_LIST.SelectedItem = DEVICES_LIST.SelectedItem.ToString().Replace("  ", "");
             DEVICES_LIST.SelectedItem = DEVICES_LIST.SelectedItem.ToString().Replace("\t", "");
             DEVICES_LIST.SelectedItem = DEVICES_LIST.SelectedItem.ToString().Remove(DEVICES_LIST.SelectedItem.ToString().Length - 1);
@@ -602,7 +622,7 @@ namespace matrix_engine {
                     // MessageBox.Show("KILL PID" + PID__, "Matrix-engine GUI Editor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.ANDROID_CMD_ADB_RUN.Close();
                 }
-            }            
+            }
         }
 
         private void installOnRealDeviceBtn_Click(object sender, EventArgs e) {
@@ -662,5 +682,83 @@ namespace matrix_engine {
             var t = "https://learn.microsoft.com/en-us/visualstudio/msbuild/walkthrough-using-msbuild?view=vs-2022#install-msbuild";
             Process.Start("chrome.exe", t);
         }
+
+        private void label13_Click(object sender, EventArgs e) {
+
+        }
+
+        // - cheking export directory for old builds part 
+        public static class PathExtensions {
+            public static string GetLastFolderName(string path) {
+                if (string.IsNullOrEmpty(path)) {
+                    return "";
+                }
+                path = path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                int lastSeparatorIndex = path.LastIndexOfAny(new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar });
+                if (lastSeparatorIndex >= 0) {
+                    return path.Substring(lastSeparatorIndex + 1);
+                } else {
+                    return path;
+                }
+            }
+
+            public static string GetLastFolderName_UsingDirectoryInfo(string path) {
+                if (string.IsNullOrEmpty(path)) {
+                    return ""; // Or throw an exception
+                }
+
+                try {
+                    DirectoryInfo dirInfo = new DirectoryInfo(path);
+                    return dirInfo.Name;
+                } catch (Exception) // Catch potential exceptions like invalid path
+                  {
+                    return ""; // Or throw the exception if you want to handle it differently
+                }
+            }
+        }
+
+        public string[] subdirectories;
+
+        private void LoadCurrentDirectory() {
+            string currentDirectory = APP_DIR_TEST_EXPORTS;
+            comboBoxFolders.Items.Clear();
+            try {
+                // Add subdirectories
+                subdirectories = Directory.GetDirectories(currentDirectory);
+                foreach (string subdirectory in subdirectories) {
+                    string lastFolderName = PathExtensions.GetLastFolderName(subdirectory);
+                    if (lastFolderName != null) {
+                        comboBoxFolders.Items.Add(lastFolderName);
+                    } else {
+                        comboBoxFolders.Items.Add(subdirectory);
+                    }
+                }
+
+                // Add current directory
+                comboBoxFolders.Items.Insert(0, currentDirectory);
+                comboBoxFolders.SelectedItem = currentDirectory;
+                // (Optional) List files in a ListBox or similar control
+                // listBoxFiles.Items.Clear();
+                //                 string[] files = Directory.GetFiles(currentDirectory);
+                // foreach (string file in files) {
+                // listBoxFiles.Items.Add(file);
+                // }
+
+            } catch (Exception ex) {
+                MessageBox.Show("Error accessing directory: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBoxFolders_SelectedIndexChanged(object sender, EventArgs e) {
+            if (comboBoxFolders.SelectedItem != null) {
+                string selectedFolder = comboBoxFolders.SelectedItem.ToString();
+                foreach (string subdir in subdirectories) {
+                    if (subdir.Contains(selectedFolder)) {
+                        NATIVEBuildPATH.Text = subdir;
+                    }
+                }
+            }
+        }
+
     }
 }

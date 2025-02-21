@@ -126,6 +126,14 @@
   <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>114, 17</value>
   </metadata>
+  <data name="label14.Text" xml:space="preserve">
+    <value>  Only for native builds CURL is needed.
+  Curl comes with Windows 10, but only if you have version 1803
+  or later. This version of Windows 10 was released in early 2018. 
+  If you have an older version of Windows 10, you will need to 
+   install curl manually. Official link :
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
